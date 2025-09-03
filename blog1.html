@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDV Blog | Career Coaching Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #391b52;
+            --primary-orange: #F57C00;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-orange));
+            color: white;
+            border-radius: 0 0 50% 50% / 30%;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Article Section */
+        .article-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            margin-bottom: 60px;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .article-title {
+            font-size: 42px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: #636e72;
+            font-size: 16px;
+        }
+
+        .article-content {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            color: var(--primary-orange);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dfe6e9;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-orange);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-purple);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #a29bfe;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #636e72;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .article-title {
+                font-size: 32px;
+            }
+            
+            .article-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <!-- <i class="fas fa-pen-nib"></i> -->
+                    <img src="/NPDV Logo purple.png" alt="" class="h-10 w-10 mr-2">
+                    <!-- NPDV Blog -->
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Career Coaching Insights</h1>
+            <p>Expert advice on mentorship, leadership, and professional growth</p>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <div class="container">
+        <article class="article-container">
+            <div class="article-header">
+                <h1 class="article-title">Career Coaching: Unlocking Growth Through Mentorship and Coaching</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> September 15, 2023</span>
+                    <span><i class="far fa-clock"></i> 5 min read</span>
+                    <span><i class="far fa-folder"></i> Career Development</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>In today's fast-paced professional world, mentorship and coaching are invaluable tools for anyone looking to accelerate their career. For senior leaders, they are not only essential for growth but also for building a lasting legacy.</p>
+
+                <h3>Why Mentorship Matters</h3>
+                
+                <div class="highlight-box">
+                    <p><strong>Accelerated Growth:</strong> A mentor provides access to experience and insights, helping you navigate challenges and seize opportunities more effectively.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Network Expansion:</strong> Mentors connect you with valuable networks, opening doors to new opportunities and collaborations.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Skill Enhancement:</strong> Coaching hones in on specific skills, ensuring continuous improvement and readiness for the evolving workplace.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Legacy Building:</strong> Mentors help align career goals with long-term aspirations, ensuring that the impact you leave endures.</p>
+                </div>
+
+                <p>At NPDV Services, we believe coaching is more than career advice - it's a partnership built to empower growth, resilience, and confidence.</p>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Blog</h3>
+                    <p>NPDV Blog provides expert perspectives on career development, leadership, and professional growth strategies for today's dynamic workplace.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Subscribe to Newsletter</h3>
+                    <p>Get the latest articles and insights delivered to your inbox.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="padding:10px; width:100%; margin-bottom:10px; border-radius:4px; border:none;">
+                        <button type="submit" style="padding:10px 20px; background:var(--primary-orange); color:white; border:none; border-radius:4px; cursor:pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NPDV Blog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for highlight boxes when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const highlightBoxes = document.querySelectorAll('.highlight-box');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            highlightBoxes.forEach(box => {
+                box.style.opacity = 0;
+                box.style.transform = 'translateX(-20px)';
+                box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(box);
+            });
+        });
+    </script>
+</body>
+</html>

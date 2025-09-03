@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NPDV Industries - Consulting and Training Services">
+    <title>NPDV Industries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-purple': '#391b52',
+                        'primary-orange': '#F57C00',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'display': ['Playfair Display SC', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-in': 'slideIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(20px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': {
+                                transform: 'translateX(-100%)'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)'
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 2px #391b52;
+            color: transparent;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(57, 27, 82, 0.9) 0%, rgba(57, 27, 82, 0.7) 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .payment-modal {
+            backdrop-filter: blur(5px);
+        }
+
+        .payment-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .payment-button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .plan-card {
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 lg:px-16 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="/" class="block h-[45px]">
+                    <img src="NPDV-logo.PNG" alt="NPDV" class="h-full w-auto">
+                </a>
+                <span class="text-xs text-primary-purple tracking-[1.5px] font-medium">💜</span>
+            </div>
+            <nav class="hidden lg:flex items-center gap-8">
+                <ul class="flex gap-8 list-none m-0 p-0">
+                    <li><a href="/" class="nav-link text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Home</a></li>
+                    <li class="relative group">
+                        <a href="about.html" class="nav-link dropdown-toggle text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">About Us</a>
+                        <ul class="absolute hidden group-hover:block min-w-[220px] bg-white py-4 rounded-lg shadow-lg transform translate-y-2 transition-all duration-300">
+                            <li><a href="about.html#company" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">About the Company</a></li>
+                            <li><a href="about.html#mission" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Mission/Vision</a></li>
+                            <li><a href="about.html#values" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Core Values</a></li>
+                            <li><a href="about.html#team" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="relative group">
+                        <a href="services.html" class="nav-link dropdown-toggle text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Services</a>
+                        <ul class="absolute hidden group-hover:block min-w-[220px] bg-white py-4 rounded-lg shadow-lg transform translate-y-2 transition-all duration-300">
+                            <li><a href="services.html#strategic" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Strategic Communications</a></li>
+                            <li><a href="services.html#training" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Training and Capacity Building</a></li>
+                            <li><a href="services.html#coaching" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Career Coaching</a></li>
+                            <li><a href="services.html#project" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Project Management</a></li>
+                            <li><a href="services.html#it" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">IT Solutions</a></li>
+                            <li><a href="services.html#financial" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Financial Advisory</a></li>
+                            <li><a href="services.html#risk" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Risk Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="relative group">
+                        <a href="industries.html" class="nav-link dropdown-toggle text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300 active">Industries</a>
+                        <ul class="absolute hidden group-hover:block min-w-[220px] bg-white py-4 rounded-lg shadow-lg transform translate-y-2 transition-all duration-300">
+                            <li><a href="industries.html#technology" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Technology</a></li>
+                            <li><a href="industries.html#finance" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Finance</a></li>
+                            <li><a href="industries.html#healthcare" class="block px-6 py-3 text-sm text-[#333] hover:bg-primary-purple/5 hover:text-primary-purple transition-all duration-300">Healthcare</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="training-programs.html" class="nav-link text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Training Programs</a></li>
+                    <li><a href="case-studies.html" class="nav-link text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Case Studies</a></li>
+                    <li><a href="resources.html" class="nav-link text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Resources</a></li>
+                    <li><a href="contact.html" class="nav-link text-[#333] text-sm font-medium py-2 relative hover:text-primary-purple transition-colors duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="lg:hidden text-primary-purple hover:text-primary-orange p-2" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300 lg:hidden">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex justify-between items-center mb-8">
+                <img src="NPDV-logo.PNG" alt="NPDV" class="h-10 w-auto">
+                <button class="text-primary-purple hover:text-primary-orange p-2" id="close-mobile-menu">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="/" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Home</a>
+                <a href="about.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">About Us</a>
+                <a href="services.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Services</a>
+                <a href="training-programs.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Training Programs</a>
+                <a href="case-studies.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Case Studies</a>
+                <a href="resources.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Resources</a>
+                <a href="contact.html" class="block text-lg text-primary-purple hover:text-primary-orange py-2">Contact Us</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 parallax" style="background-image: url('teamImg2.jpeg')"></div>
+        <div class="absolute inset-0 gradient-overlay"></div>
+        <div class="container mx-auto px-4 lg:px-16 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-6xl md:text-8xl font-display text-white mb-8 animate-fade-in-up">
+                    D E V E L O P
+                </h1>
+                <p class="text-xl text-white/90 mb-12 animate-fade-in-up animation-delay-200">
+                    Empowering businesses through innovative solutions and expert guidance
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-400">
+                    <a href="#industries" class="px-8 py-4 bg-primary-orange text-white font-medium rounded-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+                        Explore Industries
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                    <a href="contact.html" class="px-8 py-4 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-primary-purple transition-all duration-300">
+                        Get Started
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Animated scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Industries Grid Section -->
+    <section id="industries" class="py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-16">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display text-primary-purple mb-4">Our Industries</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We serve a diverse range of industries, providing specialized solutions and expertise to help businesses thrive in their respective sectors.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Industry Card 1 -->
+                <div id="technology" class="group relative overflow-hidden rounded-lg shadow-lg hover-scale" x-data="{ hovered: false, showPayment: false }">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="coFounderImg.jpeg" alt="Technology" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-purple/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Technology</h3>
+                            <p class="text-white/90 mb-4">Innovative solutions for the digital age</p>
+                            <div class="flex items-center space-x-4">
+                                <button @click="showPayment = true" class="inline-flex items-center px-4 py-2 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-shopping-cart mr-2"></i>
+                                    Get Started
+                                </button>
+                                <a href="#" class="inline-flex items-center text-white hover:text-primary-orange transition-colors duration-300">
+                                    Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <!-- Payment Modal -->
+                            <div x-show="showPayment" 
+                                 class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 transform scale-95"
+                                 x-transition:enter-end="opacity-100 transform scale-100"
+                                 x-transition:leave="transition ease-in duration-200"
+                                 x-transition:leave-start="opacity-100 transform scale-100"
+                                 x-transition:leave-end="opacity-0 transform scale-95"
+                                 @click.away="showPayment = false">
+                                <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="text-xl font-bold text-primary-purple">Technology Services</h3>
+                                        <button @click="showPayment = false" class="text-gray-400 hover:text-gray-600">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Digital Transformation</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Cloud Solutions</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Cybersecurity</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Data Analytics</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 space-y-4">
+                                        <button onclick="window.location.href='payment.html?service=technology&plan=enterprise&price=150000'" class="w-full px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-all duration-300">
+                                            Enterprise Plan - ₦150,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=technology&plan=business&price=100000'" class="w-full px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
+                                            Business Plan - ₦100,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=technology&plan=starter&price=50000'" class="w-full px-6 py-3 border border-primary-purple text-primary-purple rounded-lg hover:bg-primary-purple/10 transition-all duration-300">
+                                            Starter Plan - ₦50,000
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Card 2 -->
+                <div id="finance" class="group relative overflow-hidden rounded-lg shadow-lg hover-scale" x-data="{ hovered: false, showPayment: false }">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="ivyClemImg.jpeg" alt="Finance" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-purple/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Finance</h3>
+                            <p class="text-white/90 mb-4">Strategic financial solutions</p>
+                            <div class="flex items-center space-x-4">
+                                <button @click="showPayment = true" class="inline-flex items-center px-4 py-2 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-shopping-cart mr-2"></i>
+                                    Get Started
+                                </button>
+                                <a href="#" class="inline-flex items-center text-white hover:text-primary-orange transition-colors duration-300">
+                                    Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <!-- Payment Modal -->
+                            <div x-show="showPayment" 
+                                 class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 transform scale-95"
+                                 x-transition:enter-end="opacity-100 transform scale-100"
+                                 x-transition:leave="transition ease-in duration-200"
+                                 x-transition:leave-start="opacity-100 transform scale-100"
+                                 x-transition:leave-end="opacity-0 transform scale-95"
+                                 @click.away="showPayment = false">
+                                <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="text-xl font-bold text-primary-purple">Finance Services</h3>
+                                        <button @click="showPayment = false" class="text-gray-400 hover:text-gray-600">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Financial Planning</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Investment Advisory</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Risk Management</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Compliance Solutions</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 space-y-4">
+                                        <button onclick="window.location.href='payment.html?service=finance&plan=enterprise&price=150000'" class="w-full px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-all duration-300">
+                                            Enterprise Plan - ₦150,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=finance&plan=business&price=100000'" class="w-full px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
+                                            Business Plan - ₦100,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=finance&plan=starter&price=50000'" class="w-full px-6 py-3 border border-primary-purple text-primary-purple rounded-lg hover:bg-primary-purple/10 transition-all duration-300">
+                                            Starter Plan - ₦50,000
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Card 3 -->
+                <div id="healthcare" class="group relative overflow-hidden rounded-lg shadow-lg hover-scale" x-data="{ hovered: false, showPayment: false }">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <img src="mercyImg.jpeg" alt="Healthcare" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-purple/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Healthcare</h3>
+                            <p class="text-white/90 mb-4">Improving healthcare delivery</p>
+                            <div class="flex items-center space-x-4">
+                                <button @click="showPayment = true" class="inline-flex items-center px-4 py-2 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-shopping-cart mr-2"></i>
+                                    Get Started
+                                </button>
+                                <a href="#" class="inline-flex items-center text-white hover:text-primary-orange transition-colors duration-300">
+                                    Learn More
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <!-- Payment Modal -->
+                            <div x-show="showPayment" 
+                                 class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+                                 x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 transform scale-95"
+                                 x-transition:enter-end="opacity-100 transform scale-100"
+                                 x-transition:leave="transition ease-in duration-200"
+                                 x-transition:leave-start="opacity-100 transform scale-100"
+                                 x-transition:leave-end="opacity-0 transform scale-95"
+                                 @click.away="showPayment = false">
+                                <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="text-xl font-bold text-primary-purple">Healthcare Services</h3>
+                                        <button @click="showPayment = false" class="text-gray-400 hover:text-gray-600">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Healthcare Management</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Patient Care Optimization</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Healthcare Compliance</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 border-b">
+                                            <span class="text-gray-600">Healthcare Technology</span>
+                                            <span class="font-semibold">₦50,000</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 space-y-4">
+                                        <button onclick="window.location.href='payment.html?service=healthcare&plan=enterprise&price=150000'" class="w-full px-6 py-3 bg-primary-purple text-white rounded-lg hover:bg-primary-purple/90 transition-all duration-300">
+                                            Enterprise Plan - ₦150,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=healthcare&plan=business&price=100000'" class="w-full px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-primary-orange/90 transition-all duration-300">
+                                            Business Plan - ₦100,000
+                                        </button>
+                                        <button onclick="window.location.href='payment.html?service=healthcare&plan=starter&price=50000'" class="w-full px-6 py-3 border border-primary-purple text-primary-purple rounded-lg hover:bg-primary-purple/10 transition-all duration-300">
+                                            Starter Plan - ₦50,000
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-24 bg-primary-purple text-white">
+        <div class="container mx-auto px-4 lg:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center glass-effect p-6 rounded-lg" x-data="{ count: 0 }" x-init="setInterval(() => count = count >= 500 ? 500 : count + 1, 10)">
+                    <div class="text-4xl font-bold mb-2" data-count="500">
+                        <span x-text="count">0</span>+
+                    </div>
+                    <p class="text-white/80">Projects Completed</p>
+                </div>
+                <div class="text-center glass-effect p-6 rounded-lg" x-data="{ count: 0 }" x-init="setInterval(() => count = count >= 200 ? 200 : count + 1, 20)">
+                    <div class="text-4xl font-bold mb-2" data-count="200">
+                        <span x-text="count">0</span>+
+                    </div>
+                    <p class="text-white/80">Happy Clients</p>
+                </div>
+                <div class="text-center glass-effect p-6 rounded-lg" x-data="{ count: 0 }" x-init="setInterval(() => count = count >= 50 ? 50 : count + 1, 50)">
+                    <div class="text-4xl font-bold mb-2" data-count="50">
+                        <span x-text="count">0</span>+
+                    </div>
+                    <p class="text-white/80">Team Members</p>
+                </div>
+                <div class="text-center glass-effect p-6 rounded-lg" x-data="{ count: 0 }" x-init="setInterval(() => count = count >= 15 ? 15 : count + 1, 150)">
+                    <div class="text-4xl font-bold mb-2" data-count="15">
+                        <span x-text="count">0</span>+
+                    </div>
+                    <p class="text-white/80">Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-16">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display text-primary-purple mb-4">Client Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">What our clients say about working with us across different industries.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-orange flex items-center justify-center text-white font-bold text-xl">JD</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-primary-purple">John Doe</h4>
+                            <p class="text-gray-600 text-sm">CEO, Tech Solutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"NPDV's expertise in digital transformation helped us modernize our operations and stay ahead of the competition."</p>
+                    <div class="flex text-primary-orange">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-orange flex items-center justify-center text-white font-bold text-xl">AS</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-primary-purple">Alice Smith</h4>
+                            <p class="text-gray-600 text-sm">CFO, Finance Corp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The financial advisory services provided by NPDV were instrumental in helping us optimize our operations."</p>
+                    <div class="flex text-primary-orange">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-primary-orange flex items-center justify-center text-white font-bold text-xl">MJ</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-primary-purple">Michael Johnson</h4>
+                            <p class="text-gray-600 text-sm">Director, Healthcare Plus</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"NPDV's healthcare solutions helped us improve patient care and operational efficiency."</p>
+                    <div class="flex text-primary-orange">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <img src="NPDV-logo.PNG" alt="NPDV Logo" class="h-12 mb-4">
+                    <p class="text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                </ul>
+            </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                </ul>
+            </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +234857334584
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 NPDV. Developed By Mwaves. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <!-- <nav class="mobile-nav">
+        <ul>
+            <li>
+                <a href="/" class="mobile-nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="mobile-nav-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="services.html" class="mobile-nav-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="industries.html" class="mobile-nav-item active">
+                    <i class="fas fa-industry"></i>
+                    <span>Industries</span>
+                </a>
+            </li>
+            <li>
+                <a href="training-programs.html" class="mobile-nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Training</span>
+                </a>
+            </li>
+            <li>
+                <a href="case-studies.html" class="mobile-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Case Studies</span>
+                </a>
+            </li>
+            <li>
+                <a href="resources.html" class="mobile-nav-item">
+                    <i class="fas fa-folder"></i>
+                    <span>Resources</span>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="mobile-nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav> -->
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+
+            // Close mobile menu
+            closeMobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.add('translate-x-full');
+            });
+
+            // Handle mobile dropdowns
+            mobileDropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                const submenu = dropdown.querySelector('ul');
+                const icon = link.querySelector('i');
+                
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    submenu.classList.toggle('hidden');
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                    mobileMenu.classList.add('translate-x-full');
+                }
+            });
+
+            // Handle header background on scroll
+            let lastScroll = 0;
+            const header = document.querySelector('header');
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll <= 0) {
+                    header.classList.remove('shadow-md');
+                    header.classList.add('shadow-sm');
+            } else {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('shadow-sm');
+            }
+
+                lastScroll = currentScroll;
+            });
+
+            // Industry Card Hover Effects
+            const industryCards = document.querySelectorAll('.group.relative.overflow-hidden');
+            
+            industryCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const image = card.querySelector('img');
+                    const content = card.querySelector('.absolute.inset-0.bg-gradient-to-t');
+                    
+                    image.style.transform = 'scale(1.1)';
+                    content.style.opacity = '1';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const image = card.querySelector('img');
+                    const content = card.querySelector('.absolute.inset-0.bg-gradient-to-t');
+                    
+                    image.style.transform = 'scale(1)';
+                    content.style.opacity = '0';
+                });
+            });
+
+            // Animated Statistics Counter
+            const stats = document.querySelectorAll('.text-4xl.font-bold span');
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = parseInt(target.getAttribute('data-value'));
+                        animateValue(target, 0, finalValue, 2000);
+                        statsObserver.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            stats.forEach(stat => statsObserver.observe(stat));
+
+            function animateValue(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    element.textContent = currentValue;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // Smooth Scroll for Navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Parallax Scrolling Effect
+            window.addEventListener('scroll', () => {
+                const parallaxElements = document.querySelectorAll('.parallax');
+                parallaxElements.forEach(element => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * 0.5;
+                    element.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+                });
+            });
+
+            // Industry Filter System
+            const filterButtons = document.querySelectorAll('[data-filter]');
+            const industryItems = document.querySelectorAll('[data-industry]');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter industries
+                    industryItems.forEach(item => {
+                        const industry = item.getAttribute('data-industry');
+                        if (filter === 'all' || industry === filter) {
+                            item.style.display = 'block';
+                            item.classList.add('animate-fade-in');
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.remove('animate-fade-in');
+                        }
+                    });
+                });
+            });
+
+            // Add scroll reveal animation
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            revealElements.forEach(element => revealObserver.observe(element));
+
+            // Testimonial Carousel
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            let currentTestimonial = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach((testimonial, i) => {
+                    if (i === index) {
+                        testimonial.classList.add('active', 'animate-fade-in');
+                        testimonial.classList.remove('hidden');
+                    } else {
+                        testimonial.classList.remove('active', 'animate-fade-in');
+                        testimonial.classList.add('hidden');
+                    }
+                });
+            }
+
+            function nextTestimonial() {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }
+
+            // Auto-advance testimonials
+            setInterval(nextTestimonial, 5000);
+
+            // Add hover effects to industry cards
+            const cards = document.querySelectorAll('.industry-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.querySelector('.industry-icon').classList.add('rotate-icon');
+                    card.querySelector('.industry-content').classList.add('slide-up');
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.querySelector('.industry-icon').classList.remove('rotate-icon');
+                    card.querySelector('.industry-content').classList.remove('slide-up');
+                });
+            });
+
+            // Add loading animation for images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.getAttribute('data-src');
+                        img.classList.add('loaded');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+
+            // Add counter validation and animation
+            function validateNumber(value) {
+                const num = parseInt(value);
+                return isNaN(num) ? 0 : num;
+            }
+
+            function animateCounter(element, endValue, duration = 2000) {
+                const startValue = 0;
+                const increment = endValue / (duration / 16); // 60 FPS
+                let currentValue = startValue;
+
+                function updateCounter() {
+                    currentValue = Math.min(currentValue + increment, endValue);
+                    element.textContent = Math.round(currentValue);
+
+                    if (currentValue < endValue) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            }
+
+            // Initialize counters
+            document.querySelectorAll('[data-count]').forEach(counter => {
+                const targetValue = validateNumber(counter.dataset.count);
+                const displayElement = counter.querySelector('span');
+                
+                if (displayElement) {
+                    // Reset to initial state
+                    displayElement.textContent = '0';
+                    
+                    // Create intersection observer for animation
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                animateCounter(displayElement, targetValue);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+
+                    observer.observe(counter);
+                }
+            });
+
+            // Payment handling
+            function handlePayment(service, plan) {
+                const serviceDetails = {
+                    technology: {
+                        enterprise: { price: 150000, name: 'Technology Enterprise Plan' },
+                        business: { price: 100000, name: 'Technology Business Plan' },
+                        starter: { price: 50000, name: 'Technology Starter Plan' }
+                    },
+                    finance: {
+                        enterprise: { price: 150000, name: 'Finance Enterprise Plan' },
+                        business: { price: 100000, name: 'Finance Business Plan' },
+                        starter: { price: 50000, name: 'Finance Starter Plan' }
+                    },
+                    healthcare: {
+                        enterprise: { price: 150000, name: 'Healthcare Enterprise Plan' },
+                        business: { price: 100000, name: 'Healthcare Business Plan' },
+                        starter: { price: 50000, name: 'Healthcare Starter Plan' }
+                    }
+                };
+
+                const details = serviceDetails[service]?.[plan];
+                if (details) {
+                    const params = new URLSearchParams({
+                        service: service,
+                        plan: plan,
+                        price: details.price,
+                        name: details.name
+                    });
+                    window.location.href = `payment.html?${params.toString()}`;
+                }
+            }
+
+            // Add click handlers to payment buttons
+            document.querySelectorAll('[data-payment-button]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const service = button.dataset.service;
+                    const plan = button.dataset.plan;
+                    handlePayment(service, plan);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

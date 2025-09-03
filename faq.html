@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - NPDV</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .faq-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faq-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .faq-container {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .faq-question {
+            background-color: #f8f8f8;
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .faq-question.active + .faq-answer {
+            padding: 25px;
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            transition: transform 0.3s ease;
+            color: #007bff;
+        }
+
+        .faq-question.active::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .faq-category {
+            font-size: 0.9rem;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .faq-section {
+                margin: 40px auto;
+            }
+
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-question.active + .faq-answer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="/"><img src="npdv.images/logo.png" alt="NPDV"></a>
+            <span class="logo-tagline">NOOR PAIN DE VIE</span>
+        </div>
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle">☰</button>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>
+                    <a href="about.html" class="dropdown-toggle">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html#company">About the Company</a></li>
+                        <li><a href="about.html#mission">Mission/Vision</a></li>
+                        <li><a href="about.html#values">Core Values</a></li>
+                        <li><a href="about.html#team">Team</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="services.html" class="dropdown-toggle">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html#strategic">Strategic Communications</a></li>
+                        <li><a href="services.html#training">Training and Capacity Building</a></li>
+                        <li><a href="services.html#coaching">Career Coaching</a></li>
+                        <li><a href="services.html#project">Project Management</a></li>
+                        <li><a href="services.html#it">IT Solutions</a></li>
+                        <li><a href="services.html#financial">Financial Advisory</a></li>
+                        <li><a href="services.html#risk">Risk Management</a></li>
+                    </ul>
+                </li>
+                <li><a href="training-programs.html">Training Programs</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <span class="nav-icon">*</span>
+        </nav>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our services, processes, and solutions.</p>
+        </div>
+
+        <div class="faq-search">
+            <input type="text" placeholder="Search for answers..." id="faqSearch">
+        </div>
+
+        <div class="faq-categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="services">Services</button>
+            <button class="category-btn" data-category="process">Process</button>
+            <button class="category-btn" data-category="general">General</button>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item" data-category="services">
+                <div class="faq-category">Services</div>
+                <div class="faq-question">What services does NPDV offer?</div>
+                <div class="faq-answer">
+                    NPDV offers a comprehensive range of digital solutions including software development, cloud services, digital transformation consulting, and cybersecurity solutions. We specialize in helping businesses modernize their operations and leverage cutting-edge technology for growth.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="process">
+                <div class="faq-category">Process</div>
+                <div class="faq-question">How can NPDV help with digital transformation?</div>
+                <div class="faq-answer">
+                    We provide end-to-end digital transformation services, starting with assessment of your current systems, developing a tailored strategy, implementing solutions, and providing ongoing support. Our team works closely with you to ensure a smooth transition while maximizing ROI.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="services">
+                <div class="faq-category">Services</div>
+                <div class="faq-question">What industries does NPDV serve?</div>
+                <div class="faq-answer">
+                    NPDV serves a wide range of industries including healthcare, finance, manufacturing, retail, and technology. Our solutions are customized to meet the specific needs and compliance requirements of each industry we serve.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="process">
+                <div class="faq-category">Process</div>
+                <div class="faq-question">How do I get started with NPDV?</div>
+                <div class="faq-answer">
+                    Getting started is easy! Simply contact us through our website or give us a call. We'll schedule an initial consultation to understand your needs and goals, after which we'll provide a detailed proposal outlining our recommended solutions and approach.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-category">General</div>
+                <div class="faq-question">What makes NPDV different from other consulting firms?</div>
+                <div class="faq-answer">
+                    Our unique approach combines deep industry expertise with cutting-edge technology solutions. We focus on delivering measurable results and building long-term partnerships with our clients. Our team of experts brings diverse perspectives and innovative solutions to every project.
+                </div>
+            </div>
+
+            <div class="faq-item" data-category="general">
+                <div class="faq-category">General</div>
+                <div class="faq-question">How long does a typical project take?</div>
+                <div class="faq-answer">
+                    Project timelines vary depending on the scope and complexity of the solution. We typically complete initial assessments within 2-4 weeks, and full implementation can range from 3 months to a year or more. We'll provide detailed timelines during our initial consultation.
+                </div>
+            </div>
+        </div>
+
+        <div class="no-results">
+            <h3>No results found</h3>
+            <p>Try adjusting your search or browse all categories</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <img src="logo.png" alt="NPDV Logo" class="h-12 mb-4">
+                    <p class="text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Business Street, City, Country
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +1 234 567 890
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@npdv.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 NPDV. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const isActive = question.classList.contains('active');
+                
+                // Close all other questions
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+
+                // Toggle the clicked question
+                if (!isActive) {
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('faqSearch');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const noResults = document.querySelector('.no-results');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            let hasResults = false;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                const category = item.dataset.category;
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+
+        // Category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+                let hasResults = false;
+
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = hasResults ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html> 

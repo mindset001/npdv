@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Events - NPDV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            purple: '#391b52',
+                            orange: '#F57C00',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scale': 'scale 0.3s ease-in-out',
+                        'rotate': 'rotate 0.3s ease-in-out',
+                        'shine': 'shine 3s infinite',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-down': 'fadeInDown 0.5s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' },
+                        },
+                        scale: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="npdv.css">
+    <style>
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+            .hover-lift {
+                @apply transition-transform duration-300 hover:-translate-y-2;
+            }
+            .glass-effect {
+                @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+            }
+            .btn-primary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-purple/20 text-primary-purple rounded-lg font-semibold hover:bg-primary-purple/30 transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .nav-link.active {
+                @apply text-primary-orange;
+            }
+            .dropdown-item {
+                @apply block px-4 py-2 text-primary-purple hover:bg-primary-purple/5 hover:text-primary-orange transition-colors duration-300;
+            }
+            .mobile-nav-link {
+                @apply block text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .mobile-nav-link.active {
+                @apply text-primary-orange;
+            }
+            .blog-card {
+                @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-primary-purple/10;
+            }
+            .blog-image {
+                @apply w-full h-48 object-cover transition-transform duration-500;
+            }
+            .blog-card:hover .blog-image {
+                @apply scale-110;
+            }
+            .blog-category {
+                @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-orange/10 text-primary-orange;
+            }
+            .event-card {
+                @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-primary-purple/10;
+            }
+            .event-date {
+                @apply absolute top-4 right-4 bg-white text-primary-purple px-4 py-2 rounded-lg shadow-lg text-center;
+            }
+            .shine-effect {
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                background-size: 200% 100%;
+                animation: shine 3s infinite;
+            }
+        }
+        .tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+
+        img {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        .modal {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .modal.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add new animations and effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Enhanced card effects */
+        .blog-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .blog-card:hover::before {
+            left: 100%;
+        }
+
+        /* Glass morphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Gradient text animation */
+        .gradient-text {
+            background: linear-gradient(
+                45deg,
+                var(--primary-purple),
+                var(--primary-orange),
+                var(--primary-purple)
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 3s linear infinite;
+        }
+
+        /* Enhanced button effects */
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary::after, .btn-secondary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::after, .btn-secondary:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Enhanced modal effects */
+        .modal {
+            backdrop-filter: blur(5px);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-orange), var(--primary-purple));
+            transform-origin: 0%;
+            z-index: 1000;
+        }
+
+        /* Enhanced hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Enhanced image effects */
+        .image-hover {
+            transition: all 0.5s ease;
+        }
+
+        .image-hover:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Text reveal animation */
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .text-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced navigation */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Card flip effect */
+        .flip-card {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-primary-purple/5 to-primary-orange/5">
+    <!-- Header Navigation -->
+    <header x-data="{ isOpen: false, isScrolled: false }" 
+            @scroll.window="isScrolled = window.pageYOffset > 50"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-effect">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="flex items-center space-x-2">
+                        <img src="npdv.images/logo.png" alt="NPDV" class="h-12 w-auto">
+                        <span class="hidden md:hidden text-sm font-semibold text-primary-purple tracking-wider">NOOR PAIN DE VIE</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <div class="relative group">
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="about.html#company" class="dropdown-item">About the Company</a>
+                            <a href="about.html#mission" class="dropdown-item">Mission/Vision</a>
+                            <a href="about.html#values" class="dropdown-item">Core Values</a>
+                            <a href="about.html#team" class="dropdown-item">Team</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a href="services.html" class="nav-link">Services</a>
+                        <div class="absolute hidden group-hover:block w-64 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="services.html#strategic" class="dropdown-item">Strategic Communications</a>
+                            <a href="services.html#training" class="dropdown-item">Training and Capacity Building</a>
+                            <a href="services.html#coaching" class="dropdown-item">Career Coaching</a>
+                            <a href="services.html#project" class="dropdown-item">Project Management</a>
+                            <a href="services.html#it" class="dropdown-item">IT Solutions</a>
+                            <a href="services.html#financial" class="dropdown-item">Financial Advisory</a>
+                            <a href="services.html#risk" class="dropdown-item">Risk Management</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <!-- <a href="blog.html" class="nav-link">Blog</a> -->
+                        <div class="absolute hidden group-hover:block w-80 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <div class="px-4 py-2 border-b border-primary-purple/10">
+                                <h3 class="text-sm font-semibold text-primary-purple">Categories</h3>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 p-2">
+                                <a href="blog.html#business" class="dropdown-item">
+                                    <i class="fas fa-chart-line mr-2"></i> Business Strategy
+                                </a>
+                                <a href="blog.html#leadership" class="dropdown-item">
+                                    <i class="fas fa-users mr-2"></i> Leadership
+                                </a>
+                                <a href="blog.html#technology" class="dropdown-item">
+                                    <i class="fas fa-laptop-code mr-2"></i> Technology
+                                </a>
+                                <a href="blog.html#training" class="dropdown-item">
+                                    <i class="fas fa-graduation-cap mr-2"></i> Training
+                                </a>
+                            </div>
+                            <div class="px-4 py-2 border-t border-primary-purple/10">
+                                <h3 class="text-sm font-semibold text-primary-purple mb-2">Recent Posts</h3>
+                                <div class="space-y-2">
+                                    <a href="#" class="flex items-start space-x-3 p-2 rounded-lg hover:bg-primary-purple/5 transition-colors duration-300">
+                                        <img src="strategiPlanImg.jpeg" alt="Recent Post 1" class="w-16 h-16 rounded-lg object-cover">
+                                        <div>
+                                            <h4 class="text-sm font-medium text-primary-purple line-clamp-2">The Future of Strategic Planning in Modern Business</h4>
+                                            <span class="text-xs text-primary-purple/60">March 15, 2024</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-start space-x-3 p-2 rounded-lg hover:bg-primary-purple/5 transition-colors duration-300">
+                                        <img src="digitalImg.jpeg" alt="Recent Post 2" class="w-16 h-16 rounded-lg object-cover">
+                                        <div>
+                                            <h4 class="text-sm font-medium text-primary-purple line-clamp-2">Building Effective Teams in the Digital Age</h4>
+                                            <span class="text-xs text-primary-purple/60">March 12, 2024</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="training-programs.html" class="nav-link">Training Programs</a>
+                    <!-- <a href="case-studies.html" class="nav-link">Case Studies</a> -->
+                    <!-- <a href="resources.html" class="nav-link">Resources</a> -->
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="isOpen = !isOpen" class="lg:hidden text-primary-purple hover:text-primary-orange">
+                    <i class="fas" :class="{ 'fa-bars': !isOpen, 'fa-times': isOpen }"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="isOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 transform -translate-y-2"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-2"
+                 class="lg:hidden bg-white shadow-lg rounded-lg mt-2 p-4">
+                <div class="space-y-4">
+                    <a href="/" class="mobile-nav-link">Home</a>
+                    <div class="space-y-2">
+                        <a href="about.html" class="mobile-nav-link">About Us</a>
+                        <div class="pl-4 space-y-2">
+                            <a href="about.html#company" class="mobile-nav-link">About the Company</a>
+                            <a href="about.html#mission" class="mobile-nav-link">Mission/Vision</a>
+                            <a href="about.html#values" class="mobile-nav-link">Core Values</a>
+                            <a href="about.html#team" class="mobile-nav-link">Team</a>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="services.html" class="mobile-nav-link">Services</a>
+                        <div class="pl-4 space-y-2">
+                            <a href="services.html#strategic" class="mobile-nav-link">Strategic Communications</a>
+                            <a href="services.html#training" class="mobile-nav-link">Training and Capacity Building</a>
+                            <a href="services.html#coaching" class="mobile-nav-link">Career Coaching</a>
+                            <a href="services.html#project" class="mobile-nav-link">Project Management</a>
+                            <a href="services.html#it" class="mobile-nav-link">IT Solutions</a>
+                            <a href="services.html#financial" class="mobile-nav-link">Financial Advisory</a>
+                            <a href="services.html#risk" class="mobile-nav-link">Risk Management</a>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="blog.html" class="mobile-nav-link">Blog</a>
+                        <div class="pl-4 space-y-2">
+                            <div class="py-2">
+                                <h3 class="text-sm font-semibold text-primary-purple mb-2">Categories</h3>
+                                <div class="space-y-2">
+                                    <a href="blog.html#business" class="mobile-nav-link">
+                                        <i class="fas fa-chart-line mr-2"></i> Business Strategy
+                                    </a>
+                                    <a href="blog.html#leadership" class="mobile-nav-link">
+                                        <i class="fas fa-users mr-2"></i> Leadership
+                                    </a>
+                                    <a href="blog.html#technology" class="mobile-nav-link">
+                                        <i class="fas fa-laptop-code mr-2"></i> Technology
+                                    </a>
+                                    <a href="blog.html#training" class="mobile-nav-link">
+                                        <i class="fas fa-graduation-cap mr-2"></i> Training
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <h3 class="text-sm font-semibold text-primary-purple mb-2">Recent Posts</h3>
+                                <div class="space-y-2">
+                                    <a href="#" class="flex items-start space-x-3 p-2 rounded-lg hover:bg-primary-purple/5 transition-colors duration-300">
+                                        <img src="strategiPlanImg.jpeg" alt="Recent Post 1" class="w-16 h-16 rounded-lg object-cover">
+                                        <div>
+                                            <h4 class="text-sm font-medium text-primary-purple line-clamp-2">The Future of Strategic Planning</h4>
+                                            <span class="text-xs text-primary-purple/60">March 15, 2024</span>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="flex items-start space-x-3 p-2 rounded-lg hover:bg-primary-purple/5 transition-colors duration-300">
+                                        <img src="digitalImg.jpeg" alt="Recent Post 2" class="w-16 h-16 rounded-lg object-cover">
+                                        <div>
+                                            <h4 class="text-sm font-medium text-primary-purple line-clamp-2">Building Effective Teams</h4>
+                                            <span class="text-xs text-primary-purple/60">March 12, 2024</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="training-programs.html" class="mobile-nav-link">Training Programs</a>
+                    <a href="case-studies.html" class="mobile-nav-link">Case Studies</a>
+                    <a href="resources.html" class="mobile-nav-link">Resources</a>
+                    <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Reading Progress Bar -->
+    <div id="readingProgress" class="fixed top-0 left-0 w-full h-1 bg-primary-orange/20 z-50">
+        <div id="progressBar" class="h-full bg-primary-orange transition-all duration-300" style="width: 0%"></div>
+    </div>
+
+    <!-- Article Preview Modal -->
+    <div id="articleModal" class="fixed inset-0 bg-black/50 z-50 hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl bg-white rounded-2xl shadow-2xl">
+            <div class="relative">
+                <img src="" alt="Article Preview" class="w-full h-64 object-cover rounded-t-2xl">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="blog-category"></span>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300">
+                            <i class="far fa-heart"></i>
+                            <span class="ml-1">24</span>
+                        </button>
+                        <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300">
+                            <i class="far fa-comment"></i>
+                            <span class="ml-1">8</span>
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-primary-purple mb-4"></h3>
+                <p class="text-primary-purple/80 mb-6"></p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img src="mercyImg.jpeg" alt="Author" class="w-10 h-10 rounded-full">
+                        <div>
+                            <div class="font-medium text-primary-purple">mercy</div>
+                            <div class="text-sm text-primary-purple/60">Senior Consultant</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary">
+                        Read Full Article
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Banner -->
+    <section class="relative overflow-hidden bg-gradient-to-r from-primary-purple to-primary-orange parallax" style="background-image: url('header1.PNG')">
+        <div class="absolute inset-0 bg-[url('header1.PNG')] bg-cover bg-center opacity-10"></div>
+        <div class="absolute inset-0 shine-effect"></div>
+        <div class="relative container mx-auto px-4 h-[400px] flex items-center justify-center text-center">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                    Blog & Events
+                </h1>
+                <p class="text-xl text-white/90 mb-8 animate-slide-up">
+                    Stay updated with our latest insights, news, and upcoming events
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#blog" class="btn-primary animate-bounce-slow">
+                        <i class="fas fa-newspaper mr-2"></i> Latest Articles
+                    </a>
+                    <a href="#events" class="btn-secondary animate-bounce-slow" style="animation-delay: 0.2s">
+                        <i class="fas fa-calendar-alt mr-2"></i> Upcoming Events
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="py-8 bg-white border-b border-primary-purple/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Search Bar -->
+                <div class="w-full md:w-96 relative">
+                    <input type="text" 
+                           placeholder="Search articles..." 
+                           class="w-full px-6 py-3 rounded-lg bg-primary-purple/5 border border-primary-purple/10 focus:outline-none focus:border-primary-orange/50 transition-colors duration-300">
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-primary-purple/60 hover:text-primary-orange transition-colors duration-300">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="px-4 py-2 rounded-full bg-primary-orange text-white text-sm font-medium hover:bg-primary-orange/90 transition-colors duration-300">
+                        All
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-primary-purple/10 text-primary-purple text-sm font-medium hover:bg-primary-purple/20 transition-colors duration-300">
+                        Business Strategy
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-primary-purple/10 text-primary-purple text-sm font-medium hover:bg-primary-purple/20 transition-colors duration-300">
+                        Leadership
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-primary-purple/10 text-primary-purple text-sm font-medium hover:bg-primary-purple/20 transition-colors duration-300">
+                        Technology
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-primary-purple/10 text-primary-purple text-sm font-medium hover:bg-primary-purple/20 transition-colors duration-300">
+                        Training
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Filter Section -->
+    <section class="py-4 bg-white border-b border-primary-purple/10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <select class="px-4 py-2 rounded-lg bg-primary-purple/5 border border-primary-purple/10 text-primary-purple focus:outline-none focus:border-primary-orange/50">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                    <select class="px-4 py-2 rounded-lg bg-primary-purple/5 border border-primary-purple/10 text-primary-purple focus:outline-none focus:border-primary-orange/50">
+                        <option value="all">All Authors</option>
+                        <option value="john">John Doe</option>
+                        <option value="jane">Jane Smith</option>
+                        <option value="mike">Mike Johnson</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 rounded-lg bg-primary-purple/5 text-primary-purple hover:bg-primary-purple/10 transition-colors duration-300">
+                        <i class="fas fa-filter mr-2"></i> Advanced Filters
+                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-primary-purple/5 text-primary-purple hover:bg-primary-purple/10 transition-colors duration-300">
+                        <i class="fas fa-sort mr-2"></i> Sort By
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post Section -->
+    <section class="py-12 bg-gradient-to-br from-primary-purple/5 to-primary-orange/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="relative overflow-hidden rounded-2xl shadow-2xl animate-fade-in-left">
+                    <img src="featured-post.jpg" alt="Featured Post" class="w-full h-[400px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-purple/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-sm font-medium mb-4">
+                            <i class="fas fa-star mr-2"></i> Featured Article
+                        </span>
+                        <h2 class="text-3xl font-bold mb-4">The Future of Work: Adapting to the New Normal</h2>
+                        <p class="text-white/90 mb-6">Explore how businesses are transforming their workplace strategies to thrive in the post-pandemic era.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <img src="ivyClem3Img.jpeg" alt="Author" class="w-10 h-10 rounded-full border-2 border-white">
+                                <div>
+                                    <div class="font-medium">John Doe</div>
+                                    <div class="text-sm text-white/80">Senior Consultant</div>
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center bg-white text-primary-purple px-6 py-2 rounded-lg font-medium hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6 animate-fade-in-right">
+                    <h3 class="text-2xl font-bold text-primary-purple">Trending Topics</h3>
+                    <div class="space-y-4">
+                        <a href="#" class="flex items-start space-x-4 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                <img src="trending1.jpg" alt="Trending 1" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary-purple mb-2">Digital Transformation Strategies</h4>
+                                <p class="text-sm text-primary-purple/60">Learn how to implement successful digital transformation initiatives.</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-start space-x-4 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                <img src="trending2.jpg" alt="Trending 2" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary-purple mb-2">Leadership in Crisis</h4>
+                                <p class="text-sm text-primary-purple/60">Essential skills for leading teams through challenging times.</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-start space-x-4 p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                <img src="trending3.jpg" alt="Trending 3" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary-purple mb-2">Future of Learning</h4>
+                                <p class="text-sm text-primary-purple/60">How technology is reshaping professional development.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary-orange/10 text-primary-orange text-sm font-semibold">
+                        <i class="fas fa-newspaper mr-2"></i> Latest Articles
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold text-primary-purple mb-4 animate-fade-in">
+                    Our Latest Insights
+                </h2>
+                <p class="text-xl text-primary-purple/80 max-w-2xl mx-auto animate-slide-up">
+                    Discover our latest articles, industry insights, and thought leadership content.
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <article class="blog-card flip-card group animate-fade-in-up">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="relative overflow-hidden">
+                                <img src="blog1.jpg" alt="Blog Post 1" class="blog-image">
+                                <div class="absolute top-4 left-4">
+                                    <span class="blog-category">
+                                        <i class="fas fa-chart-line mr-2"></i> Business Strategy
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center text-sm text-primary-purple/60">
+                <article class="blog-card group animate-fade-in-up">
+                    <div class="relative overflow-hidden">
+                        <img src="blog1.jpg" alt="Blog Post 1" class="blog-image">
+                        <div class="absolute top-4 left-4">
+                            <span class="blog-category">
+                                <i class="fas fa-chart-line mr-2"></i> Business Strategy
+                            </span>
+                        </div>
+                        <!-- Add social sharing overlay -->
+                        <div class="absolute inset-0 bg-primary-purple/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center text-sm text-primary-purple/60">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                March 15, 2024
+                            </div>
+                            <div class="flex items-center text-sm text-primary-purple/60">
+                                <i class="far fa-clock mr-2"></i>
+                                5 min read
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            The Future of Strategic Planning in Modern Business
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Explore how modern businesses are adapting their strategic planning approaches to stay competitive in today's dynamic market.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="#" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300">
+                                Read More 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </a>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300">
+                                    <i class="far fa-heart"></i>
+                                    <span class="ml-1">24</span>
+                                </button>
+                                <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300">
+                                    <i class="far fa-comment"></i>
+                                    <span class="ml-1">8</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card group animate-fade-in-up" style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden">
+                        <img src="blog2.jpg" alt="Blog Post 2" class="blog-image">
+                        <div class="absolute top-4 left-4">
+                            <span class="blog-category">
+                                <i class="fas fa-users mr-2"></i> Leadership
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-primary-purple/60 mb-4">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            March 12, 2024
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Building Effective Teams in the Digital Age
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Learn how to build and manage high-performing teams in today's digital workplace environment.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300">
+                            Read More 
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card group animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="relative overflow-hidden">
+                        <img src="blog3.jpg" alt="Blog Post 3" class="blog-image">
+                        <div class="absolute top-4 left-4">
+                            <span class="blog-category">
+                                <i class="fas fa-laptop-code mr-2"></i> Technology
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-primary-purple/60 mb-4">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            March 10, 2024
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Digital Transformation: Key to Business Success
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Discover how digital transformation is reshaping businesses and creating new opportunities for growth.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300">
+                            Read More 
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button @click="handleLoadMore()"
+                        :disabled="buttonStates.loadMore"
+                        :class="getButtonClasses('secondary', buttonStates.loadMore)"
+                        class="group">
+                    <span x-html="getButtonContent('secondary', buttonStates.loadMore, 'Load More Articles')"></span>
+                    <i class="fas fa-arrow-down ml-2 transform group-hover:translate-y-1 transition-transform duration-300"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary-orange/10 text-primary-orange text-sm font-semibold">
+                        <i class="fas fa-calendar-alt mr-2"></i> Upcoming Events
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold text-primary-purple mb-4 animate-fade-in">
+                    Join Our Events
+                </h2>
+                <p class="text-xl text-primary-purple/80 max-w-2xl mx-auto animate-slide-up">
+                    Participate in our upcoming workshops, conferences, and networking events.
+                </p>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="event-card group animate-fade-in-up">
+                    <div class="relative overflow-hidden">
+                        <img src="digitalImg.jpeg" alt="Event 1" class="w-full h-48 object-cover">
+                        <div class="event-date">
+                            <div class="text-2xl font-bold">15</div>
+                            <div class="text-sm">Mar</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-primary-orange mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            9:00 AM - 5:00 PM
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Strategic Leadership Workshop
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Join us for an intensive workshop on strategic leadership and decision-making.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-primary-purple/60">
+                                <i class="fas fa-map-marker-alt mr-2"></i> Virtual Event
+                            </span>
+                            <button @click="handleRegister(event.id)"
+                                    :disabled="buttonStates.register[event.id]"
+                                    :class="getButtonClasses('primary', buttonStates.register[event.id])"
+                                    class="text-sm">
+                                <span x-html="getButtonContent('primary', buttonStates.register[event.id], 'Register Now')"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card group animate-fade-in-up" style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden">
+                        <img src="event2.jpg" alt="Event 2" class="w-full h-48 object-cover">
+                        <div class="event-date">
+                            <div class="text-2xl font-bold">20</div>
+                            <div class="text-sm">Mar</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-primary-orange mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            10:00 AM - 4:00 PM
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Digital Transformation Summit
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Learn about the latest trends and strategies in digital transformation.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-primary-purple/60">
+                                <i class="fas fa-map-marker-alt mr-2"></i> Virtual Event
+                            </span>
+                            <button @click="handleRegister(event.id)"
+                                    :disabled="buttonStates.register[event.id]"
+                                    :class="getButtonClasses('primary', buttonStates.register[event.id])"
+                                    class="text-sm">
+                                <span x-html="getButtonContent('primary', buttonStates.register[event.id], 'Register Now')"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card group animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="relative overflow-hidden">
+                        <img src="event3.jpg" alt="Event 3" class="w-full h-48 object-cover">
+                        <div class="event-date">
+                            <div class="text-2xl font-bold">25</div>
+                            <div class="text-sm">Mar</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-primary-orange mb-4">
+                            <i class="far fa-clock mr-2"></i>
+                            2:00 PM - 6:00 PM
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-purple mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Networking & Career Development
+                        </h3>
+                        <p class="text-primary-purple/80 mb-4">
+                            Connect with industry professionals and enhance your career development.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-primary-purple/60">
+                                <i class="fas fa-map-marker-alt mr-2"></i> Virtual Event
+                            </span>
+                            <button @click="handleRegister(event.id)"
+                                    :disabled="buttonStates.register[event.id]"
+                                    :class="getButtonClasses('primary', buttonStates.register[event.id])"
+                                    class="text-sm">
+                                <span x-html="getButtonContent('primary', buttonStates.register[event.id], 'Register Now')"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Events Button -->
+            <div class="text-center mt-12">
+                <button class="btn-secondary group">
+                    View All Events 
+                    <i class="fas fa-calendar-alt ml-2 transform group-hover:scale-110 transition-transform duration-300"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-purple to-primary-orange">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-4 animate-fade-in">
+                    Stay Updated
+                </h2>
+                <p class="text-xl text-white/90 mb-8 animate-slide-up">
+                    Subscribe to our newsletter to receive the latest updates and insights.
+                </p>
+                <form @submit.prevent="handleSubscribe()"
+                      class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           x-model="newsletterEmail"
+                           placeholder="Enter your email" 
+                           class="flex-1 px-6 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-white/40">
+                    <button type="submit" 
+                            :disabled="buttonStates.subscribe || !newsletterEmail"
+                            :class="getButtonClasses('primary', buttonStates.subscribe)"
+                            class="w-full sm:w-auto">
+                        <span x-html="getButtonContent('primary', buttonStates.subscribe, 'Subscribe')"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Tags Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-primary-purple">Popular Tags</h3>
+                <p class="text-primary-purple/60">Explore articles by topic</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-orange/10 text-primary-orange hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                    #BusinessStrategy
+                </a>
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-purple/10 text-primary-purple hover:bg-primary-purple hover:text-white transition-colors duration-300">
+                    #Leadership
+                </a>
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-orange/10 text-primary-orange hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                    #DigitalTransformation
+                </a>
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-purple/10 text-primary-purple hover:bg-primary-purple hover:text-white transition-colors duration-300">
+                    #Innovation
+                </a>
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-orange/10 text-primary-orange hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                    #FutureOfWork
+                </a>
+                <a href="#" class="px-6 py-2 rounded-full bg-primary-purple/10 text-primary-purple hover:bg-primary-purple hover:text-white transition-colors duration-300">
+                    #ProfessionalDevelopment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <img src="logo.png" alt="NPDV Logo" class="h-12 mb-4">
+                    <p class="text-white/80">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-white/80 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-white/80 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-white/80 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-white/80 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-white/80 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-white/80 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-white/80 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-white/80 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            123 Business Street, City, Country
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +1 234 567 890
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@npdv.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-white/80">
+                <p>&copy; 2024 NPDV. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" 
+            class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary-orange text-white flex items-center justify-center shadow-lg hover:bg-primary-orange/90 transition-colors duration-300 opacity-0 invisible"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="main.js"></script>
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Article Preview Modal
+        function openModal(article) {
+            const modal = document.getElementById('articleModal');
+            const img = modal.querySelector('img');
+            const category = modal.querySelector('.blog-category');
+            const title = modal.querySelector('h3');
+            const description = modal.querySelector('p');
+            
+            img.src = article.querySelector('img').src;
+            category.innerHTML = article.querySelector('.blog-category').innerHTML;
+            title.textContent = article.querySelector('h3').textContent;
+            description.textContent = article.querySelector('p').textContent;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('articleModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Add preview functionality to blog cards
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('a')) {
+                    openModal(card);
+                }
+            });
+        });
+
+        // Enhanced Search with Debounce
+        let searchTimeout;
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.blog-card');
+                
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const category = card.querySelector('.blog-category').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        category.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }, 300);
+        });
+
+        // Enhanced Category Filter with Animation
+        const filterButtons = document.querySelectorAll('.px-4.py-2.rounded-full');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary-orange', 'text-white');
+                    btn.classList.add('bg-primary-purple/10', 'text-primary-purple');
+                });
+                button.classList.remove('bg-primary-purple/10', 'text-primary-purple');
+                button.classList.add('bg-primary-orange', 'text-white');
+                
+                const category = button.textContent.trim();
+                const cards = document.querySelectorAll('.blog-card');
+                
+                cards.forEach(card => {
+                    const cardCategory = card.querySelector('.blog-category').textContent.trim();
+                    if (category === 'All' || cardCategory === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Infinite Scroll
+        let isLoading = false;
+        let page = 1;
+        window.addEventListener('scroll', () => {
+            if (isLoading) return;
+            
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight - 5) {
+                loadMoreArticles();
+                isLoading = true;
+            }
+        });
+
+        function loadMoreArticles() {
+            // Simulate loading more articles
+            setTimeout(() => {
+                const blogGrid = document.querySelector('.grid');
+                const newArticles = createArticleElements();
+                newArticles.forEach(article => {
+                    blogGrid.appendChild(article);
+                });
+                page++;
+                isLoading = false;
+            }, 1000);
+        }
+
+        function createArticleElements() {
+            // Create and return new article elements
+            // This is a placeholder - you would typically fetch real data from an API
+            return [];
+        }
+
+        // Enhanced Animations
+        const enhancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    if (entry.target.classList.contains('blog-card')) {
+                        entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
+                    }
+                }
+            });
+        }, enhancedObserverOptions);
+
+        document.querySelectorAll('.blog-card, .event-card, .featured-post').forEach(el => {
+            enhancedObserver.observe(el);
+        });
+
+        // Initialize Alpine.js data
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('blogData', () => ({
+                articles: [],
+                events: [],
+                currentPage: 1,
+                isLoading: false,
+                searchQuery: '',
+                selectedCategory: 'All',
+                sortBy: 'newest',
+                selectedAuthor: 'all',
+                showAdvancedFilters: false,
+                showSortOptions: false,
+                showArticleModal: false,
+                currentArticle: null,
+                likes: {},
+                comments: {},
+                readingProgress: 0,
+                isScrolled: false,
+                mobileMenuOpen: false,
+                activeTab: 'articles',
+                showShareMenu: false,
+                showComments: false,
+                currentEvent: null,
+                showEventModal: false,
+                newsletterEmail: '',
+                showSuccessMessage: false,
+                showErrorMessage: false,
+                message: '',
+                isSubmitting: false,
+
+                // Button interaction states
+                buttonStates: {
+                    loadMore: false,
+                    subscribe: false,
+                    register: {},
+                    share: false,
+                    filter: false,
+                    sort: false
+                },
+
+                init() {
+                    this.loadInitialData();
+                    this.setupEventListeners();
+                    this.setupIntersectionObserver();
+                },
+
+                loadInitialData() {
+                    // Simulate loading initial data
+                    this.articles = [
+                        {
+                            id: 1,
+                            title: 'The Future of Strategic Planning in Modern Business',
+                            category: 'Business Strategy',
+                            date: 'March 15, 2024',
+                            readTime: '5 min read',
+                            image: 'blog1.jpg',
+                            description: 'Explore how modern businesses are adapting their strategic planning approaches to stay competitive in today\'s dynamic market.',
+                            author: {
+                                name: 'John Doe',
+                                role: 'Senior Consultant',
+                                image: 'author1.jpg'
+                            },
+                            likes: 24,
+                            comments: 8,
+                            tags: ['strategy', 'business', 'planning']
+                        },
+                        // Add more articles...
+                    ];
+
+                    this.events = [
+                        {
+                            id: 1,
+                            title: 'Strategic Leadership Workshop',
+                            date: 'March 15, 2024',
+                            time: '9:00 AM - 5:00 PM',
+                            location: 'Virtual Event',
+                            image: 'event1.jpg',
+                            description: 'Join us for an intensive workshop on strategic leadership and decision-making.',
+                            capacity: 50,
+                            registered: 35
+                        },
+                        // Add more events...
+                    ];
+                },
+
+                setupEventListeners() {
+                    // Scroll event for reading progress
+                    window.addEventListener('scroll', () => {
+                        this.updateReadingProgress();
+                        this.checkInfiniteScroll();
+                    });
+
+                    // Resize event for responsive adjustments
+                    window.addEventListener('resize', this.handleResize.bind(this));
+
+                    // Click outside handlers
+                    document.addEventListener('click', (e) => {
+                        if (!e.target.closest('.modal') && !e.target.closest('.trigger-modal')) {
+                            this.closeModals();
+                        }
+                    });
+
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            this.closeModals();
+                        }
+                    });
+                },
+
+                setupIntersectionObserver() {
+                    const options = {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px'
+                    };
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('animate-fade-in-up');
+                                if (entry.target.classList.contains('blog-card')) {
+                                    entry.target.style.animationDelay = `${Math.random() * 0.5}s`;
+                                }
+                            }
+                        });
+                    }, options);
+
+                    document.querySelectorAll('.blog-card, .event-card, .featured-post').forEach(el => {
+                        observer.observe(el);
+                    });
+                },
+
+                updateReadingProgress() {
+                    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    this.readingProgress = (winScroll / height) * 100;
+                },
+
+                checkInfiniteScroll() {
+                    if (this.isLoading) return;
+                    
+                    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                    if (scrollTop + clientHeight >= scrollHeight - 5) {
+                        this.loadMoreContent();
+                    }
+                },
+
+                async loadMoreContent() {
+                    this.isLoading = true;
+                    try {
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        const newArticles = await this.fetchMoreArticles();
+                        this.articles = [...this.articles, ...newArticles];
+                        this.currentPage++;
+                    } catch (error) {
+                        console.error('Error loading more content:', error);
+                    } finally {
+                        this.isLoading = false;
+                    }
+                },
+
+                async fetchMoreArticles() {
+                    // Simulate API response
+                    return [
+                        {
+                            id: this.articles.length + 1,
+                            title: 'New Article Title',
+                            category: 'Technology',
+                            date: 'March 20, 2024',
+                            readTime: '4 min read',
+                            image: 'blog2.jpg',
+                            description: 'New article description...',
+                            author: {
+                                name: 'Jane Smith',
+                                role: 'Tech Expert',
+                                image: 'author2.jpg'
+                            },
+                            likes: 15,
+                            comments: 5,
+                            tags: ['technology', 'innovation']
+                        }
+                    ];
+                },
+
+                filterArticles() {
+                    return this.articles.filter(article => {
+                        const matchesSearch = article.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                            article.description.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                            article.category.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        
+                        const matchesCategory = this.selectedCategory === 'All' || article.category === this.selectedCategory;
+                        const matchesAuthor = this.selectedAuthor === 'all' || article.author.name === this.selectedAuthor;
+                        
+                        return matchesSearch && matchesCategory && matchesAuthor;
+                    });
+                },
+
+                sortArticles() {
+                    const filtered = this.filterArticles();
+                    switch (this.sortBy) {
+                        case 'newest':
+                            return filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        case 'oldest':
+                            return filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+                        case 'popular':
+                            return filtered.sort((a, b) => b.likes - a.likes);
+                        default:
+                            return filtered;
+                    }
+                },
+
+                toggleLike(articleId) {
+                    if (!this.likes[articleId]) {
+                        this.likes[articleId] = true;
+                        this.articles = this.articles.map(article => {
+                            if (article.id === articleId) {
+                                return { ...article, likes: article.likes + 1 };
+                            }
+                            return article;
+                        });
+                    }
+                },
+
+                toggleComment(articleId) {
+                    this.showComments = !this.showComments;
+                    if (this.showComments) {
+                        this.loadComments(articleId);
+                    }
+                },
+
+                async loadComments(articleId) {
+                    // Simulate loading comments
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    this.comments[articleId] = [
+                        {
+                            id: 1,
+                            author: 'User1',
+                            content: 'Great article!',
+                            date: 'March 15, 2024'
+                        }
+                    ];
+                },
+
+                openArticleModal(article) {
+                    this.currentArticle = article;
+                    this.showArticleModal = true;
+                    document.body.style.overflow = 'hidden';
+                },
+
+                closeModals() {
+                    this.showArticleModal = false;
+                    this.showEventModal = false;
+                    this.showShareMenu = false;
+                    this.showComments = false;
+                    document.body.style.overflow = 'auto';
+                },
+
+                shareArticle(platform) {
+                    const url = encodeURIComponent(window.location.href);
+                    const title = encodeURIComponent(this.currentArticle.title);
+                    let shareUrl;
+
+                    switch (platform) {
+                        case 'facebook':
+                            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                            break;
+                        case 'twitter':
+                            shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                            break;
+                        case 'linkedin':
+                            shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`;
+                            break;
+                    }
+
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                },
+
+                async submitNewsletter() {
+                    if (!this.newsletterEmail) return;
+                    
+                    this.isSubmitting = true;
+                    try {
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        this.showSuccessMessage = true;
+                        this.message = 'Thank you for subscribing!';
+                        this.newsletterEmail = '';
+                    } catch (error) {
+                        this.showErrorMessage = true;
+                        this.message = 'Something went wrong. Please try again.';
+                    } finally {
+                        this.isSubmitting = false;
+                        setTimeout(() => {
+                            this.showSuccessMessage = false;
+                            this.showErrorMessage = false;
+                        }, 3000);
+                    }
+                },
+
+                handleResize() {
+                    if (window.innerWidth >= 1024) {
+                        this.mobileMenuOpen = false;
+                    }
+                },
+
+                // Button interaction methods
+                async handleLoadMore() {
+                    if (this.buttonStates.loadMore) return;
+                    this.buttonStates.loadMore = true;
+                    
+                    try {
+                        await this.loadMoreContent();
+                    } finally {
+                        this.buttonStates.loadMore = false;
+                    }
+                },
+
+                async handleSubscribe() {
+                    if (this.buttonStates.subscribe || !this.newsletterEmail) return;
+                    this.buttonStates.subscribe = true;
+                    
+                    try {
+                        await this.submitNewsletter();
+                    } finally {
+                        this.buttonStates.subscribe = false;
+                    }
+                },
+
+                async handleRegister(eventId) {
+                    if (this.buttonStates.register[eventId]) return;
+                    this.buttonStates.register[eventId] = true;
+                    
+                    try {
+                        // Simulate registration process
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        this.showSuccessMessage = true;
+                        this.message = 'Successfully registered for the event!';
+                    } catch (error) {
+                        this.showErrorMessage = true;
+                        this.message = 'Registration failed. Please try again.';
+                    } finally {
+                        this.buttonStates.register[eventId] = false;
+                        setTimeout(() => {
+                            this.showSuccessMessage = false;
+                            this.showErrorMessage = false;
+                        }, 3000);
+                    }
+                },
+
+                handleShare(platform) {
+                    if (this.buttonStates.share) return;
+                    this.buttonStates.share = true;
+                    
+                    try {
+                        this.shareArticle(platform);
+                    } finally {
+                        setTimeout(() => {
+                            this.buttonStates.share = false;
+                        }, 1000);
+                    }
+                },
+
+                handleFilter(category) {
+                    if (this.buttonStates.filter) return;
+                    this.buttonStates.filter = true;
+                    
+                    this.selectedCategory = category;
+                    this.filterArticles();
+                    
+                    setTimeout(() => {
+                        this.buttonStates.filter = false;
+                    }, 300);
+                },
+
+                handleSort(sortBy) {
+                    if (this.buttonStates.sort) return;
+                    this.buttonStates.sort = true;
+                    
+                    this.sortBy = sortBy;
+                    this.sortArticles();
+                    
+                    setTimeout(() => {
+                        this.buttonStates.sort = false;
+                    }, 300);
+                },
+
+                // Enhanced button styles
+                getButtonClasses(type, state) {
+                    const baseClasses = 'transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2';
+                    
+                    switch (type) {
+                        case 'primary':
+                            return `${baseClasses} ${state ? 'opacity-75 cursor-not-allowed' : ''} btn-primary`;
+                        case 'secondary':
+                            return `${baseClasses} ${state ? 'opacity-75 cursor-not-allowed' : ''} btn-secondary`;
+                        case 'filter':
+                            return `${baseClasses} ${state ? 'bg-primary-orange text-white' : 'bg-primary-purple/10 text-primary-purple'} px-4 py-2 rounded-full text-sm font-medium`;
+                        case 'sort':
+                            return `${baseClasses} ${state ? 'bg-primary-orange text-white' : 'bg-primary-purple/5 text-primary-purple'} px-4 py-2 rounded-lg`;
+                        default:
+                            return baseClasses;
+                    }
+                },
+
+                // Button loading states
+                getButtonContent(type, state, text) {
+                    if (state) {
+                        return `<i class="fas fa-spinner fa-spin mr-2"></i> Loading...`;
+                    }
+                    return text;
+                }
+            }));
+        });
+
+        // Add ripple effect to buttons
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest('button');
+            if (!button) return;
+
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            button.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+
+        // Add hover effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+
+            .btn-primary:disabled,
+            .btn-secondary:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+                transform: none !important;
+            }
+
+            .btn-primary:active,
+            .btn-secondary:active {
+                transform: scale(0.95);
+            }
+
+            .filter-button.active {
+                background-color: var(--primary-orange);
+                color: white;
+            }
+
+            .sort-button.active {
+                background-color: var(--primary-orange);
+                color: white;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize tooltips for buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button[data-tooltip]');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', (e) => {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = e.target.getAttribute('data-tooltip');
+                    document.body.appendChild(tooltip);
+
+                    const rect = e.target.getBoundingClientRect();
+                    tooltip.style.top = `${rect.top - tooltip.offsetHeight - 5}px`;
+                    tooltip.style.left = `${rect.left + (rect.width - tooltip.offsetWidth) / 2}px`;
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    const tooltip = document.querySelector('.tooltip');
+                    if (tooltip) tooltip.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

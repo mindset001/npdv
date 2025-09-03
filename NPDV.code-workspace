@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "NPDV",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5505
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "name": "npdv-website",
+  "version": "1.0.0",
+  "description": "NPDV Website",
+  "main": "index.js",
+  "scripts": {
+    "optimize-images": "node optimize-images.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "sharp": "^0.32.1"
+  }
+} 

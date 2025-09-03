@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NPDV - Contact Us">
+    <title>NPDV - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            purple: '#391b52',
+                            orange: '#F57C00',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scale': 'scale 0.3s ease-in-out',
+                        'rotate': 'rotate 0.3s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' },
+                        },
+                        scale: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .animation-delay-200 {
+            animation-delay: 200ms;
+        }
+        .animation-delay-400 {
+            animation-delay: 400ms;
+        }
+        .animation-delay-600 {
+            animation-delay: 600ms;
+        }
+        
+        :root {
+            --purple: #391b52;
+            --orange: #F57C00;
+            --white: #FFFFFF;
+            --light-purple: #E5D8F5;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .contact-banner {
+            height: 400px;
+            background: linear-gradient(rgba(57, 27, 82, 0.9), rgba(245, 124, 0, 0.9)), url('header1.PNG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .contact-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-banner p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .contact-section {
+            padding: 6rem 0;
+            background: linear-gradient(to bottom, white, #f8f9fa);
+        }
+
+        .contact-info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(57, 27, 82, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(57, 27, 82, 0.1);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(57, 27, 82, 0.15);
+            border-color: rgba(245, 124, 0, 0.2);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(57, 27, 82, 0.1);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #F57C00;
+            box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-input:disabled {
+            background-color: #f7fafc;
+            cursor: not-allowed;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .form-error {
+            color: #e53e3e;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            min-height: 1.25rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(57, 27, 82, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-section {
+                padding: 4rem 0;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(57, 27, 82, 0.98);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0.75rem 0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(245, 124, 0, 0.2);
+            transition: transform 0.3s ease;
+            width: 100%;
+            display: block;
+            transform: translateY(100%); /* Start hidden */
+        }
+
+        .mobile-nav.visible {
+            transform: translateY(0); /* Show when visible class is added */
+        }
+
+        .mobile-nav ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0 1rem;
+            height: 100%;
+            width: 100%;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 70px;
+            gap: 0.25rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.4rem;
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1023px) {
+            .mobile-nav {
+                display: block; /* Show on mobile */
+            }
+            
+            body {
+                padding-bottom: 4rem; /* Add padding to prevent content from being hidden behind the nav */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-nav {
+                display: none !important; /* Hide on desktop */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mobile-nav {
+                padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+            }
+            
+            .mobile-nav-item {
+                padding: 0.5rem 0.5rem;
+                min-width: 60px;
+            }
+            
+            .mobile-nav-item i {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-nav-item span {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-nav-item {
+                padding: 0.4rem 0.4rem;
+                min-width: 55px;
+            }
+            
+            .mobile-nav-item i {
+                font-size: 1.2rem;
+            }
+            
+            .mobile-nav-item span {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* Navigation Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 640px) {
+            .mobile-nav {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+
+            .form-input {
+                font-size: 16px;
+                padding: 0.75rem 1rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .g-recaptcha {
+                transform: scale(0.9);
+                transform-origin: left;
+            }
+
+            .space-y-6 > * + * {
+                margin-top: 1.25rem;
+            }
+
+            .form-input:focus,
+            .btn-primary:focus,
+            .btn-secondary:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.2);
+            }
+
+            .mobile-nav-item {
+                transition: transform 0.2s ease;
+            }
+
+            .mobile-nav-item:active {
+                transform: scale(0.95);
+            }
+
+            .grid-cols-1 {
+                gap: 1rem;
+            }
+
+            .payment-method-btn:active {
+                transform: scale(0.98);
+            }
+
+            .payment-section {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* Accessibility improvements */
+        .form-input:focus-visible,
+        .btn-primary:focus-visible,
+        .btn-secondary:focus-visible {
+            outline: 2px solid #F57C00;
+            outline-offset: 2px;
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Enhanced focus indicators */
+        *:focus {
+            outline: 2px solid #F57C00;
+            outline-offset: 2px;
+        }
+
+        /* Improved contrast */
+        .text-gray-600 {
+            color: #4B5563;
+        }
+
+        /* Better touch feedback */
+        @media (hover: none) {
+            .btn-primary:active,
+            .btn-secondary:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Form Styles */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #F57C00;
+            box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-input:disabled {
+            background-color: #f7fafc;
+            cursor: not-allowed;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .form-error {
+            color: #e53e3e;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            min-height: 1.25rem;
+        }
+
+        .btn-primary {
+            background-color: #F57C00;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e00;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background-color: #f0b366;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e0;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary:disabled {
+            background-color: #f7fafc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* reCAPTCHA container */
+        .g-recaptcha {
+            margin: 1rem 0;
+        }
+
+        /* Character counter */
+        #messageCounter {
+            font-size: 0.75rem;
+            color: #718096;
+            transition: color 0.3s ease;
+        }
+
+        #messageCounter.warning {
+            color: #ed8936;
+        }
+
+        #messageCounter.error {
+            color: #e53e3e;
+        }
+
+        /* Form field states */
+        .form-input.border-red-500 {
+            border-color: #e53e3e;
+        }
+
+        .form-input.border-red-500:focus {
+            box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+        }
+
+        /* Loading spinner */
+        .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Success message animation */
+        @keyframes slideIn {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .success-message {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Custom Select Styles */
+        select.form-input {
+            background-image: linear-gradient(45deg, transparent 50%, #F57C00 50%),
+                            linear-gradient(135deg, #F57C00 50%, transparent 50%);
+            background-position: calc(100% - 20px) calc(1em + 2px),
+                               calc(100% - 15px) calc(1em + 2px);
+            background-size: 5px 5px,
+                           5px 5px;
+            background-repeat: no-repeat;
+            padding-right: 2.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select.form-input:hover {
+            border-color: #F57C00;
+            box-shadow: 0 0 0 2px rgba(245, 124, 0, 0.1);
+        }
+
+        select.form-input:focus {
+            background-image: linear-gradient(45deg, transparent 50%, #e67e00 50%),
+                            linear-gradient(135deg, #e67e00 50%, transparent 50%);
+            border-color: #F57C00;
+            box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.2);
+        }
+
+        select.form-input option {
+            padding: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        select.form-input optgroup {
+            font-weight: 600;
+            color: #4a5568;
+            background-color: #f7fafc;
+        }
+
+        select.form-input option {
+            font-weight: normal;
+            color: #2d3748;
+            background-color: white;
+        }
+
+        select.form-input option:hover,
+        select.form-input option:focus {
+            background-color: #F57C00;
+            color: white;
+        }
+
+        /* Custom Select Animation */
+        @keyframes selectFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        select.form-input option {
+            animation: selectFadeIn 0.2s ease-out;
+        }
+
+        /* Mobile Optimizations for Select */
+        @media (max-width: 640px) {
+            select.form-input {
+                font-size: 16px;
+                padding: 0.75rem 2.5rem 0.75rem 1rem;
+            }
+        }
+
+        /* Enhanced Select Container */
+        .select-container {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .select-container:hover .fa-chevron-down {
+            transform: translateY(2px);
+        }
+
+        .select-container:focus-within .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Enhanced Social Icons Animation */
+        .social-icon {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.4rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-purple));
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: -1;
+        }
+
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-orange));
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: -2;
+            opacity: 0.7;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px) rotate(360deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon:hover::before {
+            transform: scale(1.1);
+        }
+
+        .social-icon:hover::after {
+            transform: scale(1.2);
+        }
+
+        .social-icon i {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icon:hover i {
+            transform: scale(1.3) rotate(-360deg);
+            color: white;
+        }
+
+        .social-tooltip {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon:hover .social-tooltip {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+            bottom: -35px;
+        }
+
+        @media (max-width: 640px) {
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Social Icons Container Animation */
+        .social-icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            perspective: 1000px;
+        }
+
+        .social-icons-container a {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .social-icons-container a:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .social-icons-container a:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .social-icons-container a:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+        }
+
+        /* Remove mobile nav toggle styles */
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+        .mobile-nav-toggle.active {
+            display: none;
+        }
+
+        .mobile-nav-toggle i {
+            display: none;
+        }
+
+        .mobile-nav-toggle.active i {
+            display: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+     <!-- Header Navigation -->
+   <header x-data="{ isOpen: false, isScrolled: false, activeDropdown: null }" 
+            @scroll.window="isScrolled = window.pageYOffset > 50"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 "
+            :class="{ 'bg-white text-black shadow-lg': isScrolled, 'bg-white text-black': !isScrolled }">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex  items-center space-x-4">
+                    <a href="/index.html" class="flex items-center space-x-2 group">
+                        <img src="NPDV Logo purple.png" alt="NPDV" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                        <!-- <span class="hidden md:block text-sm font-semibold text-primary-purple tracking-wider">NOOR PAIN DE VIE</span> -->
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 ">
+                    <a href="/" class="nav-link active relative group hover:text-primary-orange">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    
+                    <!-- About Us Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'about'" @mouseleave="activeDropdown = null">
+                        <a href="about.html" class="nav-link flex items-center text-black hover:text-primary-orange">
+                            About Us
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                           <ul class="p-4 flex flex-col space-between">
+                            <li> <a href="about.html#company" class="hover:bg-primary-purple/5 hover:text-primary-orange">About the Company</a></li>
+                            <li> <a href="about.html#mission" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Mission/Vision</a></li>
+                            <li> <a href="about.html#values" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Core Values</a></li>
+                            <li> <a href="about.html#team" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Team</a></li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'services'" @mouseleave="activeDropdown = null">
+                        <a href="services.html" class="nav-link flex items-center hover:text-primary-orange">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-64 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <ul class="p-4 flex flex-col space-between">
+                                <li><a href="services.html#strategic" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Strategic Communications</a></li>
+                                <li><a href="services.html#training" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Training and Capacity Building</a></li>
+                                <li><a href="services.html#coaching" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Career Coaching</a></li>
+                                <li><a href="services.html#project" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Project Management</a></li>
+                                <li><a href="services.html#it" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">IT Solutions</a></li>
+                                <li><a href="services.html#financial" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Financial Advisory</a></li>
+                                <li><a href="services.html#risk" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="relative group" @mouseenter="activeDropdown = 'industries'" @mouseleave="activeDropdown = null">
+                        <a href="industries.html" class="nav-link flex items-center">
+                            Industries
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="industries.html#technology" class="dropdown-item">Technology</a>
+                            <a href="industries.html#finance" class="dropdown-item">Finance</a>
+                            <a href="industries.html#healthcare" class="dropdown-item">Healthcare</a>
+                        </div>
+                    </div> -->
+
+                    <!-- Training Programs -->
+                      <a href="gallery.html" class=" hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p>Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="nav-link hover:text-primary-orange relative group">
+                        Training Programs
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+
+                    <!-- Resources -->
+                    <!-- <a href="resources.html" class="nav-link relative group">
+                        Resources
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a> -->
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="btn-primary">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="isOpen = !isOpen" 
+                        class="lg:hidden text-primary-purple hover:text-primary-orange transition-colors duration-300">
+                    <i class="fas text-2xl" :class="{ 'fa-bars': !isOpen, 'fa-times': isOpen }"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="isOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-4"
+                 class="lg:hidden bg-white rounded-lg shadow-xl mt-4 overflow-hidden">
+                <div class=" flex flex-col items-start pl-10 space-y-4">
+                    <!-- Home -->
+                    <a href="/index.html" class="mobile-nav-item active" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <p><span>Home</span></p>
+                    </a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'about' ? null : 'about'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                            <div class="flex items-center gap-2 items-center">
+                                <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                               <p class="text-black"> About Us</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                            </div>
+                            </div>
+                        </button>
+                        <div x-show="activeDropdown === 'about'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2 border shadow-lg">
+                            <a href="about.html#company" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                               <p class="text-black"> About the Company</p>
+                            </a>
+                            <a href="about.html#mission" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-bullseye" aria-hidden="true"></i>
+                                <p class="text-black"> Mission/Vision</p>
+                            </a>
+                            <a href="about.html#values" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <p class="text-black"> Core Values</p>
+                            </a>
+                            <a href="about.html#team" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <p class="text-black"> Team</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'services' ? null : 'services'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2">
+                             <div class="flex items-center text-black">
+                                <i class="fas fa-cogs mr-2 text-black" aria-hidden="true"></i>
+                                <p class="text-black">Services</p>
+                            </div>
+                           <div >
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'services'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="services.html#strategic" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-comments" aria-hidden="true"></i>
+                              <p class="text-black">  Strategic Communications</p>
+                            </a>
+                            <a href="services.html#training" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <p class="text-black"> Training & Development</p>
+                            </a>
+                            <a href="services.html#coaching" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                                <p class="text-black"> Career Coaching</p>
+                            </a>
+                            <a href="services.html#project" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                                <p class="text-black"> Project Management</p>
+                            </a>
+                            <a href="services.html#it" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                <p class="text-black"> IT Solutions</p>
+                            </a>
+                            <a href="services.html#financial" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black"> Financial Advisory</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'industries' ? null : 'industries'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2 items-center">
+                             <div class="flex items-center">
+                                <i class="fas fa-industry mr-2" aria-hidden="true"></i>
+                                Industries
+                            </div>
+                           <div>
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'industries'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="industries.html#technology" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-microchip" aria-hidden="true"></i>
+                                Technology
+                            </a>
+                            <a href="industries.html#finance" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-university" aria-hidden="true"></i>
+                                Finance
+                            </a>
+                            <a href="industries.html#healthcare" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                                Healthcare
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Other Links -->
+                     <a href="gallery.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                        <p class="text-sm">Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                            <i class="fas fa-graduation-cap" ></i>
+                        <p class="text-sm">Training Programs</p>
+                        </div>
+                    </a>
+                    
+                    <!-- <a href="resources.html" class="mobile-nav-item ">
+                       <div class="flex items-start justify-start gap-2">
+                         <i class="fas fa-folder" aria-hidden="true"></i>
+                       <p> Resources</p>
+                       </div>
+                    </a> -->
+                   
+                     <a href="contact.html"class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p class="text-sm">Contact Us</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Banner -->
+    <section class="contact-banner relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-purple/90 to-primary-orange/90"></div>
+        <div class="absolute inset-0 bg-[url('point.jpeg')] bg-cover bg-center opacity-20"></div>
+        <div class="relative container mx-auto px-4 h-[400px] flex items-center justify-center text-center">
+            <div class="max-width-3xl">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                    Contact Us
+                </h1>
+                <p class="text-xl text-white/90 mb-8 animate-slide-up">
+                    Get in touch with us for any inquiries or support
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8 animate-fade-in">
+                    <div class="contact-info-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary-purple/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-2xl text-primary-orange"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary-purple mb-2">Our Location</h3>
+                                <p class="text-gray-600">Flat 240, CBN Quarters, Utako, Abuja, FCT.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary-purple/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-2xl text-primary-orange"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary-purple mb-2">Phone Number</h3>
+                                <p class="text-gray-600">0906 999 1805</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary-purple/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-2xl text-primary-orange"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary-purple mb-2">Email Address</h3>
+                                <p class="text-gray-600">admin@npdv.com.ng</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary-purple/10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-2xl text-primary-orange"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary-purple mb-2">Business Hours</h3>
+                                <p class="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form animate-slide-up">
+                    <h2 class="text-3xl font-bold text-primary-purple mb-8">Send us a Message</h2>
+                    <form id="contactForm" class="space-y-6" novalidate>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="form-label">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" class="form-input" required 
+                                       placeholder="Enter your full name" minlength="2" maxlength="50"
+                                       aria-describedby="nameError" aria-invalid="false">
+                                <div class="form-error" id="nameError" role="alert"></div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" class="form-input" required 
+                                       placeholder="Enter your email address"
+                                       aria-describedby="emailError" aria-invalid="false">
+                                <div class="form-error" id="emailError" role="alert"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required 
+                                       placeholder="Enter your phone number"
+                                       aria-describedby="phoneError" aria-invalid="false">
+                                <div class="form-error" id="phoneError" role="alert"></div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="form-label">Subject <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select id="subject" name="subject" class="form-input appearance-none pr-10 cursor-pointer" required 
+                                            aria-describedby="subjectError" aria-invalid="false">
+                                        <option value="" disabled selected>Select a subject</option>
+                                        <optgroup label="Services">
+                                            <option value="strategic-communications">Strategic Communications</option>
+                                            <option value="training-development">Training & Development</option>
+                                            <option value="career-coaching">Career Coaching</option>
+                                            <option value="project-management">Project Management</option>
+                                            <option value="it-solutions">IT Solutions</option>
+                                            <option value="financial-advisory">Financial Advisory</option>
+                                            <option value="risk-management">Risk Management</option>
+                                        </optgroup>
+                                        <optgroup label="Training Programs">
+                                            <option value="leadership-training">Leadership Training</option>
+                                            <option value="communication-skills">Communication Skills</option>
+                                            <option value="project-management-training">Project Management Training</option>
+                                            <option value="team-building">Team Building</option>
+                                            <option value="customer-service">Customer Service</option>
+                                            <option value="sales-training">Sales Training</option>
+                                            <option value="time-management">Time Management</option>
+                                        </optgroup>
+                                        <optgroup label="Other">
+                                            <option value="partnership">Partnership Inquiry</option>
+                                            <option value="careers">Careers</option>
+                                            <option value="feedback">Feedback</option>
+                                            <option value="other">Other</option>
+                                        </optgroup>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <i class="fas fa-chevron-down text-primary-orange"></i>
+                                    </div>
+                                </div>
+                                <div class="form-error" id="subjectError" role="alert"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="form-label">Message <span class="text-red-500">*</span></label>
+                            <textarea id="message" name="message" rows="4" class="form-input" required 
+                                      placeholder="Enter your message" minlength="10" maxlength="1000"
+                                      aria-describedby="messageError messageCounter" aria-invalid="false"></textarea>
+                            <div class="flex justify-between items-center mt-1">
+                                <div class="form-error" id="messageError" role="alert"></div>
+                                <div id="messageCounter" class="text-sm text-gray-500">
+                                    <span id="currentLength">0</span>/1000 characters
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button type="submit" class="btn-primary flex-1">
+                                <span class="flex items-center justify-center">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </span>
+                            </button>
+                            <button type="reset" class="btn-secondary flex-1">
+                                <span class="flex items-center justify-center">
+                                    <i class="fas fa-undo mr-2"></i>
+                                    Clear Form
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="mt-16 animate-fade-in">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.9999999999995!2d7.4064!3d9.0825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDQnNTcuMCJOIDfCsDI0JzIzLjAiRQ!5e0!3m2!1sen!2sng!4v1234567890!5m2!1sen!2sng"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Facebook
+                        </span> -->
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Connect with us on LinkedIn
+                        </span> -->
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited,</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul>
+            <a href="/" class="mobile-nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="about.html" class="mobile-nav-item">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="services.html" class="mobile-nav-item">
+                <i class="fas fa-cogs"></i>
+                <span>Services</span>
+            </a>
+            <a href="training-programs.html" class="mobile-nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Training</span>
+            </a>
+            <a href="contact.html" class="mobile-nav-item active">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </ul>
+    </nav>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let lastScrollTop = 0;
+            const mobileNav = document.querySelector('.mobile-nav');
+            const scrollThreshold = 50; // Minimum scroll amount to trigger show/hide
+            let isScrolling = false;
+
+            window.addEventListener('scroll', function() {
+                if (isScrolling) return;
+                
+                isScrolling = true;
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Only trigger if we've scrolled more than the threshold
+                if (Math.abs(currentScroll - lastScrollTop) > scrollThreshold) {
+                    if (currentScroll > lastScrollTop) {
+                        // Scrolling down
+                        mobileNav.classList.remove('visible');
+                    } else {
+                        // Scrolling up
+                        mobileNav.classList.add('visible');
+                    }
+                    lastScrollTop = currentScroll;
+                }
+                
+                // Reset the scroll lock after a short delay
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 100);
+            });
+
+            // Show nav on page load if we're not at the top
+            if (window.pageYOffset > 0) {
+                mobileNav.classList.add('visible');
+            }
+
+            // Initialize phone number formatting
+            const phoneInput = document.getElementById('phone');
+            new Cleave(phoneInput, {
+                phone: true,
+                phoneRegionCode: 'NG'
+            });
+
+            // Character counter for message
+            const messageInput = document.getElementById('message');
+            const currentLength = document.getElementById('currentLength');
+            
+            messageInput.addEventListener('input', function() {
+                const length = this.value.length;
+                currentLength.textContent = length;
+                
+                if (length > 1000) {
+                    this.value = this.value.substring(0, 1000);
+                    currentLength.textContent = '1000';
+                }
+            });
+
+            // Form validation
+            const form = document.getElementById('contactForm');
+            const inputs = form.querySelectorAll('input, textarea, select');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const resetButton = form.querySelector('button[type="reset"]');
+
+            // Validation rules
+            const validationRules = {
+                name: {
+                    required: true,
+                    minLength: 2,
+                    maxLength: 50,
+                    pattern: /^[a-zA-Z\s-']+$/
+                },
+                email: {
+                    required: true,
+                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                },
+                phone: {
+                    required: true,
+                    pattern: /^\+?[\d\s-]{10,}$/
+                },
+                subject: {
+                    required: true,
+                    pattern: /^(?!$).+/
+                },
+                message: {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 1000
+                }
+            };
+
+            // Real-time validation
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    validateField(this);
+                });
+
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+            });
+
+            // Form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!validateField(input)) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-spinner fa-spin mr-2"></i>
+                            Sending...
+                        </span>
+                    `;
+
+                    try {
+                    // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Show success message
+                    Swal.fire({
+                        icon: 'success',
+                            title: 'Success!',
+                            text: 'Your message has been sent successfully.',
+                        confirmButtonColor: '#F57C00'
+                    });
+                    
+                    // Reset form
+                        form.reset();
+                        inputs.forEach(input => {
+                            input.classList.remove('border-red-500');
+                            input.setAttribute('aria-invalid', 'false');
+                            const errorElement = document.getElementById(`${input.id}Error`);
+                            if (errorElement) {
+                                errorElement.textContent = '';
+                            }
+                        });
+
+                        // Reset character counter
+                        currentLength.textContent = '0';
+                    } catch (error) {
+                        // Show error message
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to send message. Please try again.',
+                            confirmButtonColor: '#F57C00'
+                        });
+                    } finally {
+                        // Reset button state
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `
+                            <span class="flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send Message
+                            </span>
+                        `;
+                    }
+                }
+            });
+
+            // Reset form
+            resetButton.addEventListener('click', function() {
+                Swal.fire({
+                    title: 'Clear Form?',
+                    text: 'Are you sure you want to clear all fields?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#F57C00',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, clear it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.reset();
+                        inputs.forEach(input => {
+                            input.classList.remove('border-red-500');
+                            input.setAttribute('aria-invalid', 'false');
+                            const errorElement = document.getElementById(`${input.id}Error`);
+                            if (errorElement) {
+                                errorElement.textContent = '';
+                            }
+                        });
+                        currentLength.textContent = '0';
+                    }
+                });
+            });
+
+            // Enhanced select functionality
+            const subjectSelect = document.getElementById('subject');
+            const selectContainer = subjectSelect.parentElement;
+            const chevronIcon = selectContainer.querySelector('.fa-chevron-down');
+            
+            // Add custom styling to select when focused
+            subjectSelect.addEventListener('focus', function() {
+                selectContainer.classList.add('ring-2', 'ring-primary-orange', 'ring-opacity-50');
+                chevronIcon.style.transform = 'rotate(180deg)';
+            });
+
+            subjectSelect.addEventListener('blur', function() {
+                selectContainer.classList.remove('ring-2', 'ring-primary-orange', 'ring-opacity-50');
+                chevronIcon.style.transform = 'rotate(0deg)';
+            });
+
+            // Add custom validation for select
+            subjectSelect.addEventListener('change', function() {
+                validateField(this);
+                // Add a subtle animation when option is selected
+                selectContainer.classList.add('scale-105');
+                setTimeout(() => {
+                    selectContainer.classList.remove('scale-105');
+                }, 200);
+            });
+
+            // Add keyboard navigation support
+            subjectSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+
+            // Add custom styling for selected option
+            subjectSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                if (selectedOption.value) {
+                    this.classList.add('text-primary-purple', 'font-medium');
+                } else {
+                    this.classList.remove('text-primary-purple', 'font-medium');
+                }
+            });
+
+            function validateField(field) {
+                const rules = validationRules[field.id];
+                const errorElement = document.getElementById(`${field.id}Error`);
+                let isValid = true;
+                let errorMessage = '';
+
+                // Required validation
+                if (rules.required && !field.value.trim()) {
+                    errorMessage = 'This field is required';
+                    isValid = false;
+                }
+                // Pattern validation
+                else if (rules.pattern && !rules.pattern.test(field.value)) {
+                    switch(field.id) {
+                        case 'email':
+                            errorMessage = 'Please enter a valid email address';
+                            break;
+                        case 'phone':
+                            errorMessage = 'Please enter a valid phone number';
+                            break;
+                        case 'name':
+                            errorMessage = 'Please enter a valid name (letters, spaces, hyphens, and apostrophes only)';
+                            break;
+                    }
+                    isValid = false;
+                }
+                // Length validation
+                else if (rules.minLength && field.value.length < rules.minLength) {
+                    errorMessage = `This field must be at least ${rules.minLength} characters long`;
+                    isValid = false;
+                }
+                else if (rules.maxLength && field.value.length > rules.maxLength) {
+                    errorMessage = `This field must not exceed ${rules.maxLength} characters`;
+                    isValid = false;
+                }
+
+                // Update field state
+                field.classList.toggle('border-red-500', !isValid);
+                field.setAttribute('aria-invalid', !isValid);
+                if (errorElement) {
+                    errorElement.textContent = errorMessage;
+                }
+
+                return isValid;
+            }
+        });
+    </script>
+</body>
+</html> 

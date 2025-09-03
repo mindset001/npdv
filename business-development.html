@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New approach to business development - NPDV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #391b52;
+            --orange: #F57C00;
+            --white: #FFFFFF;
+            --light-purple: #E5D8F5;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            background: white;
+        }
+
+        .logo {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            background-color: var(--purple);
+            height: 30px;
+            padding: 0 1rem;
+        }
+
+        .main-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .main-nav a:hover {
+            opacity: 1;
+        }
+
+        .nav-icon {
+            color: var(--orange);
+            font-size: 1.25rem;
+            margin-left: 1rem;
+        }
+
+        .post-header {
+            margin-top: 100px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            background-color: #f8f9fa;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content {
+            padding: 3rem 0;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-name {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--purple);
+            letter-spacing: 1px;
+        }
+
+        .post-category {
+            color: var(--orange);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: auto;
+            padding: 4px 12px;
+            background-color: rgba(245, 124, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .post-title {
+            font-size: 2.75rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .post-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1.75rem;
+        }
+
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 4rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--purple);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(57, 27, 82, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+   <header x-data="{ isOpen: false, isScrolled: false, activeDropdown: null }" 
+            @scroll.window="isScrolled = window.pageYOffset > 50"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 "
+            :class="{ 'bg-white text-black shadow-lg': isScrolled, 'bg-white text-black': !isScrolled }">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex  items-center space-x-4">
+                    <a href="/index.html" class="flex items-center space-x-2 group">
+                        <img src="NPDV Logo purple.png" alt="NPDV" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                        <!-- <span class="hidden md:block text-sm font-semibold text-primary-purple tracking-wider">NOOR PAIN DE VIE</span> -->
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 ">
+                    <a href="/" class="nav-link active relative group hover:text-primary-orange">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    
+                    <!-- About Us Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'about'" @mouseleave="activeDropdown = null">
+                        <a href="about.html" class="nav-link flex items-center text-black hover:text-primary-orange">
+                            About Us
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                           <ul class="p-4 flex flex-col space-between">
+                            <li> <a href="about.html#company" class="hover:bg-primary-purple/5 hover:text-primary-orange">About the Company</a></li>
+                            <li> <a href="about.html#mission" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Mission/Vision</a></li>
+                            <li> <a href="about.html#values" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Core Values</a></li>
+                            <li> <a href="about.html#team" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Team</a></li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'services'" @mouseleave="activeDropdown = null">
+                        <a href="services.html" class="nav-link flex items-center hover:text-primary-orange">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-64 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <ul class="p-4 flex flex-col space-between">
+                                <li><a href="services.html#strategic" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Strategic Communications</a></li>
+                                <li><a href="services.html#training" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Training and Capacity Building</a></li>
+                                <li><a href="services.html#coaching" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Career Coaching</a></li>
+                                <li><a href="services.html#project" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Project Management</a></li>
+                                <li><a href="services.html#it" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">IT Solutions</a></li>
+                                <li><a href="services.html#financial" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Financial Advisory</a></li>
+                                <li><a href="services.html#risk" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="relative group" @mouseenter="activeDropdown = 'industries'" @mouseleave="activeDropdown = null">
+                        <a href="industries.html" class="nav-link flex items-center">
+                            Industries
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="industries.html#technology" class="dropdown-item">Technology</a>
+                            <a href="industries.html#finance" class="dropdown-item">Finance</a>
+                            <a href="industries.html#healthcare" class="dropdown-item">Healthcare</a>
+                        </div>
+                    </div> -->
+
+                    <!-- Training Programs -->
+                      <a href="gallery.html" class=" hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p>Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="nav-link hover:text-primary-orange relative group">
+                        Training Programs
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+
+                    <!-- Resources -->
+                    <!-- <a href="resources.html" class="nav-link relative group">
+                        Resources
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a> -->
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="btn-primary">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="isOpen = !isOpen" 
+                        class="lg:hidden text-primary-purple hover:text-primary-orange transition-colors duration-300">
+                    <i class="fas text-2xl" :class="{ 'fa-bars': !isOpen, 'fa-times': isOpen }"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="isOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-4"
+                 class="lg:hidden bg-white rounded-lg shadow-xl mt-4 overflow-hidden">
+                <div class=" flex flex-col items-start pl-10 space-y-4">
+                    <!-- Home -->
+                    <a href="/index.html" class="mobile-nav-item active" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <p><span>Home</span></p>
+                    </a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'about' ? null : 'about'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                            <div class="flex items-center gap-2 items-center">
+                                <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                               <p class="text-black"> About Us</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                            </div>
+                            </div>
+                        </button>
+                        <div x-show="activeDropdown === 'about'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2 border shadow-lg">
+                            <a href="about.html#company" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                               <p class="text-black"> About the Company</p>
+                            </a>
+                            <a href="about.html#mission" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-bullseye" aria-hidden="true"></i>
+                                <p class="text-black"> Mission/Vision</p>
+                            </a>
+                            <a href="about.html#values" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <p class="text-black"> Core Values</p>
+                            </a>
+                            <a href="about.html#team" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <p class="text-black"> Team</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'services' ? null : 'services'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2">
+                             <div class="flex items-center text-black">
+                                <i class="fas fa-cogs mr-2 text-black" aria-hidden="true"></i>
+                                <p class="text-black">Services</p>
+                            </div>
+                           <div >
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'services'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="services.html#strategic" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-comments" aria-hidden="true"></i>
+                              <p class="text-black">  Strategic Communications</p>
+                            </a>
+                            <a href="services.html#training" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <p class="text-black"> Training & Development</p>
+                            </a>
+                            <a href="services.html#coaching" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                                <p class="text-black"> Career Coaching</p>
+                            </a>
+                            <a href="services.html#project" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                                <p class="text-black"> Project Management</p>
+                            </a>
+                            <a href="services.html#it" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                <p class="text-black"> IT Solutions</p>
+                            </a>
+                            <a href="services.html#financial" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black"> Financial Advisory</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'industries' ? null : 'industries'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2 items-center">
+                             <div class="flex items-center">
+                                <i class="fas fa-industry mr-2" aria-hidden="true"></i>
+                                Industries
+                            </div>
+                           <div>
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'industries'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="industries.html#technology" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-microchip" aria-hidden="true"></i>
+                                Technology
+                            </a>
+                            <a href="industries.html#finance" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-university" aria-hidden="true"></i>
+                                Finance
+                            </a>
+                            <a href="industries.html#healthcare" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                                Healthcare
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Other Links -->
+                     <a href="gallery.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                        <p class="text-sm">Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                            <i class="fas fa-graduation-cap" ></i>
+                        <p class="text-sm">Training Programs</p>
+                        </div>
+                    </a>
+                    
+                    <!-- <a href="resources.html" class="mobile-nav-item ">
+                       <div class="flex items-start justify-start gap-2">
+                         <i class="fas fa-folder" aria-hidden="true"></i>
+                       <p> Resources</p>
+                       </div>
+                    </a> -->
+                   
+                     <a href="contact.html"class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p class="text-sm">Contact Us</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul>
+            <li>
+                <a href="/" class="mobile-nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="about.html" class="mobile-nav-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="services.html" class="mobile-nav-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="training-programs.html" class="mobile-nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Training</span>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="mobile-nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Post Content -->
+    <article class="post-header">
+        <img src="blogpost.PNG" alt="Business Development Interview" class="post-image">
+        <div class="post-content">
+            <div class="post-meta">
+                <img src="team1.jpg" alt="Tiffany Allen" class="author-image">
+                <span class="author-name">Tiffany Allen</span>
+                <span class="post-category">Business Development</span>
+            </div>
+            <h1 class="post-title">Professional Interview: New Approaches to Business Development</h1>
+            <p class="post-text">In today's rapidly evolving business landscape, traditional approaches to business development are being reimagined. Our expert consultant, Tiffany Allen, shares insights on how companies can adapt their strategies to meet modern challenges and opportunities.</p>
+            <p class="post-text">The key to successful business development lies in understanding both the technical and human aspects of organizational growth. Through our comprehensive approach, we help businesses identify their unique value propositions and create sustainable growth strategies.</p>
+            <p class="post-text">Our methodology combines proven business practices with innovative solutions, ensuring that organizations can navigate complex market dynamics while maintaining their competitive edge. This approach has helped numerous clients achieve their business objectives and establish strong market positions.</p>
+            <div class="post-navigation">
+                <a href="#" class="nav-link">← Previous Article</a>
+                <a href="#" class="nav-link">Next Article →</a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-description">
+                <img src="npdv.images/logo.png" alt="NPDV" style="width: 80px; margin-bottom: 1.5rem;">
+                <p>NPDV is a consulting and training services provider that bases its offerings on international best practices and concepts. The company is committed to helping organizations achieve their goals by providing customized solutions that meet their specific needs.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">●</a>
+                    <a href="#" aria-label="Twitter">●</a>
+                    <a href="#" aria-label="Instagram">●</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>NPDV</h4>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">Offices</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>FaQ</h4>
+                <ul>
+                    <li><a href="faq.html#general">Got any questions</a></li>
+                    <li><a href="faq.html#tickets">Buying tickets</a></li>
+                    <li><a href="faq.html#advertising">How to advertise?</a></li>
+                    <li><a href="faq.html#location">How to find us?</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Subscribe</h4>
+                <div class="subscribe-footer">
+                    <label for="subscribe-email">Email*</label>
+                    <input type="email" id="subscribe-email">
+                    <button type="button" class="send-button" onclick="sendSubscribeMessage()">*Send a message</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sendSubscribeMessage() {
+            const email = document.getElementById('subscribe-email').value;
+            if (email) {
+                alert('Message sent successfully!');
+                document.getElementById('subscribe-email').value = '';
+            } else {
+                alert('Please enter your email address');
+            }
+        }
+    </script>
+</body>
+</html> 

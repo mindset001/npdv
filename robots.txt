@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /payment.html
+Sitemap: https://npdv.com.ng/sitemap.xml 

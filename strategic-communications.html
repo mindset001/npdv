@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Communications - NPDV</title>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            purple: '#391b52',
+                            orange: '#F57C00',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scale': 'scale 0.3s ease-in-out',
+                        'rotate': 'rotate 0.3s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' },
+                        },
+                        scale: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="npdv.css">
+    <style>
+        .banner {
+            height: 400px;
+            background: linear-gradient(rgba(57, 27, 82, 0.9), rgba(245, 124, 0, 0.9)), url('header1.PNG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            margin-top: 80px;
+        }
+        .banner h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .banner p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        .section-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(57,27,82,0.07);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.3s;
+        }
+        .section-card:hover {
+            box-shadow: 0 16px 48px rgba(57,27,82,0.13);
+        }
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            background: #F57C0022;
+            color: #F57C00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .step-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #391b52;
+            margin-bottom: 0.5rem;
+        }
+        .benefit-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: #391b52;
+        }
+        .benefit-list i {
+            color: #F57C00;
+            margin-right: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Navigation (reuse your existing nav structure here if needed) -->
+    <header x-data="{ isOpen: false, isScrolled: false, activeDropdown: null }" 
+            @scroll.window="isScrolled = window.pageYOffset > 50"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 "
+            :class="{ 'bg-white text-black shadow-lg': isScrolled, 'bg-white text-black': !isScrolled }">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex  items-center space-x-4">
+                    <a href="/index.html" class="flex items-center space-x-2 group">
+                        <img src="NPDV Logo purple.png" alt="NPDV" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                        <!-- <span class="hidden md:block text-sm font-semibold text-primary-purple tracking-wider">NOOR PAIN DE VIE</span> -->
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 ">
+                    <a href="/" class="nav-link active relative group hover:text-primary-orange">
+                        Home
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                    
+                    <!-- About Us Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'about'" @mouseleave="activeDropdown = null">
+                        <a href="about.html" class="nav-link flex items-center text-black hover:text-primary-orange">
+                            About Us
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                           <ul class="p-4 flex flex-col space-between">
+                            <li> <a href="about.html#company" class="hover:bg-primary-purple/5 hover:text-primary-orange">About the Company</a></li>
+                            <li> <a href="about.html#mission" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Mission/Vision</a></li>
+                            <li> <a href="about.html#values" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Core Values</a></li>
+                            <li> <a href="about.html#team" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Team</a></li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'services'" @mouseleave="activeDropdown = null">
+                        <a href="services.html" class="nav-link flex items-center hover:text-primary-orange">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-64 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <ul class="p-4 flex flex-col space-between">
+                                <li><a href="services.html#strategic" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Strategic Communications</a></li>
+                                <li><a href="services.html#training" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Training and Capacity Building</a></li>
+                                <li><a href="services.html#coaching" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Career Coaching</a></li>
+                                <li><a href="services.html#project" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Project Management</a></li>
+                                <li><a href="services.html#it" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">IT Solutions</a></li>
+                                <li><a href="services.html#financial" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Financial Advisory</a></li>
+                                <li><a href="services.html#risk" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="relative group" @mouseenter="activeDropdown = 'industries'" @mouseleave="activeDropdown = null">
+                        <a href="industries.html" class="nav-link flex items-center">
+                            Industries
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="industries.html#technology" class="dropdown-item">Technology</a>
+                            <a href="industries.html#finance" class="dropdown-item">Finance</a>
+                            <a href="industries.html#healthcare" class="dropdown-item">Healthcare</a>
+                        </div>
+                    </div> -->
+
+                    <!-- Training Programs -->
+                      <a href="gallery.html" class=" hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p>Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="nav-link hover:text-primary-orange relative group">
+                        Training Programs
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+
+                    <!-- Resources -->
+                    <!-- <a href="resources.html" class="nav-link relative group">
+                        Resources
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a> -->
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="btn-primary">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="isOpen = !isOpen" 
+                        class="lg:hidden text-primary-purple hover:text-primary-orange transition-colors duration-300">
+                    <i class="fas text-2xl" :class="{ 'fa-bars': !isOpen, 'fa-times': isOpen }"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="isOpen" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform -translate-y-4"
+                 x-transition:enter-end="opacity-100 transform translate-y-0"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 transform translate-y-0"
+                 x-transition:leave-end="opacity-0 transform -translate-y-4"
+                 class="lg:hidden bg-white rounded-lg shadow-xl mt-4 overflow-hidden">
+                <div class=" flex flex-col items-start pl-10 space-y-4">
+                    <!-- Home -->
+                    <a href="/index.html" class="mobile-nav-item active" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <p><span>Home</span></p>
+                    </a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'about' ? null : 'about'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                            <div class="flex items-center gap-2 items-center">
+                                <div class="flex items-center">
+                                <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                               <p class="text-black"> About Us</p>
+                            </div>
+                            <div>
+                                <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                            </div>
+                            </div>
+                        </button>
+                        <div x-show="activeDropdown === 'about'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2 border shadow-lg">
+                            <a href="about.html#company" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                               <p class="text-black"> About the Company</p>
+                            </a>
+                            <a href="about.html#mission" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-bullseye" aria-hidden="true"></i>
+                                <p class="text-black"> Mission/Vision</p>
+                            </a>
+                            <a href="about.html#values" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <p class="text-black"> Core Values</p>
+                            </a>
+                            <a href="about.html#team" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <p class="text-black"> Team</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'services' ? null : 'services'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2">
+                             <div class="flex items-center text-black">
+                                <i class="fas fa-cogs mr-2 text-black" aria-hidden="true"></i>
+                                <p class="text-black">Services</p>
+                            </div>
+                           <div >
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'services'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="services.html#strategic" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-comments" aria-hidden="true"></i>
+                              <p class="text-black">  Strategic Communications</p>
+                            </a>
+                            <a href="services.html#training" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <p class="text-black"> Training & Development</p>
+                            </a>
+                            <a href="services.html#coaching" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                                <p class="text-black"> Career Coaching</p>
+                            </a>
+                            <a href="services.html#project" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                                <p class="text-black"> Project Management</p>
+                            </a>
+                            <a href="services.html#it" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                <p class="text-black"> IT Solutions</p>
+                            </a>
+                            <a href="services.html#financial" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black"> Financial Advisory</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'industries' ? null : 'industries'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2 items-center">
+                             <div class="flex items-center">
+                                <i class="fas fa-industry mr-2" aria-hidden="true"></i>
+                                Industries
+                            </div>
+                           <div>
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'industries'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="industries.html#technology" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-microchip" aria-hidden="true"></i>
+                                Technology
+                            </a>
+                            <a href="industries.html#finance" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-university" aria-hidden="true"></i>
+                                Finance
+                            </a>
+                            <a href="industries.html#healthcare" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                                Healthcare
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Other Links -->
+                     <a href="gallery.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                        <p class="text-sm">Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                            <i class="fas fa-graduation-cap" ></i>
+                        <p class="text-sm">Training Programs</p>
+                        </div>
+                    </a>
+                    
+                    <!-- <a href="resources.html" class="mobile-nav-item ">
+                       <div class="flex items-start justify-start gap-2">
+                         <i class="fas fa-folder" aria-hidden="true"></i>
+                       <p> Resources</p>
+                       </div>
+                    </a> -->
+                   
+                     <a href="contact.html"class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                        <p class="text-sm">Contact Us</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-purple/90 to-primary-orange/90"></div>
+        <div class="absolute inset-0 bg-[url('strategic.jpeg')] bg-cover bg-center opacity-20"></div>
+        <div class="relative container mx-auto px-4 h-[400px] flex items-center justify-center text-center">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                    Strategic Communications
+                </h1>
+                <p class="text-xl text-white/90 mb-8 animate-slide-up">
+                    Helping organizations manage information flow, shape public perception, and align messaging for greater impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20 bg-gradient-to-b from-white to-primary-purple/5">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="section-card mb-10">
+                <h2 class="text-3xl font-bold text-primary-purple mb-4">Our Strategic Communications Services</h2>
+                <p class="text-lg text-gray-700 mb-4">
+                    At NPDV, our Strategic Communications Services are designed to help organizations manage information flow, shape public perception, and align internal and external messaging with their mission and objectives. We provide tailored communication strategies that enhance visibility, build trust, and foster stakeholder engagement.
+                </p>
+            </div>
+            <div class="section-card mb-10">
+                <h3 class="text-2xl font-semibold text-primary-orange mb-6">Core Areas of Service</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="icon-circle"><i class="fas fa-bullhorn"></i></div>
+                        <div class="step-title">Corporate & Public Affairs Communication</div>
+                        <p class="text-gray-600 mb-4">Crafting clear and consistent messages that strengthen organizational reputation.</p>
+                    </div>
+                    <div>
+                        <div class="icon-circle"><i class="fas fa-handshake"></i></div>
+                        <div class="step-title">Stakeholder Engagement</div>
+                        <p class="text-gray-600 mb-4">Designing strategies to build productive relationships with key stakeholders, including government, partners, and the public.</p>
+                    </div>
+                    <div>
+                        <div class="icon-circle"><i class="fas fa-newspaper"></i></div>
+                        <div class="step-title">Media Relations</div>
+                        <p class="text-gray-600 mb-4">Managing press engagements, media campaigns, and publicity for effective brand positioning.</p>
+                    </div>
+                    <div>
+                        <div class="icon-circle"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="step-title">Crisis Communication</div>
+                        <p class="text-gray-600 mb-4">Developing frameworks to respond effectively to sensitive issues and protect institutional credibility.</p>
+                    </div>
+                    <div>
+                        <div class="icon-circle"><i class="fas fa-users"></i></div>
+                        <div class="step-title">Internal Communication</div>
+                        <p class="text-gray-600 mb-4">Enhancing workplace culture through effective staff communication channels and feedback systems.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-card">
+                <h3 class="text-2xl font-semibold text-primary-orange mb-6">Value to Clients</h3>
+                <ul class="benefit-list text-lg">
+                    <li><i class="fas fa-check-circle"></i>Strengthened institutional credibility and reputation.</li>
+                    <li><i class="fas fa-check-circle"></i>Clear, consistent, and impactful communication with stakeholders.</li>
+                    <li><i class="fas fa-check-circle"></i>Enhanced public trust through transparent engagement.</li>
+                    <li><i class="fas fa-check-circle"></i>Improved organizational cohesion and staff alignment.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Footer (reuse your existing footer structure here if needed) -->
+      <!-- Call to Action -->
+     <div class="mt-16 text-center">
+                <div class="bg-gradient-to-r from-primary-purple to-primary-orange rounded-2xl p-8 md:p-12 text-white shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+      <h3 class="text-3xl font-bold text-white mb-4">Communicate with Clarity and Impact</h3>
+            <p class="text-xl text-white mb-8">Contact us to develop a strategic communications plan that advances your mission.</p>
+                    <a href="contact.html" class="group inline-flex items-center bg-white text-primary-purple px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-300">
+                        Get Started 
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform duration-300"></i>
+                    </a>
+                </div>
+            </div>
+
+ <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check-circle text-2xl text-primary-orange"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-primary-purple mb-2">Expert Team</h4>
+                    <p class="text-gray-600">Our experienced professionals bring years of industry expertise to every project.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-primary-orange"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-primary-purple mb-2">24/7 Support</h4>
+                    <p class="text-gray-600">Round-the-clock assistance to ensure your business operations run smoothly.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-bar text-2xl text-primary-orange"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-primary-purple mb-2">Proven Results</h4>
+                    <p class="text-gray-600">Track record of delivering measurable results and exceeding client expectations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Facebook
+                        </span> -->
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Connect with us on LinkedIn
+                        </span> -->
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+     <!-- Navigation Overlay -->
+    <div class="nav-overlay"></div>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+            const navOverlay = document.querySelector('.nav-overlay');
+            
+            dropdownTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdown = this.nextElementSibling;
+                    const isActive = dropdown.classList.contains('active');
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.mobile-dropdown').forEach(d => {
+                        d.classList.remove('active');
+                    });
+                    document.querySelectorAll('.dropdown-trigger').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    navOverlay.classList.remove('active');
+                    
+                    // Toggle current dropdown
+                    if (!isActive) {
+                        dropdown.classList.add('active');
+                        this.classList.add('active');
+                        navOverlay.classList.add('active');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking overlay
+            navOverlay.addEventListener('click', function() {
+                document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+                    trigger.classList.remove('active');
+                });
+                navOverlay.classList.remove('active');
+            });
+
+            // Handle scroll behavior
+            let lastScroll = 0;
+            let scrollTimeout;
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                const mobileNav = document.querySelector('.mobile-nav');
+                
+                clearTimeout(scrollTimeout);
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    mobileNav.style.transform = 'translateY(100%)';
+                } else {
+                    mobileNav.style.transform = 'translateY(0)';
+                }
+                
+                lastScroll = currentScroll;
+                
+                // Show nav after scrolling stops
+                scrollTimeout = setTimeout(() => {
+                    mobileNav.style.transform = 'translateY(0)';
+                }, 1000);
+            });
+        });
+    </script>
+    </body>
+    </html>-

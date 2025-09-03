@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Progress Indicator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+        }
+
+        :root {
+            --primary-purple: #391b52;
+            --primary-orange: #F57C00;
+        }
+
+        .progress-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .progress-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 2.5rem;
+            bottom: -1.5rem;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+
+        .progress-step.active:not(:last-child)::after {
+            background-color: var(--primary-orange);
+        }
+
+        .progress-step.completed:not(:last-child)::after {
+            background-color: var(--primary-orange);
+        }
+
+        .progress-step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-step-number {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        .progress-step.completed .progress-step-number {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        .progress-step-content {
+            margin-left: 1rem;
+        }
+
+        .progress-step-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-step-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .progress-step.active .progress-step-title {
+            color: var(--primary-orange);
+        }
+
+        .progress-step.completed .progress-step-title {
+            color: var(--primary-orange);
+        }
+
+        @media (min-width: 768px) {
+            .progress-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="progress-container">
+        <div class="progress-step completed">
+            <div class="progress-step-number">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="progress-step-content">
+                <div class="progress-step-title">Order Summary</div>
+                <div class="progress-step-description">Review your order details</div>
+            </div>
+        </div>
+
+        <div class="progress-step active">
+            <div class="progress-step-number">2</div>
+            <div class="progress-step-content">
+                <div class="progress-step-title">Payment Details</div>
+                <div class="progress-step-description">Enter your payment information</div>
+            </div>
+        </div>
+
+        <div class="progress-step">
+            <div class="progress-step-number">3</div>
+            <div class="progress-step-content">
+                <div class="progress-step-title">Confirmation</div>
+                <div class="progress-step-description">Complete your payment</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to update progress steps
+            function updateProgress(step) {
+                const steps = document.querySelectorAll('.progress-step');
+                
+                steps.forEach((stepElement, index) => {
+                    if (index + 1 < step) {
+                        stepElement.classList.add('completed');
+                        stepElement.classList.remove('active');
+                    } else if (index + 1 === step) {
+                        stepElement.classList.add('active');
+                        stepElement.classList.remove('completed');
+                    } else {
+                        stepElement.classList.remove('active', 'completed');
+                    }
+                });
+            }
+
+            // Example usage:
+            // updateProgress(1); // First step
+            // updateProgress(2); // Second step
+            // updateProgress(3); // Third step
+        });
+    </script>
+</body>
+</html> 

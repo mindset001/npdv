@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NPDV (Noor Pain De Vie) provides professional consulting and training services for business development, digital transformation, and strategic planning in Nigeria. Specialized in capacity building, communication services, and business skills development.">
+    <meta name="keywords" content="NPDV, Noor Pain De Vie, consulting services, training programs, business development, digital transformation, strategic planning, capacity building, communication services, Nigeria business consulting, professional training, career coaching, project management, IT solutions, financial advisory">
+    <meta name="author" content="NPDV - Noor Pain De Vie">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="generator" content="NPDV">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="NPDV - Professional Consulting & Training Services in Nigeria">
+    <meta property="og:description" content="NPDV provides expert consulting and training services for business development, digital transformation, and strategic planning. Specialized in capacity building and communication services.">
+    <meta property="og:image" content="https://npdv.com.ng/NPDV-logo.PNG">
+    <meta property="og:url" content="https://npdv.com.ng">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NPDV - Noor Pain De Vie">
+    <meta property="og:locale" content="en_NG">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NPDV - Professional Consulting & Training Services">
+    <meta name="twitter:description" content="Expert consulting and training services for business development and digital transformation. Specialized in capacity building and communication services.">
+    <meta name="twitter:image" content="https://npdv.com.ng/NPDV-logo.PNG">
+    <meta name="twitter:site" content="@npdvservices">
+    <meta name="twitter:creator" content="@npdvservices">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://npdv.com.ng">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NPDV - Noor Pain De Vie",
+        "url": "https://npdv.com.ng",
+        "logo": "https://npdv.com.ng/NPDV-logo.PNG",
+        "description": "Professional consulting and training services for business development and digital transformation",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "No 39a Tai Solarin 5th Avenue",
+            "addressLocality": "Gwarinpa",
+            "addressCountry": "Nigeria"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+2349069991805",
+            "contactType": "customer service",
+            "email": "info@npdv.com.ng",
+            "areaServed": "NG"
+        },
+        "sameAs": [
+            "https://www.facebook.com/npdv.serviceshq",
+            "https://www.instagram.com/npdv.serviceshq",
+            "https://www.linkedin.com/in/npdvserviceshq"
+        ]
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.ico">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#391b52">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="npdv.css">
+    <link rel="stylesheet" href="cookie-consent.css">
+    
+    <!-- Scripts -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="main.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="js/help.js"></script>
+    
+    <title>NPDV - Consulting & Training Services</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            purple: '#391b52',
+                            orange: '#F57C00',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scale': 'scale 0.3s ease-in-out',
+                        'rotate': 'rotate 0.3s ease-in-out',
+                        'shine': 'shine 3s infinite',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out',
+                        'fade-in-down': 'fadeInDown 0.5s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.5s ease-out',
+                        'fade-in-right': 'fadeInRight 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulse: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' },
+                        },
+                        scale: {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.05)' },
+                        },
+                        rotate: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+            .hover-lift {
+                @apply transition-transform duration-300 hover:-translate-y-2;
+            }
+            .glass-effect {
+                @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+            }
+            .btn-primary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-purple/20 text-primary-purple rounded-lg font-semibold hover:bg-primary-purple/30 transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .nav-link.active {
+                @apply text-primary-orange;
+            }
+            .dropdown-item {
+                @apply block px-4 py-2 text-primary-purple hover:bg-primary-purple/5 hover:text-primary-orange transition-colors duration-300;
+            }
+            .mobile-nav-link {
+                @apply block text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .mobile-nav-link.active {
+                @apply text-primary-orange;
+            }
+            .blog-card {
+                @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-primary-purple/10;
+            }
+            .blog-image {
+                @apply w-full h-48 object-cover transition-transform duration-500;
+            }
+            .blog-card:hover .blog-image {
+                @apply scale-110;
+            }
+            .blog-category {
+                @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-orange/10 text-primary-orange;
+            }
+            .shine-effect {
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                background-size: 200% 100%;
+                animation: shine 3s infinite;
+            }
+        }
+    
+
+        /* Add new animations and effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Enhanced button effects */
+        .btn-primary, .btn-secondary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary::after, .btn-secondary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::after, .btn-secondary:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Text reveal animation */
+        .text-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .text-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Blog card effects */
+        .blog-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .blog-card:hover::before {
+            left: 100%;
+        }
+
+        /* Add new styles for enhanced features */
+        .voice-control-btn {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .voice-control-btn:hover {
+            transform: scale(1.1);
+            background: var(--primary-orange);
+        }
+
+        .achievement-notification {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideUp 0.3s ease-out forwards;
+        }
+
+        .share-button,
+        .export-button {
+            position: absolute;
+            top: -12px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .share-button {
+            right: 16px;
+        }
+
+        .export-button {
+            right: 44px;
+        }
+
+        .share-button:hover,
+        .export-button:hover {
+            transform: scale(1.1);
+            background: var(--primary-orange);
+        }
+
+        .theme-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-purple);
+            background: white;
+            color: var(--primary-purple);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        /* Hide mobile navigation on specific pages */
+        body.hide-mobile-nav .mobile-nav {
+            display: none !important;
+        }
+        body.hide-mobile-nav {
+            padding-bottom: 0 !important;
+        }
+
+        /* Services Animation Styles */
+        .service-wrapper {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(57, 27, 82, 0.05), rgba(245, 124, 0, 0.05));
+            transition: all 0.5s ease;
+        }
+
+        .service-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 0L30 15L15 30L0 15L15 0Z" fill="%23391b52" fill-opacity="0.03"/></svg>');
+            opacity: 0.3;
+            animation: patternMove 20s linear infinite;
+        }
+
+        .service-content {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transform: rotate(-45deg);
+        }
+
+        .service-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: titleReveal 1s ease forwards;
+        }
+
+        .service-description {
+            color: var(--primary-purple);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: descReveal 1s ease forwards 0.2s;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            color: var(--primary-purple);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(57, 27, 82, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: linkReveal 1s ease forwards 0.4s;
+        }
+
+        .service-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-wrapper:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(57, 27, 82, 0.15);
+        }
+
+        .service-wrapper:hover .service-icon {
+            transform: rotate(225deg);
+        }
+
+        .service-wrapper:hover .service-icon i {
+            transform: rotate(-225deg);
+        }
+
+        .service-wrapper:hover .service-link i {
+            transform: translateX(5px);
+        }
+
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes descReveal {
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes linkReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-orange));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .service-wrapper:hover::after {
+            opacity: 0.05;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .mobile-nav ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-purple);
+            font-size: 0.875rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary-purple);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-item span {
+            color: var(--primary-purple);
+            font-weight: 500;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--primary-orange);
+        }
+
+        .mobile-nav-item.active i,
+        .mobile-nav-item.active span {
+            color: var(--primary-orange);
+        }
+
+        .mobile-nav-item:hover {
+            color: var(--primary-orange);
+        }
+
+        .mobile-nav-item:hover i,
+        .mobile-nav-item:hover span {
+            color: var(--primary-orange);
+        }
+
+        /* Mobile Dropdown Menu */
+        .mobile-dropdown {
+            background: white;
+            padding: 0.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--primary-purple);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown a:hover {
+            background: rgba(57, 27, 82, 0.05);
+            color: var(--primary-orange);
+        }
+
+        .mobile-dropdown a i {
+            margin-right: 0.75rem;
+            color: var(--primary-orange);
+            font-size: 1rem;
+        }
+
+        /* Update Blog Grid Section */
+        .blog-section {
+            background: linear-gradient(135deg, rgba(57, 27, 82, 0.03), rgba(245, 124, 0, 0.03));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="M15 0L30 15L15 30L0 15L15 0Z" fill="%23391b52" fill-opacity="0.03"/></svg>');
+            opacity: 0.3;
+            animation: patternMove 20s linear infinite;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Remove mobile nav toggle styles */
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+        .mobile-nav-toggle.active {
+            display: none;
+        }
+
+        .mobile-nav-toggle i {
+            display: none;
+        }
+
+        .mobile-nav-toggle.active i {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans hide-mobile-nav">
+    <!-- Help Button -->
+    <button id="help-button" class="fixed bottom-20 right-4 bg-primary-orange text-white rounded-full p-4 shadow-lg hover:bg-primary-purple transition-colors duration-300 z-40">
+        <i class="fas fa-question-circle text-xl"></i>
+    </button>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg p-8 max-w-lg w-full relative transform transition-all">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Need Help?</h3>
+                    <button type="button" class="text-gray-400 hover:text-gray-600 transition-colors duration-200" id="close-help">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-4">Common Questions</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
+                                <span>What services does NPDV offer?</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
+                                <span>How can I get started with NPDV?</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
+                                <span>What industries do you serve?</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
+                                <span>How can I contact support?</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-4">Contact Support</h4>
+                        <p class="text-gray-600 mb-4">Need more help? Contact our support team:</p>
+                        <div class="space-y-3">
+                            <a href="tel:+2349147578393" class="flex items-center text-gray-600 hover:text-primary-orange transition-colors duration-200">
+                                <i class="fas fa-phone mr-3 text-primary-orange"></i>
+                                +234 914 757 8393
+                            </a>
+                            <a href="mailto:info@npdv.com" class="flex items-center text-gray-600 hover:text-primary-orange transition-colors duration-200">
+                                <i class="fas fa-envelope mr-3 text-primary-orange"></i>
+                                admin@npdv.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header x-data="{ isOpen: false, isScrolled: false, activeDropdown: null }"
+        @scroll.window="isScrolled = window.pageYOffset > 50"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 "
+        :class="{ 'bg-white text-black shadow-lg': isScrolled, 'bg-white text-black': !isScrolled }">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex  items-center space-x-4">
+                    <a href="/index.html" class="flex items-center space-x-2 group">
+                        <img src="NPDV Logo purple.png" alt="NPDV"
+                            class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                        <!-- <span class="hidden md:block text-sm font-semibold text-primary-purple tracking-wider">NOOR PAIN DE VIE</span> -->
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 ">
+                    <a href="/" class="nav-link active relative group hover:text-primary-orange">
+                        Home
+                        <span
+                            class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'about'"
+                        @mouseleave="activeDropdown = null">
+                        <a href="about.html" class="nav-link flex items-center text-black hover:text-primary-orange">
+                            About Us
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"
+                                :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <ul class="p-4 flex flex-col space-between">
+                                <li> <a href="about.html#company"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange">About the
+                                        Company</a></li>
+                                <li> <a href="about.html#mission"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Mission/Vision</a>
+                                </li>
+                                <li> <a href="about.html#values"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Core Values</a>
+                                </li>
+                                <li> <a href="about.html#team"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group" @mouseenter="activeDropdown = 'services'"
+                        @mouseleave="activeDropdown = null">
+                        <a href="services.html" class="nav-link flex items-center hover:text-primary-orange">
+                            Services
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300"
+                                :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-64 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <ul class="p-4 flex flex-col space-between">
+                                <li><a href="services.html#strategic"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Strategic
+                                        Communications</a></li>
+                                <li><a href="services.html#training"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Training and
+                                        Capacity Building</a></li>
+                                <li><a href="services.html#coaching"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Career
+                                        Coaching</a></li>
+                                <li><a href="services.html#project"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Project
+                                        Management</a></li>
+                                <li><a href="services.html#it"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">IT
+                                        Solutions</a></li>
+                                <li><a href="services.html#financial"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Financial
+                                        Advisory</a></li>
+                                <li><a href="services.html#risk"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk
+                                        Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="relative group" @mouseenter="activeDropdown = 'industries'" @mouseleave="activeDropdown = null">
+                        <a href="industries.html" class="nav-link flex items-center">
+                            Industries
+                            <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300" :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                        </a>
+                        <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-lg py-2 mt-2">
+                            <a href="industries.html#technology" class="dropdown-item">Technology</a>
+                            <a href="industries.html#finance" class="dropdown-item">Finance</a>
+                            <a href="industries.html#healthcare" class="dropdown-item">Healthcare</a>
+                        </div>
+                    </div> -->
+
+                    <!-- Training Programs -->
+                    <a href="gallery.html" class=" hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                            <p>Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="nav-link hover:text-primary-orange relative group">
+                        Training Programs
+                        <span
+                            class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+
+                    <!-- Resources -->
+                    <!-- <a href="resources.html" class="nav-link relative group">
+                        Resources
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a> -->
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="btn-primary">
+                        Contact Us
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button @click="isOpen = !isOpen"
+                    class="lg:hidden text-primary-purple hover:text-primary-orange transition-colors duration-300">
+                    <i class="fas text-2xl" :class="{ 'fa-bars': !isOpen, 'fa-times': isOpen }"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform -translate-y-4"
+                x-transition:enter-end="opacity-100 transform translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 transform translate-y-0"
+                x-transition:leave-end="opacity-0 transform -translate-y-4"
+                class="lg:hidden bg-white rounded-lg shadow-xl mt-4 overflow-hidden">
+                <div class=" flex flex-col items-start pl-10 space-y-4">
+                    <!-- Home -->
+                    <a href="/index.html" class="mobile-nav-item active" aria-current="page">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <p><span>Home</span></p>
+                    </a>
+
+                    <!-- About Us Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'about' ? null : 'about'"
+                            class="mobile-nav-item flex items-center justify-between w-full">
+                            <div class="flex items-center gap-2 items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                                    <p class="text-black"> About Us</p>
+                                </div>
+                                <div>
+                                    <i class="fas fa-chevron-down transition-transform duration-300"
+                                        :class="{ 'rotate-180': activeDropdown === 'about' }"></i>
+                                </div>
+                            </div>
+                        </button>
+                        <div x-show="activeDropdown === 'about'" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform -translate-y-2"
+                            x-transition:enter-end="opacity-100 transform translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform translate-y-0"
+                            x-transition:leave-end="opacity-0 transform -translate-y-2"
+                            class="pl-8 space-y-2 border shadow-lg">
+                            <a href="about.html#company" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                                <p class="text-black"> About the Company</p>
+                            </a>
+                            <a href="about.html#mission" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-bullseye" aria-hidden="true"></i>
+                                <p class="text-black"> Mission/Vision</p>
+                            </a>
+                            <a href="about.html#values" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <p class="text-black"> Core Values</p>
+                            </a>
+                            <a href="about.html#team" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                                <p class="text-black"> Team</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'services' ? null : 'services'"
+                            class="mobile-nav-item flex items-center justify-between w-full">
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center text-black">
+                                    <i class="fas fa-cogs mr-2 text-black" aria-hidden="true"></i>
+                                    <p class="text-black">Services</p>
+                                </div>
+                                <div>
+                                    <i class="fas fa-chevron-down transition-transform duration-300"
+                                        :class="{ 'rotate-180': activeDropdown === 'services' }"></i>
+                                </div>
+                            </div>
+                        </button>
+                        <div x-show="activeDropdown === 'services'"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 transform -translate-y-2"
+                            x-transition:enter-end="opacity-100 transform translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 transform translate-y-0"
+                            x-transition:leave-end="opacity-0 transform -translate-y-2" class="pl-8 space-y-2">
+                            <a href="services.html#strategic" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-comments" aria-hidden="true"></i>
+                                <p class="text-black"> Strategic Communications</p>
+                            </a>
+                            <a href="services.html#training" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                <p class="text-black"> Training & Development</p>
+                            </a>
+                            <a href="services.html#coaching" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-user-tie" aria-hidden="true"></i>
+                                <p class="text-black"> Career Coaching</p>
+                            </a>
+                            <a href="services.html#project" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-tasks" aria-hidden="true"></i>
+                                <p class="text-black"> Project Management</p>
+                            </a>
+                            <a href="services.html#it" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                <p class="text-black"> IT Solutions</p>
+                            </a>
+                            <a href="services.html#financial" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black"> Financial Advisory</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Industries Dropdown -->
+                    <!-- <div class="space-y-2">
+                        <button @click="activeDropdown = activeDropdown === 'industries' ? null : 'industries'"
+                                class="mobile-nav-item flex items-center justify-between w-full">
+                           <div class="flex items-center gap-2 items-center">
+                             <div class="flex items-center">
+                                <i class="fas fa-industry mr-2" aria-hidden="true"></i>
+                                Industries
+                            </div>
+                           <div>
+                             <i class="fas fa-chevron-down transition-transform duration-300"
+                               :class="{ 'rotate-180': activeDropdown === 'industries' }"></i>
+                           </div>
+                           </div>
+                        </button>
+                        <div x-show="activeDropdown === 'industries'"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform -translate-y-2"
+                             x-transition:enter-end="opacity-100 transform translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform translate-y-0"
+                             x-transition:leave-end="opacity-0 transform -translate-y-2"
+                             class="pl-8 space-y-2">
+                            <a href="industries.html#technology" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-microchip" aria-hidden="true"></i>
+                                Technology
+                            </a>
+                            <a href="industries.html#finance" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-university" aria-hidden="true"></i>
+                                Finance
+                            </a>
+                            <a href="industries.html#healthcare" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                                Healthcare
+                            </a>
+                        </div>
+                    </div> -->
+
+                    <!-- Other Links -->
+                    <a href="gallery.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                            <p class="text-sm">Gallery</p>
+                        </div>
+                    </a>
+                    <a href="training-programs.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row  gap-2">
+                            <i class="fas fa-graduation-cap"></i>
+                            <p class="text-sm">Training Programs</p>
+                        </div>
+                    </a>
+
+                    <!-- <a href="resources.html" class="mobile-nav-item ">
+                       <div class="flex items-start justify-start gap-2">
+                         <i class="fas fa-folder" aria-hidden="true"></i>
+                       <p> Resources</p>
+                       </div>
+                    </a> -->
+
+                    <a href="contact.html" class="text-primary-purple hover:text-primary-orange ">
+                        <div class="flex flex-row gap-2">
+                            <p class="text-sm">Contact Us</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-r from-primary-purple to-primary-orange parallax" style="background-image: url('https://i.pinimg.com/736x/e2/d4/e2/e2d4e200343c6c003db6988cfe930a0c.jpg'); " >
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-purple/90 to-primary-orange/90"></div>
+        <div class="absolute inset-0 shine-effect"></div>
+        <div class="relative container mx-auto px-4 h-[400px] sm:h-[400px] flex items-center justify-center text-center">
+            <div class="max-w-3xl">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 animate-fade-in">
+                    NOOR PAIN DE VIE
+                </h1>
+                <p class="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 animate-slide-up px-4">
+                    Specialized competency services to a diverse and inclusive clientele
+                </p>
+                <!-- <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 px-4">
+                    <a href="contact.html" class="btn-primary animate-bounce-slow w-full sm:w-auto">
+                        <i class="fas fa-rocket mr-2"></i> Get Started
+                    </a>
+                    <a href="services.html" class="btn-secondary animate-bounce-slow w-full sm:w-auto" style="animation-delay: 0.2s">
+                        <i class="fas fa-lightbulb mr-2"></i> Our Services
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-purple mb-4">About Us</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Noor Pain De Vie Services Limited (NPDV) is a client-focused organization 
+committed to empowering a diverse clientele by providing advanced business 
+skills through capacity building, training, communication, and media services.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Our Vision</h3>
+                    <p class="text-gray-600">To create an inclusive ecosystem of services that enables people and 
+organizations to thrive and reach their goals.</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Our Mission</h3>
+                    <p class="text-gray-600">To provide strategic and effective services that help an inclusive clientele 
+achieve their objectives.</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Core Values</h3>
+                    <p class="text-gray-600">Everything we do is grounded in reliability, integrity, and empathy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-[#f2f2f2]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary-purple mb-4">Our Experience</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The NPDV Faculty has a cumulative experience of over 100 years. Its experts work in various specialties including Strategic Communications, Media, Consultancy, Financial Services, Business Services, Legal Services, Management Training and Branding.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="bg-white blog-section py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary-orange/10 text-primary-orange text-sm font-semibold">
+                        <i class="fas fa-newspaper mr-2"></i> Latest Articles
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold text-primary-purple mb-4 animate-fade-in">
+                    Our Latest Insights
+                </h2>
+                <p class="text-xl text-primary-purple/80 max-w-2xl mx-auto animate-slide-up">
+                    Discover our latest articles, industry insights, and thought leadership content.
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                <!-- Blog Post 1 -->
+                <article class="blog-card group animate-fade-in-up">
+                    <div class="relative overflow-hidden">
+                        <img src="point.jpeg" alt="Blog Post 1" class="blog-image h-48 sm:h-56">
+                        <!-- <div class="absolute top-4 left-4">
+                            <span class="blog-category text-xs sm:text-sm">
+                                <i class="fas fa-chart-line mr-2"></i> Business Strategy
+                            </span>
+                        </div> -->
+                        <!-- Add social sharing overlay -->
+                        <div class="absolute inset-0 bg-primary-purple/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex space-x-3 sm:space-x-4">
+                                <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-facebook-f text-sm sm:text-base"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-twitter text-sm sm:text-base"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center text-primary-purple hover:bg-primary-orange hover:text-white transition-colors duration-300">
+                                    <i class="fab fa-linkedin-in text-sm sm:text-base"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between mb-3 sm:mb-4">
+                            <div class="flex items-center text-xs sm:text-sm text-primary-purple/60">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                March 15, 2024
+                            </div>
+                            <div class="flex items-center text-xs sm:text-sm text-primary-purple/60">
+                                <i class="far fa-clock mr-2"></i>
+                                5 min read
+                            </div>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-primary-purple mb-2 sm:mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Emotional Intelligence: The Key to Stronger Leadership and Relationships
+                        </h3>
+                        <p class="text-sm sm:text-base text-primary-purple/80 mb-3 sm:mb-4">
+                            Success in today’s workplace is not defined by technical skills alone. Emotional Intelligence (EI) is the ability to understand, manage, and harness emotions effectively, has become one of the most critical traits for leaders, teams, and professionals at every stage.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <a href="blogs/emotional.html" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300 text-sm sm:text-base">
+                                Read More 
+                                <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </a>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300 text-sm sm:text-base">
+                                    <i class="far fa-heart"></i>
+                                    <span class="ml-1">24</span>
+                                </button>
+                                <button class="text-primary-purple/60 hover:text-primary-orange transition-colors duration-300 text-sm sm:text-base">
+                                    <i class="far fa-comment"></i>
+                                    <span class="ml-1">8</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card group animate-fade-in-up" style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden">
+                        <img src="blog-digital-team.jpeg" alt="Blog Post 2" class="blog-image h-48 sm:h-56">
+                        <!-- <div class="absolute top-4 left-4">
+                            <span class="blog-category text-xs sm:text-sm">
+                                <i class="fas fa-users mr-2"></i> Leadership
+                            </span>
+                        </div> -->
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center text-xs sm:text-sm text-primary-purple/60 mb-4">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            March 12, 2024
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-primary-purple mb-2 sm:mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Business Strategy: Moving Beyond the Myth of Work-Life Balance
+                        </h3>
+                        <p class="text-sm sm:text-base text-primary-purple/80 mb-3 sm:mb-4">
+                            The phrase “work-life balance” has become a buzzword, yet for many professionals, it feels increasingly out of reach. The reality is that constant deadlines, rising workloads, and the ever-present pull of technology make perfect balance nearly impossible.
+                        </p>
+                        <a href="blogs/business.html" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300 text-sm sm:text-base">
+                            Read More 
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card group animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="relative overflow-hidden">
+                        <img src="itServiceImg.jpeg" alt="Blog Post 3" class="blog-image h-48 sm:h-56">
+                        <!-- <div class="absolute top-4 left-4">
+                            <span class="blog-category text-xs sm:text-sm">
+                                <i class="fas fa-laptop-code mr-2"></i> Technology
+                            </span>
+                        </div> -->
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center text-xs sm:text-sm text-primary-purple/60 mb-4">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            March 10, 2024
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-primary-purple mb-2 sm:mb-3 group-hover:text-primary-orange transition-colors duration-300">
+                            Career Coaching: Unlocking Growth Through Mentorship and Coaching
+                        </h3>
+                        <p class="text-sm sm:text-base text-primary-purple/80 mb-3 sm:mb-4">
+                           In today’s fast-paced professional world, mentorship and coaching are invaluable tools for anyone looking to accelerate their career. For senior leaders, they are not only essential for growth but also for building a lasting legacy.
+                        </p>
+                        <a href="blogs/career.html" class="inline-flex items-center text-primary-orange hover:text-primary-orange/80 transition-colors duration-300 text-sm sm:text-base">
+                            Read More 
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- View All Posts Button -->
+            <div class="text-center mt-12">
+                <a href="blog.html" class="btn-secondary group">
+                    View All Articles 
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                    <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Strategic Growth</h3>
+                    <p class="text-gray-600">Develop and implement effective strategies to drive sustainable business growth and market expansion.</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                        <i class="fas fa-users"></i>
+            </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Expert Team</h3>
+                    <p class="text-gray-600">Work with our experienced consultants who bring diverse expertise and industry knowledge to your projects.</p>
+                </div>
+                <div class="text-center p-8">
+                    <div class="text-4xl text-primary-purple mb-6">
+                        <i class="fas fa-lightbulb"></i>
+            </div>
+                    <h3 class="text-2xl text-gray-800 mb-4">Innovative Solutions</h3>
+                    <p class="text-gray-600">Access cutting-edge solutions and methodologies tailored to your unique business challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-primary-orange bg-primary-orange/10 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-star mr-2"></i>Our Expertise
+                </span>
+                <h2 class="text-4xl font-bold text-primary-purple mb-4">Transformative Services</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Elevate your organization with our comprehensive suite of professional services</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Strategic Communications -->
+                <div class="service-wrapper">
+                    <div class="service-content">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3 class="service-title">Strategic Communications</h3>
+                            <p class="service-description">
+                                Transform your brand's voice with our expert communication strategies. We help you build meaningful connections with your stakeholders through targeted messaging and impactful campaigns.
+                            </p>
+                        </div>
+                        <!-- <a href="services.html#strategic" class="service-link">
+                            Explore Service <i class="fas fa-arrow-right"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Training & Development -->
+                <div class="service-wrapper" style="animation-delay: 0.2s">
+                    <div class="service-content">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="service-title">Training & Development</h3>
+                            <p class="service-description">
+                                Empower your team with cutting-edge skills and knowledge. Our comprehensive training programs are designed to enhance capabilities and drive professional growth.
+                            </p>
+                        </div>
+                        <!-- <a href="services.html#training" class="service-link">
+                            Explore Service <i class="fas fa-arrow-right"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Career Coaching -->
+                <div class="service-wrapper" style="animation-delay: 0.4s">
+                    <div class="service-content">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3 class="service-title">Career Coaching</h3>
+                            <p class="service-description">
+                                Navigate your professional journey with confidence. Our expert coaches provide personalized guidance to help you achieve your career aspirations and maximize potential.
+                            </p>
+                        </div>
+                        <!-- <a href="services.html#coaching" class="service-link">
+                            Explore Service <i class="fas fa-arrow-right"></i>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl text-primary-purple mb-4">What Our Clients Say</h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">Discover how we've helped organizations achieve their goals</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="bg-gray-50 rounded-lg p-6 sm:p-8 shadow-md">
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-purple flex items-center justify-center text-white text-lg sm:text-xl font-bold mr-3 sm:mr-4">CO</div>
+                        <div>
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-800">Cyril O.</h4>
+                            <!-- <p class="text-sm sm:text-base text-gray-600">CEO, Tech Solutions</p> -->
+                        </div>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 italic mb-3 sm:mb-4">"The NPDV training program was eye-opening. The facilitators were engaging, knowledgeable, and practical in their delivery. Our staff left the sessions with actionable skills they could apply immediately, and the positive impact has been evident in our daily operations"</p>
+                    <div class="flex text-yellow-400 text-sm sm:text-base">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 sm:p-8 shadow-md">
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-purple flex items-center justify-center text-white text-lg sm:text-xl font-bold mr-3 sm:mr-4">AO</div>
+                        <div>
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-800">Amina O.</h4>
+                            <!-- <p class="text-sm sm:text-base text-gray-600">HR Director, Global Corp</p> -->
+                        </div>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 italic mb-3 sm:mb-4">"NPDV brought transparency and efficiency into our project tracking. Their monitoring and evaluation reporting format has made it easier for us to measure results and communicate progress with stakeholders. We now have a clear picture of what is working and where improvements are needed."</p>
+                    <div class="flex text-yellow-400 text-sm sm:text-base">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-6 sm:p-8 shadow-md">
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-purple flex items-center justify-center text-white text-lg sm:text-xl font-bold mr-3 sm:mr-4">UR</div>
+                        <div>
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-800">UC Royal</h4>
+                            <!-- <p class="text-sm sm:text-base text-gray-600">Project Manager, Innovation Labs</p> -->
+                        </div>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 italic mb-3 sm:mb-4">"NPDV was more than just a platform for me—it was a breakthrough. In the midst of uncertainty, it gave me clarity and a renewed sense of purpose in my career. For that, I remain deeply grateful."</p>
+                    <div class="flex text-yellow-400 text-sm sm:text-base">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+            </div>
+                </div>
+
+                 <div class="bg-gray-50 rounded-lg p-6 sm:p-8 shadow-md">
+                    <div class="flex items-center mb-4 sm:mb-6">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary-purple flex items-center justify-center text-white text-lg sm:text-xl font-bold mr-3 sm:mr-4">JA</div>
+                        <div>
+                            <h4 class="text-base sm:text-lg font-semibold text-gray-800">Jumoke A.</h4>
+                            <!-- <p class="text-sm sm:text-base text-gray-600">Project Manager, Innovation Labs</p> -->
+                        </div>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-700 italic mb-3 sm:mb-4">"What impressed me most about NPDV was their genuine commitment to people. They didn’t just deliver a service; they created an experience that inspired growth, collaboration, and confidence in our team."</p>
+                    <div class="flex text-yellow-400 text-sm sm:text-base">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                </ul>
+            </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Facebook
+                        </span> -->
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Follow us on Instagram
+                        </span> -->
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                            Connect with us on LinkedIn
+                        </span> -->
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav lg:hidden" role="navigation" aria-label="Mobile navigation">
+        <div class="mobile-nav-overlay"></div>
+        <ul>
+            <li>
+                <a href="/index.html" class="mobile-nav-item active" aria-current="page">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <div class="mobile-nav-item dropdown-trigger">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    <span>About</span>
+                    <div class="mobile-dropdown">
+                        <a href="about.html#company">
+                            <i class="fas fa-building" aria-hidden="true"></i>
+                            About the Company
+                        </a>
+                        <a href="about.html#mission">
+                            <i class="fas fa-bullseye" aria-hidden="true"></i>
+                            Mission/Vision
+                        </a>
+                        <a href="about.html#values">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            Core Values
+                        </a>
+                        <a href="about.html#team">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            Team
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="mobile-nav-item dropdown-trigger">
+                    <i class="fas fa-cogs" aria-hidden="true"></i>
+                    <span>Services</span>
+                    <div class="mobile-dropdown">
+                        <a href="services.html#strategic">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                            Strategic Communications
+                        </a>
+                        <a href="services.html#training">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            Training & Development
+                        </a>
+                        <a href="services.html#coaching">
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            Career Coaching
+                        </a>
+                        <a href="services.html#project">
+                            <i class="fas fa-tasks" aria-hidden="true"></i>
+                            Project Management
+                        </a>
+                        <a href="services.html#it">
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                            IT Solutions
+                        </a>
+                        <a href="services.html#financial">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            Financial Advisory
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="mobile-nav-item dropdown-trigger">
+                    <i class="fas fa-industry" aria-hidden="true"></i>
+                    <span>Industries</span>
+                    <div class="mobile-dropdown">
+                        <a href="industries.html#technology">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            Technology
+                        </a>
+                        <a href="industries.html#finance">
+                            <i class="fas fa-university" aria-hidden="true"></i>
+                            Finance
+                        </a>
+                        <a href="industries.html#healthcare">
+                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                            Healthcare
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="training-programs.html" class="mobile-nav-item">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <span>Training</span>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html" class="mobile-nav-item">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Navigation Toggle Button -->
+    <button class="mobile-nav-toggle lg:hidden" aria-label="Toggle mobile navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+
+            // Toggle mobile navigation
+            mobileNavToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                mobileNavOverlay.classList.toggle('active');
+                mobileNavToggle.classList.toggle('active');
+            });
+
+            // Close mobile navigation when clicking overlay
+            mobileNavOverlay.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                mobileNavOverlay.classList.remove('active');
+                mobileNavToggle.classList.remove('active');
+            });
+
+            // Handle dropdowns
+            dropdownTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdown = this.querySelector('.mobile-dropdown');
+                    const isActive = dropdown.classList.contains('active');
+
+                    // Close all other dropdowns
+                    document.querySelectorAll('.mobile-dropdown').forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown-trigger')) {
+                    document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Pull to Refresh Indicator -->
+    <div class="pull-to-refresh">
+        <i class="fas fa-sync-alt"></i>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html> 

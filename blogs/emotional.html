@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDV Blog | Career Coaching Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+          @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+            .hover-lift {
+                @apply transition-transform duration-300 hover:-translate-y-2;
+            }
+            .glass-effect {
+                @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+            }
+            .btn-primary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-purple/20 text-white rounded-lg font-semibold hover:bg-primary-purple/30 transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .nav-link.active {
+                @apply text-primary-orange;
+            }
+            .dropdown-item {
+                @apply block px-4 py-2 text-black hover:bg-primary-orange/20 hover:text-primary-orange transition-colors duration-300;
+            }
+            .mobile-nav-link {
+                @apply block text-white hover:text-primary-orange transition-colors duration-300 font-medium;
+                background: rgba(57, 27, 82, 0.95) !important;
+                border-bottom: 1px solid rgba(245, 124, 0, 0.1) !important;
+            }
+            .mobile-nav-link:hover {
+                background: rgba(245, 124, 0, 0.2) !important;
+                color: #F57C00 !important;
+            }
+            .mobile-nav-link.active {
+                @apply text-primary-orange;
+                background: rgba(245, 124, 0, 0.2) !important;
+            }
+            .mobile-nav-item {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item i {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item span {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item.active,
+            .mobile-nav-item:hover {
+                color: #F57C00 !important;
+            }
+            .mobile-nav-item.active i,
+            .mobile-nav-item:hover i {
+                color: #F57C00 !important;
+            }
+            .mobile-nav-item.active span,
+            .mobile-nav-item:hover span {
+                color: #F57C00 !important;
+            }
+            .service-icon {
+                @apply w-16 h-16 rounded-full bg-primary-purple/10 flex items-center justify-center text-2xl text-primary-orange transition-all duration-300;
+            }
+            .service-icon:hover {
+                @apply bg-primary-orange text-white scale-110;
+            }
+        }
+
+        :root {
+            --primary-purple: #391b52;
+            --primary-orange: #F57C00;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-purple), var(--primary-orange));
+            color: white;
+            border-radius: 0 0 50% 50% / 30%;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Article Section */
+        .article-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            margin-bottom: 60px;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .article-title {
+            font-size: 42px;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: #636e72;
+            font-size: 16px;
+        }
+
+        .article-content {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            color: var(--primary-orange);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dfe6e9;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary-orange);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-purple);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #a29bfe;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #636e72;
+        }
+   .training-banner {
+            height: 400px;
+            background: linear-gradient(rgba(57, 27, 82, 0.9), rgba(245, 124, 0, 0.9)), url('header1.PNG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            /* margin-top: 80px; */
+        }
+
+        .training-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .training-banner p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* New Styles for Improvements */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-card-img {
+            height: 200px;
+            background-color: #391b52;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .blog-card-content {
+            padding: 20px;
+        }
+        
+        .blog-card-date {
+            color: #F57C00;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .blog-card-title {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #391b52;
+        }
+        
+        .blog-card-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .blog-card-link {
+            color: #F57C00;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .blog-card-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .blog-card-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        .social-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .social-share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+        
+        .social-share-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .facebook {
+            background: #3b5998;
+        }
+        
+        .twitter {
+            background: #1da1f2;
+        }
+        
+        .linkedin {
+            background: #0077b5;
+        }
+        
+        .link {
+            background: #391b52;
+        }
+        
+        .author-bio {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #391b52;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+        
+        .author-name {
+            font-size: 24px;
+            color: #391b52;
+            margin-bottom: 5px;
+        }
+        
+        .author-title {
+            color: #F57C00;
+            margin-bottom: 15px;
+        }
+        
+        .author-description {
+            color: #666;
+            max-width: 600px;
+        }
+        
+        .subscribe-form {
+            background: linear-gradient(135deg, #391b52 0%, #F57C00 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .subscribe-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .subscribe-description {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .form-group {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+        
+        .form-submit {
+            background: #F57C00;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            padding: 0 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .form-submit:hover {
+            background: #e27100;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            color: #391b52;
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #F57C00;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .article-title {
+                font-size: 32px;
+            }
+            
+            .article-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .form-submit {
+                border-radius: 8px;
+                padding: 15px;
+            }
+            
+            .training-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="/NPDV Logo purple.png" alt="" class="h-10 w-10 mr-2">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="training-banner relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-purple/90 to-primary-orange/90"></div>
+        <div class="absolute inset-0 bg-[url('../many.jpeg')] bg-cover bg-center opacity-20"></div>
+        <div class="relative container mx-auto px-4 h-[400px] flex items-center justify-center text-center">
+            <div class="max-w-3xl">
+              <div class="gallery-title">
+                <h1 class="text-white ">Blog & Events</h2>
+                <p class="">Stay updated with our latest insights, news, and upcoming events</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <div class="container">
+        <article class="article-container">
+            <div class="article-header">
+                <h1 class="article-title">Emotional Intelligence: The Key to Stronger Leadership and Relationships</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> September 15, 2023</span>
+                    <span><i class="far fa-clock"></i> 8 min read</span>
+                    <span><i class="far fa-folder"></i> Career Development</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>Success in today's workplace is not defined by technical skills alone. Emotional Intelligence (EI) - the ability to understand, manage, and harness emotions effectively - has become one of the most critical traits for leaders, teams, and professionals at every stage.</p>
+
+                <h3>Why Emotional Intelligence Matters</h3>
+                
+                <p>Emotional Intelligence is the foundation for effective leadership, teamwork, and professional relationships. Unlike IQ, which remains relatively fixed throughout life, EI can be developed and strengthened with practice and commitment. Leaders with high emotional intelligence create environments where people feel valued, understood, and motivated to do their best work.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Self-Awareness:</strong> Recognizing your strengths, weaknesses, and triggers allows for better decision-making. This foundational element of EI enables you to understand how your emotions affect your thoughts and behavior.</p>
+                </div>
+                
+                
+                <div class="highlight-box">
+                    <p><strong>Empathy:</strong> Understanding and relating to the emotions of others enhances communication and collaboration. This crucial component allows leaders to respond appropriately to the emotional needs of their team members.</p>
+                </div>
+                
+                
+                <div class="highlight-box">
+                    <p><strong>Relationship Management:</strong> Strong interpersonal skills drive effective teamwork and leadership. This involves inspiring others, managing conflict, and building strong bonds through clear communication.</p>
+                </div>
+                
+                <h3>The Impact of Emotional Intelligence in the Workplace</h3>
+                
+                <p>Research shows that leaders with high emotional intelligence not only inspire confidence but also cultivate positive, productive environments where people thrive. Studies indicate that EI accounts for nearly 90% of what sets high performers apart from peers with similar technical skills and knowledge.</p>
+                
+                <p>Teams with emotionally intelligent leaders demonstrate higher job satisfaction, reduced turnover, and better overall performance. Organizations that prioritize EI development see improvements in collaboration, innovation, and customer satisfaction.</p>
+                
+                <h3>Developing Your Emotional Intelligence</h3>
+                
+                <p>Unlike cognitive intelligence, emotional intelligence can be developed at any stage of your career. Here are practical strategies to enhance your EI:</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Practice self-reflection:</strong> Regularly examine how you handle situations and interactions. Journaling can be an effective tool for increasing self-awareness.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Seek feedback:</strong> Ask trusted colleagues for honest feedback about your interpersonal skills and emotional responses.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Learn to manage stress:</strong> Develop healthy coping mechanisms for stress, as it can significantly impair emotional intelligence.</p>
+                </div>
+                
+                <h3>The NPDV Approach to Emotional Intelligence Development</h3>
+                
+                <p>At NPDV Services, we help professionals develop EI skills that build resilience, improve communication, and foster meaningful professional relationships. Our approach combines assessment, personalized coaching, and practical strategies that can be immediately applied in your professional context.</p>
+
+                <p>We recognize that emotional intelligence development is not one-size-fits-all. Our programs are tailored to your specific role, industry, and organizational culture to ensure maximum impact and sustainable growth.</p>
+
+                <p>Whether you're looking to enhance your leadership capabilities, improve team dynamics, or navigate complex workplace relationships, our emotional intelligence training provides the tools and support you need to excel.</p>
+            </div>
+            
+            <!-- Social Sharing Buttons -->
+            <!-- <div class="social-share">
+                <a href="#" class="social-share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-share-btn twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-share-btn link"><i class="fas fa-link"></i></a>
+            </div> -->
+            
+            <!-- Author Bio -->
+            <!-- <div class="author-bio">
+                <div class="author-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="author-name">Dr. Nkechi Precious</h3>
+                <p class="author-title">Senior Career Coach & Founder of NPDV</p>
+                <p class="author-description">Dr. Nkechi Precious is a certified career coach with over 15 years of experience helping professionals achieve their career goals. She specializes in leadership development, career transitions, and strategic professional planning. Her insights have been featured in numerous industry publications and conferences.</p>
+            </div> -->
+        </article>
+        
+        <!-- Subscribe Form -->
+        <div class="subscribe-form">
+            <h2 class="subscribe-title">Ready to enhance your emotional intelligence?</h2>
+            <p class="subscribe-description">Our coaching programs help you develop the EI skills needed for stronger leadership and relationships.</p>
+            <!-- <form class="form-group"> -->
+                <!-- <input type="email" class="form-input" placeholder="Your email address"> -->
+                <button type="submit" class="form-submit rounded-full h-10"><a href="../contact.html">Book a Session</a></button>
+            <!-- </form> -->
+        </div>
+        
+      
+    </div>
+
+   
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="../NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for highlight boxes when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const highlightBoxes = document.querySelectorAll('.highlight-box');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            highlightBoxes.forEach(box => {
+                box.style.opacity = 0;
+                box.style.transform = 'translateX(-20px)';
+                box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(box);
+            });
+            
+            // Animation for blog cards
+            blogCards.forEach((card, index) => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+            
+            // Form submission handling
+            const subscribeForm = document.querySelector('.subscribe-form form');
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput.value) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
