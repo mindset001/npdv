@@ -1,4 +1,4 @@
- .faq-section {
+.faq-section {
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -6,7 +6,7 @@
         }
         
         .faq-header {
-            background: linear-gradient(120deg, #1a56db 0%, #3b82f6 100%);
+            background: linear-gradient(120deg, #8b5cf6 0%, #ec4899 100%);
             color: white;
             padding: 25px 30px;
             text-align: center;
@@ -36,12 +36,12 @@
         }
         
         .faq-item:hover {
-            border-color: #3b82f6;
+            border-color: #f97316;
         }
         
         .faq-question {
             padding: 18px 20px;
-            background-color: #f9fafb;
+            background-color: #fff7ed;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,7 +50,7 @@
         }
         
         .faq-question:hover {
-            background-color: #f1f5f9;
+            background-color: #ffedd5;
         }
         
         .faq-question h3 {
@@ -62,7 +62,7 @@
         }
         
         .faq-icon {
-            color: #3b82f6;
+            color: #f97316;
             margin-right: 12px;
             font-size: 18px;
         }
@@ -93,17 +93,22 @@
         
         .faq-item.active .toggle-icon {
             transform: rotate(180deg);
-            color: #3b82f6;
+            color: #8b5cf6;
         }
         
         .highlight {
-            color: #3b82f6;
+            color: #f97316;
+            font-weight: 600;
+        }
+        
+        .purple-highlight {
+            color: #8b5cf6;
             font-weight: 600;
         }
         
         .contact-note {
-            background-color: #f0f7ff;
-            border-left: 4px solid #3b82f6;
+            background-color: #faf5ff;
+            border-left: 4px solid #8b5cf6;
             padding: 20px;
             border-radius: 8px;
             margin-top: 30px;

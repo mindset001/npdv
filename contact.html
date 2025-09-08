@@ -1157,101 +1157,109 @@
                 <!-- Contact Form -->
                 <div class="contact-form animate-slide-up">
                     <h2 class="text-3xl font-bold text-primary-purple mb-8">Send us a Message</h2>
-                    <form id="contactForm" class="space-y-6" novalidate>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="form-label">Full Name <span class="text-red-500">*</span></label>
-                                <input type="text" id="name" name="name" class="form-input" required 
-                                       placeholder="Enter your full name" minlength="2" maxlength="50"
-                                       aria-describedby="nameError" aria-invalid="false">
-                                <div class="form-error" id="nameError" role="alert"></div>
-                            </div>
+                  <form 
+  id="contactForm" 
+  class="space-y-6" 
+  action="https://formspree.io/f/xrbarrbw" 
+  method="POST" 
+  novalidate
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="name" class="form-label">Full Name <span class="text-red-500">*</span></label>
+      <input type="text" id="name" name="name" class="form-input" required 
+             placeholder="Enter your full name" minlength="2" maxlength="50"
+             aria-describedby="nameError" aria-invalid="false">
+      <div class="form-error" id="nameError" role="alert"></div>
+    </div>
 
-                            <div>
-                                <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" class="form-input" required 
-                                       placeholder="Enter your email address"
-                                       aria-describedby="emailError" aria-invalid="false">
-                                <div class="form-error" id="emailError" role="alert"></div>
-                            </div>
-                        </div>
+    <div>
+      <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
+      <input type="email" id="email" name="email" class="form-input" required 
+             placeholder="Enter your email address"
+             aria-describedby="emailError" aria-invalid="false">
+      <div class="form-error" id="emailError" role="alert"></div>
+    </div>
+  </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required 
-                                       placeholder="Enter your phone number"
-                                       aria-describedby="phoneError" aria-invalid="false">
-                                <div class="form-error" id="phoneError" role="alert"></div>
-                            </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
+      <input type="tel" id="phone" name="phone" class="form-input" required 
+             placeholder="Enter your phone number"
+             aria-describedby="phoneError" aria-invalid="false">
+      <div class="form-error" id="phoneError" role="alert"></div>
+    </div>
 
-                            <div>
-                                <label for="subject" class="form-label">Subject <span class="text-red-500">*</span></label>
-                                <div class="relative">
-                                    <select id="subject" name="subject" class="form-input appearance-none pr-10 cursor-pointer" required 
-                                            aria-describedby="subjectError" aria-invalid="false">
-                                        <option value="" disabled selected>Select a subject</option>
-                                        <optgroup label="Services">
-                                            <option value="strategic-communications">Strategic Communications</option>
-                                            <option value="training-development">Training & Development</option>
-                                            <option value="career-coaching">Career Coaching</option>
-                                            <option value="project-management">Project Management</option>
-                                            <option value="it-solutions">IT Solutions</option>
-                                            <option value="financial-advisory">Financial Advisory</option>
-                                            <option value="risk-management">Risk Management</option>
-                                        </optgroup>
-                                        <optgroup label="Training Programs">
-                                            <option value="leadership-training">Leadership Training</option>
-                                            <option value="communication-skills">Communication Skills</option>
-                                            <option value="project-management-training">Project Management Training</option>
-                                            <option value="team-building">Team Building</option>
-                                            <option value="customer-service">Customer Service</option>
-                                            <option value="sales-training">Sales Training</option>
-                                            <option value="time-management">Time Management</option>
-                                        </optgroup>
-                                        <optgroup label="Other">
-                                            <option value="partnership">Partnership Inquiry</option>
-                                            <option value="careers">Careers</option>
-                                            <option value="feedback">Feedback</option>
-                                            <option value="other">Other</option>
-                                        </optgroup>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <i class="fas fa-chevron-down text-primary-orange"></i>
-                                    </div>
-                                </div>
-                                <div class="form-error" id="subjectError" role="alert"></div>
-                            </div>
-                        </div>
+    <div>
+      <label for="subject" class="form-label">Subject <span class="text-red-500">*</span></label>
+      <div class="relative">
+        <select id="subject" name="subject" class="form-input appearance-none pr-10 cursor-pointer" required 
+                aria-describedby="subjectError" aria-invalid="false">
+          <option value="" disabled selected>Select a subject</option>
+          <optgroup label="Services">
+            <option value="strategic-communications">Strategic Communications</option>
+            <option value="training-development">Training & Development</option>
+            <option value="career-coaching">Career Coaching</option>
+            <option value="project-management">Project Management</option>
+            <option value="it-solutions">IT Solutions</option>
+            <option value="financial-advisory">Financial Advisory</option>
+            <option value="risk-management">Risk Management</option>
+            <option value="legal-services">Legal Services</option>
+          </optgroup>
+          <optgroup label="Training Programs">
+            <option value="leadership-training">Leadership Training</option>
+            <option value="communication-skills">Communication Skills</option>
+            <option value="project-management-training">Project Management Training</option>
+            <option value="team-building">Team Building</option>
+            <option value="customer-service">Customer Service</option>
+            <option value="sales-training">Sales Training</option>
+            <option value="time-management">Time Management</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="partnership">Partnership Inquiry</option>
+            <option value="careers">Careers</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </optgroup>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <i class="fas fa-chevron-down text-primary-orange"></i>
+        </div>
+      </div>
+      <div class="form-error" id="subjectError" role="alert"></div>
+    </div>
+  </div>
 
-                        <div>
-                            <label for="message" class="form-label">Message <span class="text-red-500">*</span></label>
-                            <textarea id="message" name="message" rows="4" class="form-input" required 
-                                      placeholder="Enter your message" minlength="10" maxlength="1000"
-                                      aria-describedby="messageError messageCounter" aria-invalid="false"></textarea>
-                            <div class="flex justify-between items-center mt-1">
-                                <div class="form-error" id="messageError" role="alert"></div>
-                                <div id="messageCounter" class="text-sm text-gray-500">
-                                    <span id="currentLength">0</span>/1000 characters
-                                </div>
-                            </div>
-                        </div>
+  <div>
+    <label for="message" class="form-label">Message <span class="text-red-500">*</span></label>
+    <textarea id="message" name="message" rows="4" class="form-input" required 
+              placeholder="Enter your message" minlength="10" maxlength="1000"
+              aria-describedby="messageError messageCounter" aria-invalid="false"></textarea>
+    <div class="flex justify-between items-center mt-1">
+      <div class="form-error" id="messageError" role="alert"></div>
+      <div id="messageCounter" class="text-sm text-gray-500">
+        <span id="currentLength">0</span>/1000 characters
+      </div>
+    </div>
+  </div>
 
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button type="submit" class="btn-primary flex-1">
-                                <span class="flex items-center justify-center">
-                                    <i class="fas fa-paper-plane mr-2"></i>
-                                    Send Message
-                                </span>
-                            </button>
-                            <button type="reset" class="btn-secondary flex-1">
-                                <span class="flex items-center justify-center">
-                                    <i class="fas fa-undo mr-2"></i>
-                                    Clear Form
-                                </span>
-                            </button>
-                        </div>
-                    </form>
+  <div class="flex flex-col sm:flex-row gap-4">
+    <button type="submit" class="btn-primary flex-1">
+      <span class="flex items-center justify-center">
+        <i class="fas fa-paper-plane mr-2"></i>
+        Send Message
+      </span>
+    </button>
+    <button type="reset" class="btn-secondary flex-1">
+      <span class="flex items-center justify-center">
+        <i class="fas fa-undo mr-2"></i>
+        Clear Form
+      </span>
+    </button>
+  </div>
+</form>
+
                 </div>
             </div>
 
