@@ -30,6 +30,7 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://npdv.com.ng">
+    <link rel="stylesheet" href="/faq.css">
     
     <!-- Structured Data / Schema.org -->
     <script type="application/ld+json">
@@ -526,35 +527,6 @@
             animation: linkReveal 1s ease forwards 0.4s;
         }
 
-         /* Video Hero Section */
-        .video-hero {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(57, 27, 82, 0.85), rgba(245, 124, 0, 0.85));
-            z-index: 2;
-        }
         .service-link i {
             margin-left: 0.5rem;
             transition: transform 0.3s ease;
@@ -755,8 +727,8 @@
     </button>
 
     <!-- Help Modal -->
-    <div id="help-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50" style="display: none;">
-        <div class="flex items-center justify-center min-h-screen p-4">
+    <div id="help-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto" style="display: none; ">
+        <div class="flex items-center justify-center min-h-screen p-4 ">
             <div class="bg-white rounded-lg p-8 max-w-lg w-full relative transform transition-all">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-semibold text-gray-800">Need Help?</h3>
@@ -765,38 +737,99 @@
                     </button>
                 </div>
                 <div class="space-y-6">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <h4 class="font-semibold text-gray-800 mb-4">Common Questions</h4>
-                        <ul class="space-y-3 text-gray-600">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
-                                <span>What services does NPDV offer?</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
-                                <span>How can I get started with NPDV?</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
-                                <span>What industries do you serve?</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-primary-orange mr-2 mt-1"></i>
-                                <span>How can I contact support?</span>
-                            </li>
-                        </ul>
+                    <div class="faq-section">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about NPDV services</p>
+            </div>
+            
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-check-circle faq-icon"></i> What services does NPDV offer?</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>NPDV offers a comprehensive suite of digital services including <span class="highlight">web development</span>, <span class="highlight">mobile app development</span>, <span class="highlight">cloud solutions</span>, <span class="highlight">UI/UX design</span>, and <span class="highlight">digital marketing</span>. We help businesses transform their digital presence with cutting-edge technology solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-check-circle faq-icon"></i> How can I get started with NPDV?</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Getting started is easy! Simply contact us through our website or call our sales team at <span class="highlight">(555) 123-4567</span>. We'll schedule a free consultation to understand your needs and provide a tailored proposal. The process typically involves:</p>
+                            <ul style="margin-top: 10px; margin-left: 20px;">
+                                <li>Initial consultation</li>
+                                <li>Project assessment</li>
+                                <li>Proposal and quote</li>
+                                <li>Onboarding and project kickoff</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-check-circle faq-icon"></i> What industries do you serve?</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>NPDV serves clients across various industries including:</p>
+                            <ul style="margin-top: 10px; margin-left: 20px;">
+                                <li><span class="highlight">Healthcare</span> - Patient portals, medical apps</li>
+                                <li><span class="highlight">E-commerce</span> - Online stores, payment solutions</li>
+                                <li><span class="highlight">Education</span> - Learning management systems</li>
+                                <li><span class="highlight">Finance</span> - Fintech applications, banking solutions</li>
+                                <li><span class="highlight">Manufacturing</span> - Supply chain management systems</li>
+                                <li>And many more!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3><i class="fas fa-check-circle faq-icon"></i> How can I contact support?</h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Our support team is available 24/7 to assist you. You can reach us through:</p>
+                            <ul style="margin-top: 10px; margin-left: 20px;">
+                                <li><span class="highlight">Email:</span> support@npdv.com</li>
+                                <li><span class="highlight">Phone:</span> (555) 987-SUPPORT</li>
+                                <li><span class="highlight">Live Chat:</span> Available on our website</li>
+                                <li><span class="highlight">Help Center:</span> Access comprehensive documentation and tutorials</li>
+                            </ul>
+                            <p style="margin-top: 10px;">For critical issues, we offer a dedicated emergency support line for enterprise clients.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-note">
+                    <h3 style="margin-bottom: 10px;">Can't find what you're looking for?</h3>
+                    <p>Our team is ready to answer any questions you may have. Contact us today and let's start a conversation about how we can help your business grow.</p>
+                </div>
+            </div>
+        </div>
                     <div class="bg-gray-50 p-6 rounded-lg">
                         <h4 class="font-semibold text-gray-800 mb-4">Contact Support</h4>
                         <p class="text-gray-600 mb-4">Need more help? Contact our support team:</p>
                         <div class="space-y-3">
-                            <a href="tel:+2349147578393" class="flex items-center text-gray-600 hover:text-primary-orange transition-colors duration-200">
+                            <a href="tel:+2349069991805" class="flex items-center text-gray-600 hover:text-primary-orange transition-colors duration-200">
                                 <i class="fas fa-phone mr-3 text-primary-orange"></i>
-                                +234 914 757 8393
+                                +234 906 999 1805
                             </a>
                             <a href="mailto:info@npdv.com" class="flex items-center text-gray-600 hover:text-primary-orange transition-colors duration-200">
                                 <i class="fas fa-envelope mr-3 text-primary-orange"></i>
-                                admin@npdv.com
+                                admin@npdv.com.ng
                             </a>
                         </div>
                     </div>
@@ -1107,11 +1140,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="video-hero relative overflow-hidden bg-gradient-to-r from-primary-purple to-primary-orange parallax" style="background-image: url('https://i.pinimg.com/736x/e2/d4/e2/e2d4e200343c6c003db6988cfe930a0c.jpg'); " >
-        <video class="video-background" autoplay muted loop playsinline>
-            <source src="/npdv.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <section class="relative overflow-hidden bg-gradient-to-r from-primary-purple to-primary-orange parallax" style="background-image: url('https://i.pinimg.com/736x/e2/d4/e2/e2d4e200343c6c003db6988cfe930a0c.jpg'); " >
         <div class="absolute inset-0 bg-gradient-to-r from-primary-purple/90 to-primary-orange/90"></div>
         <div class="absolute inset-0 shine-effect"></div>
         <div class="relative container mx-auto px-4 h-[400px] sm:h-[400px] flex items-center justify-center text-center">
@@ -1744,6 +1773,33 @@ achieve their objectives.</p>
                     });
                 }
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other open items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Open first item by default
+            if (faqItems.length > 0) {
+                faqItems[0].classList.add('active');
+            }
         });
     </script>
 
