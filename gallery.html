@@ -1150,7 +1150,72 @@
                 justify-content: flex-start;
             }
         }
-    </style>
+
+        /* Add this to allow pausing videos by clicking on them */
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    function toggleMobileMenu() {
+        mobileNav.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        body.classList.toggle('overflow-hidden');
+    }
+
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    navOverlay.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            body.classList.remove('overflow-hidden');
+        });
+    });
+
+    // Handle scroll behavior
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            mobileNav.style.transform = 'translateY(100%)';
+        } else {
+            mobileNav.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Handle active states
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-item');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+
+    // Pause video on click
+    document.querySelectorAll('.gallery-item[data-category="videos"] video').forEach(function(video) {
+        video.addEventListener('click', function(e) {
+            if (!video.paused) {
+                video.pause();
+            } else {
+                video.play();
+            }
+        });
+    });
+});
+</script>
+<!--
 </head>
 <body>
      <!-- Header Navigation -->
@@ -1205,6 +1270,7 @@
                                 <li><a href="services.html#project" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Project Management</a></li>
                                 <li><a href="services.html#it" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">IT Solutions</a></li>
                                 <li><a href="services.html#financial" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Financial Advisory</a></li>
+                                <li><a href="services.html#legal" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Legal Services</a></li>
                                 <li><a href="services.html#risk" class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk Management</a></li>
                             </ul>
                         </div>
@@ -1358,6 +1424,10 @@
                                 <i class="fas fa-chart-line" aria-hidden="true"></i>
                                 <p class="text-black"> Financial Advisory</p>
                             </a>
+                             <a href="services.html#legal" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black">Legal Services</p>
+                            </a>
                         </div>
                     </div>
 
@@ -1459,8 +1529,9 @@
                 <button class="filter-btn" data-filter="hms">Center For Management Development</button>
                 <button class="filter-btn" data-filter="rabiu">Special Guest Appearances</button>
                 <button class="filter-btn" data-filter="cv">Courtesy Visit</button>
-                <button class="filter-btn" data-filter="star">Startfield College Internship</button>
+                <button class="filter-btn" data-filter="star">Starfield College Internship</button>
                  <button class="filter-btn" data-filter="recruit">Recruitment Program</button>
+                  <button class="filter-btn" data-filter="videos">Videos</button>
             </div>
             
            <div>
@@ -1813,43 +1884,7 @@
                     <div class="gallery-overlay">
                         <div class="gallery-caption">
                             <!-- <h3>Management Retreat</h3> -->
-                            <!-- <p>Celebrating another successful project completion</p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="pt13.jpg" alt=" " class="gallery-img">
-                    <div class="gallery-overlay">
-                        <div class="gallery-caption">
-                            <!-- <h3>Management Retreat</h3> -->
-                            <!-- <p>Celebrating another successful project completion</p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="pt.jpg" alt=" " class="gallery-img">
-                    <div class="gallery-overlay">
-                        <div class="gallery-caption">
-                            <!-- <h3>Management Retreat</h3> -->
-                            <!-- <p>Celebrating another successful project completion</p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="pt2.jpg" alt=" " class="gallery-img">
-                    <div class="gallery-overlay">
-                        <div class="gallery-caption">
-                            <!-- <h3>Management Retreat</h3> -->
-                            <!-- <p>Celebrating another successful project completion</p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="events">
-                    <img src="pt3.jpg" alt=" " class="gallery-img">
-                    <div class="gallery-overlay">
-                        <div class="gallery-caption">
-                            <!-- <h3>Management Retreat</h3> -->
-                            <!-- <p>Celebrating another successful project completion</p> -->
+                            <!-- <p>Celebrating another successful project completion</p>
                         </div>
                     </div>
                 </div>
@@ -2194,6 +2229,52 @@
         </div>
     </section>
     
+    <!-- Video Gallery Section -->
+    <section class="gallery-section">
+    <div class="gallery-container">
+        <h2 class="text-2xl font-bold text-primary-purple mb-6 mt-4">Videos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="videos">
+                <video controls poster="videos/thumbnail1.jpg" class="gallery-img" style="width:100%;height:auto;object-fit:cover;">
+                    <source src="videos/training1.mp4" type="video/mp4" >
+                    Your browser does not support the video tag.
+                </video>
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>SME Training Highlights</h3>
+                        <p>Watch moments from our SME training session.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="videos">
+                <video controls poster="videos/thumbnail2.jpg" class="gallery-img" style="width:100%;height:auto;object-fit:cover;">
+                    <source src="videos/training2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>CSR Event</h3>
+                        <p>Highlights from our CSR event.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="videos">
+                <video controls poster="videos/thumbnail2.jpg" class="gallery-img" style="width:100%;height:auto;object-fit:cover;">
+                    <source src="videos/trainig=ng3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="gallery-overlay">
+                    <div class="gallery-caption">
+                        <h3>CSR Event</h3>
+                        <p>Highlights from our CSR event.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more videos as needed -->
+        </div>
+    </div>
+</section>
+
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close">&times;</span>
@@ -2207,138 +2288,119 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-primary-purple text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center sm:text-left">
-                    <img src="NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
-                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
-                </div>
-                <div class="text-center sm:text-left">
-                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
-                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
-                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
-                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
-                </ul>
-            </div>
-                <div class="text-center sm:text-left">
-                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
-                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
-                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
-                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
-                </ul>
-            </div>
-                <div class="text-center sm:text-left">
-                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
-                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
-                        <li class="flex items-center justify-center sm:justify-start">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            Flat 240, CBN Quarters, Utako, Abuja, FCT
-                        </li>
-                        <li class="flex items-center justify-center sm:justify-start">
-                            <i class="fas fa-phone mr-2"></i>
-                            0906 999 1805
-                        </li>
-                        <li class="flex items-center justify-center sm:justify-start">
-                            <i class="fas fa-envelope mr-2"></i>
-                            admin@npdv.com.ng
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
-                <div class="social-icons-container flex justify-center space-x-8 mb-6">
-                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
-                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
-                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
-                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                            Follow us on Facebook
-                        </span> -->
-                    </a>
-                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
-                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
-                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
-                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                            Follow us on Instagram
-                        </span> -->
-                    </a>
-                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
-                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
-                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
-                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                            Follow us on Instagram
-                        </span> -->
-                    </a>
-                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
-                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
-                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
-                        <!-- <span class="social-tooltip absolute -top-10 left-1/2 transform -translate-x-1/2 bg-primary-purple text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-                            Connect with us on LinkedIn
-                        </span> -->
-                    </a>
-                </div>
-                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Video Modal -->
+<div id="video-modal" class="lightbox" style="display:none;">
+    <span class="lightbox-close" id="video-modal-close">&times;</span>
+    <div class="lightbox-content" style="max-width:900px;">
+        <video id="modal-video" controls style="width:100%;max-height:80vh;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,0.3);background:#000;">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="lightbox-caption" id="video-modal-caption"></div>
+    </div>
+</div>
 
-    <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu functionality
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const mobileNav = document.querySelector('.mobile-nav');
-            const navOverlay = document.querySelector('.nav-overlay');
-            const body = document.body;
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const body = document.body;
 
-            function toggleMobileMenu() {
-                mobileNav.classList.toggle('active');
-                navOverlay.classList.toggle('active');
-                body.classList.toggle('overflow-hidden');
-            }
+    function toggleMobileMenu() {
+        mobileNav.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        body.classList.toggle('overflow-hidden');
+    }
 
-            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-            navOverlay.addEventListener('click', toggleMobileMenu);
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    navOverlay.addEventListener('click', toggleMobileMenu);
 
-            // Close mobile menu when clicking a link
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    body.classList.remove('overflow-hidden');
-                });
-            });
-
-            // Handle scroll behavior
-            let lastScroll = 0;
-            window.addEventListener('scroll', () => {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    mobileNav.style.transform = 'translateY(100%)';
-                } else {
-                    mobileNav.style.transform = 'translateY(0)';
-                }
-                
-                lastScroll = currentScroll;
-            });
-
-            // Handle active states
-            const currentPath = window.location.pathname;
-            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-item');
-            
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPath) {
-                    link.classList.add('active');
-                }
-            });
+    // Close mobile menu when clicking a link
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            navOverlay.classList.remove('active');
+            body.classList.remove('overflow-hidden');
         });
+    });
+
+    // Handle scroll behavior
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            mobileNav.style.transform = 'translateY(100%)';
+        } else {
+            mobileNav.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Handle active states
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-item');
+    
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active');
+        }
+    });
+
+    // Video Modal Logic
+    const videoModal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const videoModalClose = document.getElementById('video-modal-close');
+    const videoModalCaption = document.getElementById('video-modal-caption');
+    const videoGalleryItems = document.querySelectorAll('.gallery-item[data-category="videos"] .gallery-img');
+
+    videoGalleryItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const source = item.querySelector('source') ? item.querySelector('source').src : item.src;
+            const poster = item.getAttribute('poster');
+            const captionDiv = item.parentElement.querySelector('.gallery-caption');
+            videoModal.style.display = 'flex';
+            modalVideo.src = source;
+            modalVideo.poster = poster || '';
+            videoModalCaption.innerHTML = captionDiv ? captionDiv.innerHTML : '';
+            modalVideo.currentTime = 0;
+            modalVideo.play();
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    videoModalClose.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+        modalVideo.pause();
+        modalVideo.src = '';
+        document.body.style.overflow = 'auto';
+    });
+
+    videoModal.addEventListener('click', function(e) {
+        if (e.target === videoModal) {
+            videoModal.style.display = 'none';
+            modalVideo.pause();
+            modalVideo.src = '';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (videoModal.style.display === 'flex') {
+            if (e.key === 'Escape') {
+                videoModal.style.display = 'none';
+                modalVideo.pause();
+                modalVideo.src = '';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+});
         // Gallery Filtering
         document.addEventListener('DOMContentLoaded', function() {
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -2434,4 +2496,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

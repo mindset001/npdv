@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Resources Courses - NPDV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            color: #333;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #391b52;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #F57C00;
+        }
+        .banner {
+            height: 260px;
+            background: linear-gradient(rgba(57,27,82,0.85), rgba(245,124,0,0.85)), url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=900&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .banner h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.18);
+        }
+        .banner p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.93;
+        }
+        .course-table {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(57,27,82,0.10);
+            background: white;
+            margin-bottom: 40px;
+        }
+        .course-table th, .course-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+        .course-table th {
+            background: #f3f4f6;
+            color: #391b52;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .course-table tr {
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .course-table tr:last-child {
+            border-bottom: none;
+        }
+        .course-table td {
+            font-size: 1rem;
+        }
+        .course-table td.price {
+            color: #F57C00;
+            font-weight: 600;
+            text-align: right;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #391b52 0%, #F57C00 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .cta-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .cta-description {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .cta-btn {
+            background: #F57C00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            height: 40px;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            background: #e27100;
+        }
+        /* Footer */
+        footer {
+            background: #391b52;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #a29bfe;
+        }
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #F57C00;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #636e72;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 8px; }
+            .banner { height: 140px; }
+            .banner h1 { font-size: 1.3rem; }
+            .course-table th, .course-table td { padding: 0.7rem; font-size: 0.95rem; }
+            .cta-title { font-size: 1.1rem; }
+            .cta-box { padding: 18px; }
+        }
+          @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .article-title {
+                font-size: 32px;
+            }
+            
+            .article-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .form-submit {
+                border-radius: 8px;
+                padding: 15px;
+            }
+            
+            .training-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="../NPDV Logo purple.png" alt="NPDV Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="../services.html">Services</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div>
+            <h1>Human Resources Courses</h1>
+            <p>Build your HR expertise with our practical and strategic programs for professionals and organizations.</p>
+        </div>
+    </section>
+
+    <!-- Course Table -->
+    <div class="container">
+        <div class="mb-10">
+            <h2 class="text-2xl font-bold text-primary-purple mb-6">Course Cost (in Naira)</h2>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th class="text-right">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Managing The Human Resources Department Of Your Organization</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Managing Human Resources In The Digital World</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Essentials Of Human Resources Management</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Compensation, Benefit Administration And Reward Management</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>HR Skills For Non- HR Professionals</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Communication And Interpersonal Skill Workshop</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Strategic Human Resources Management</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>The Essentials Of Human Resources Law</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Managing Stress And Pressure At Work</td>
+                        <td class="price">₦180,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cta-box">
+            <h2 class="cta-title">Ready to Enroll?</h2>
+            <p class="cta-description">Contact us to book your spot or learn more about our human resources courses.</p>
+            <a href="../contact.html" class="cta-btn">Book Now</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="../NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="../services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="../training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="../case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="../services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="../services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="../services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

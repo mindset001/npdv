@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDV Blog | The Gift of Mindfulness: Coming Back to the Present</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+            .hover-lift {
+                @apply transition-transform duration-300 hover:-translate-y-2;
+            }
+            .glass-effect {
+                @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+            }
+            .btn-primary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-purple/20 text-white rounded-lg font-semibold hover:bg-primary-purple/30 transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .nav-link.active {
+                @apply text-primary-orange;
+            }
+            .dropdown-item {
+                @apply block px-4 py-2 text-black hover:bg-primary-orange/20 hover:text-primary-orange transition-colors duration-300;
+            }
+        }
+        :root {
+            --primary-purple: #391b52;
+            --primary-orange: #F57C00;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            color: #333;
+            line-height: 1.7;
+        }
+         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+            /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+        .blog-banner {
+            height: 340px;
+            background: linear-gradient(rgba(57,27,82,0.85), rgba(245,124,0,0.85)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .blog-banner h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.18);
+        }
+        .blog-banner p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.93;
+        }
+        .article-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(57,27,82,0.07);
+            padding: 48px 32px;
+            margin-bottom: 60px;
+        }
+        .article-title {
+            font-size: 2.3rem;
+            color: #391b52;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        .article-meta {
+            display: flex;
+            gap: 18px;
+            color: #636e72;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+        .article-content h3 {
+            font-size: 1.35rem;
+            color: #F57C00;
+            margin: 38px 0 18px;
+            font-weight: 600;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #F57C00;
+            padding: 22px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.08rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #F57C00;
+            padding-left: 20px;
+            margin: 30px 0;
+            color: #391b52;
+            font-size: 1.18rem;
+            line-height: 1.6;
+        }
+        ul {
+            margin: 22px 0 22px 18px;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 14px;
+            font-size: 1.07rem;
+            position: relative;
+            padding-left: 18px;
+        }
+        ul li:before {
+            content: "•";
+            color: #F57C00;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            top: 0;
+        }
+        .subscribe-form {
+            background: linear-gradient(135deg, #391b52 0%, #F57C00 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .subscribe-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .subscribe-description {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        .form-submit {
+            background: #F57C00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            height: 40px;
+        }
+        .form-submit:hover {
+            background: #e27100;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-purple);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #a29bfe;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #636e72;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 8px; }
+            .blog-banner { height: 200px; }
+            .blog-banner h1 { font-size: 1.5rem; }
+            .article-container { padding: 24px 8px; }
+            .article-title { font-size: 1.3rem; }
+        }
+          @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .article-title {
+                font-size: 32px;
+            }
+            
+            .article-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .form-submit {
+                border-radius: 8px;
+                padding: 15px;
+            }
+            
+            .training-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+     <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="/NPDV Logo purple.png" alt="" class="h-10 w-10 mr-2">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Banner -->
+    <section class="blog-banner">
+        <div>
+            <h1>The Gift of Mindfulness: Coming Back to the Present</h1>
+            <p>Discover how mindfulness can help you reclaim the present and find peace in everyday moments.</p>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <div class="container">
+        <article class="article-container">
+            <h1 class="article-title">The Gift of Mindfulness: Coming Back to the Present</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar"></i> June 10, 2024</span>
+                <span><i class="far fa-clock"></i> 4 min read</span>
+                <span><i class="far fa-folder"></i> Wellbeing & Growth</span>
+            </div>
+            <div class="article-content">
+                <p>
+                    I’ll never forget a particular morning a few years ago. I was sitting at my desk, coffee in hand, with a long list of tasks waiting for me. My mind, however, was everywhere but the present. I was worrying about an upcoming meeting, replaying a conversation from the day before, and stressing about things that hadn’t even happened yet. By the time I looked up, the coffee was gone—I had no memory of drinking it.
+                </p>
+                <p>
+                    That was my wake-up call. I realized I was living on autopilot, missing the very moments that made up my life.
+                </p>
+                <p>
+                    That’s when I stumbled into mindfulness. At first, it felt strange—sitting quietly, noticing my breath, paying attention to the way the mug felt in my hands or how the air filled my lungs. But slowly, it began to shift something in me.
+                </p>
+                <div class="quote">
+                    Mindfulness taught me that life isn’t lived in the "what ifs" of tomorrow or the "should haves" of yesterday. It’s happening here, right now—in the warmth of a smile, the rhythm of your breath, the taste of that first sip of tea.
+                </div>
+                <p>
+                    What changed for me wasn’t my schedule or responsibilities—they stayed the same. What changed was how I experienced them. Stressful moments became more manageable because I wasn’t swept away by them. Conversations became richer because I was truly listening. Even ordinary things—like walking to the car or washing the dishes—felt lighter when I approached them with awareness.
+                </p>
+                <p>
+                    If you’ve ever felt like life is rushing past you, mindfulness is a gentle way to slow down and reclaim it. Start small: notice your breath when you wake up, pause to savor your meal, or give someone your full attention when they speak. These little anchors bring you back to the present, again and again.
+                </p>
+                <div class="highlight-box">
+                    <strong>And here’s the beautiful part:</strong><br>
+                    The present moment is where peace lives.
+                </div>
+            </div>
+        </article>
+
+        <div class="subscribe-form">
+            <h2 class="subscribe-title">Ready to Experience the Gift of Mindfulness?</h2>
+            <p class="subscribe-description">Our coaching programs help you build awareness and presence for a more peaceful, fulfilling life.</p>
+            <button type="submit" class="form-submit rounded-full h-10"><a href="../contact.html">Book a Session</a></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="../NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>

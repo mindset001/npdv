@@ -919,6 +919,8 @@
                                 <li><a href="services.html#risk"
                                         class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Risk
                                         Management</a></li>
+                                        <li><a href="services.html#legal"
+                                        class="hover:bg-primary-purple/5 hover:text-primary-orange mt-4">Legal Services</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1069,6 +1071,10 @@
                                 <i class="fas fa-chart-line" aria-hidden="true"></i>
                                 <p class="text-black"> Financial Advisory</p>
                             </a>
+                             <a href="services.html#legal" class="mobile-nav-item flex items-center">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                <p class="text-black"> Legal Services</p>
+                            </a>
                         </div>
                     </div>
 
@@ -1218,38 +1224,22 @@
                 <!-- Contact Form -->
                 <div class="contact-form animate-slide-up">
                     <h2 class="text-3xl font-bold text-primary-purple mb-8">Send us a Message</h2>
-                    <form id="contactForm" class="space-y-6" action="https://formspree.io/f/movnyrlq" method="POST"
-                        novalidate>
+                    <form class="space-y-6" action="https://formspree.io/f/xvgblznb" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="form-label">Full Name <span
-                                        class="text-red-500">*</span></label>
-                                <input type="text" id="name" name="name" class="form-input" required
-                                    placeholder="Enter your full name" minlength="2" maxlength="50"
-                                    aria-describedby="nameError" aria-invalid="false">
-                                <div class="form-error" id="nameError" role="alert"></div>
+                                <label for="name" class="form-label">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name">
                             </div>
-
                             <div>
-                                <label for="email" class="form-label">Email Address <span
-                                        class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" class="form-input" required
-                                    placeholder="Enter your email address" aria-describedby="emailError"
-                                    aria-invalid="false">
-                                <div class="form-error" id="emailError" role="alert"></div>
+                                <label for="email" class="form-label">Email Address <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your email address">
                             </div>
                         </div>
-
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="phone" class="form-label">Phone Number <span
-                                        class="text-red-500">*</span></label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required
-                                    placeholder="Enter your phone number" aria-describedby="phoneError"
-                                    aria-invalid="false">
-                                <div class="form-error" id="phoneError" role="alert"></div>
+                                <label for="phone" class="form-label">Phone Number <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required placeholder="Enter your phone number">
                             </div>
-
                             <div>
                                 <label for="subject" class="form-label">Subject <span
                                         class="text-red-500">*</span></label>
@@ -1293,20 +1283,10 @@
                                 <div class="form-error" id="subjectError" role="alert"></div>
                             </div>
                         </div>
-
-                        <div>
+                          <div>
                             <label for="message" class="form-label">Message <span class="text-red-500">*</span></label>
-                            <textarea id="message" name="message" rows="4" class="form-input" required
-                                placeholder="Enter your message" minlength="10" maxlength="1000"
-                                aria-describedby="messageError messageCounter" aria-invalid="false"></textarea>
-                            <div class="flex justify-between items-center mt-1">
-                                <div class="form-error" id="messageError" role="alert"></div>
-                                <div id="messageCounter" class="text-sm text-gray-500">
-                                    <span id="currentLength">0</span>/1000 characters
-                                </div>
-                            </div>
+                            <textarea id="message" name="message" rows="4" class="form-input" required placeholder="Enter your message"></textarea>
                         </div>
-
                         <div class="flex flex-col sm:flex-row gap-4">
                             <button type="submit" class="btn-primary flex-1">
                                 <span class="flex items-center justify-center">
@@ -1321,8 +1301,9 @@
                                 </span>
                             </button>
                         </div>
+                        </div>
+                      
                     </form>
-
                 </div>
             </div>
 
@@ -1525,7 +1506,7 @@
             });
 
             // Form validation
-            const form = document.getElementById('contactForm');
+            // const form = document.getElementById('contactForm');
             const inputs = form.querySelectorAll('input, textarea, select');
             const submitButton = form.querySelector('button[type="submit"]');
             const resetButton = form.querySelector('button[type="reset"]');
@@ -1570,8 +1551,6 @@
 
             // Form submission
             form.addEventListener('submit', async function (e) {
-                e.preventDefault();
-
                 let isValid = true;
                 inputs.forEach(input => {
                     if (!validateField(input)) {

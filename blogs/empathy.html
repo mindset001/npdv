@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPDV Blog | Empathy: The Superpower Hiding in Plain Sight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+           @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-purple to-primary-orange;
+            }
+            .hover-lift {
+                @apply transition-transform duration-300 hover:-translate-y-2;
+            }
+            .glass-effect {
+                @apply bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+            }
+            .btn-primary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply inline-flex items-center justify-center px-6 py-3 bg-primary-purple/20 text-white rounded-lg font-semibold hover:bg-primary-purple/30 transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-primary-purple hover:text-primary-orange transition-colors duration-300 font-medium;
+            }
+            .nav-link.active {
+                @apply text-primary-orange;
+            }
+            .dropdown-item {
+                @apply block px-4 py-2 text-black hover:bg-primary-orange/20 hover:text-primary-orange transition-colors duration-300;
+            }
+            .mobile-nav-link {
+                @apply block text-white hover:text-primary-orange transition-colors duration-300 font-medium;
+                background: rgba(57, 27, 82, 0.95) !important;
+                border-bottom: 1px solid rgba(245, 124, 0, 0.1) !important;
+            }
+            .mobile-nav-link:hover {
+                background: rgba(245, 124, 0, 0.2) !important;
+                color: #F57C00 !important;
+            }
+            .mobile-nav-link.active {
+                @apply text-primary-orange;
+                background: rgba(245, 124, 0, 0.2) !important;
+            }
+            .mobile-nav-item {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item i {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item span {
+                color: #e2e8f0 !important;
+            }
+            .mobile-nav-item.active,
+            .mobile-nav-item:hover {
+                color: #F57C00 !important;
+            }
+            .mobile-nav-item.active i,
+            .mobile-nav-item:hover i {
+                color: #F57C00 !important;
+            }
+            .mobile-nav-item.active span,
+            .mobile-nav-item:hover span {
+                color: #F57C00 !important;
+            }
+            .service-icon {
+                @apply w-16 h-16 rounded-full bg-primary-purple/10 flex items-center justify-center text-2xl text-primary-orange transition-all duration-300;
+            }
+            .service-icon:hover {
+                @apply bg-primary-orange text-white scale-110;
+            }
+        }
+
+        :root {
+            --primary-purple: #391b52;
+            --primary-orange: #F57C00;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            color: #333;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+         header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-purple);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .blog-banner {
+            height: 340px;
+            background: linear-gradient(rgba(57,27,82,0.85), rgba(245,124,0,0.85)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .blog-banner h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.18);
+        }
+        .blog-banner p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.93;
+        }
+        .article-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(57,27,82,0.07);
+            padding: 48px 32px;
+            margin-bottom: 60px;
+        }
+        .article-title {
+            font-size: 2.3rem;
+            color: #391b52;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+        .article-meta {
+            display: flex;
+            gap: 18px;
+            color: #636e72;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+        .article-content h3 {
+            font-size: 1.35rem;
+            color: #F57C00;
+            margin: 38px 0 18px;
+            font-weight: 600;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #F57C00;
+            padding: 22px;
+            margin: 32px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.08rem;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #F57C00;
+            padding-left: 20px;
+            margin: 30px 0;
+            color: #391b52;
+            font-size: 1.18rem;
+            line-height: 1.6;
+        }
+        ul {
+            margin: 22px 0 22px 18px;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 14px;
+            font-size: 1.07rem;
+            position: relative;
+            padding-left: 18px;
+        }
+        ul li:before {
+            content: "•";
+            color: #F57C00;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            top: 0;
+        }
+
+           /* Footer */
+        footer {
+            background: var(--primary-purple);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #a29bfe;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #636e72;
+        }
+
+        .subscribe-form {
+            background: linear-gradient(135deg, #391b52 0%, #F57C00 100%);
+            border-radius: 15px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .subscribe-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .subscribe-description {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .form-group {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            font-size: 16px;
+        }
+        
+        .form-submit {
+            background: #F57C00;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            padding: 0 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .form-submit:hover {
+            background: #e27100;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 8px; }
+            .blog-banner { height: 200px; }
+            .blog-banner h1 { font-size: 1.5rem; }
+            .article-container { padding: 24px 8px; }
+            .article-title { font-size: 1.3rem; }
+        }
+          @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .article-title {
+                font-size: 32px;
+            }
+            
+            .article-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .form-submit {
+                border-radius: 8px;
+                padding: 15px;
+            }
+            
+            .training-banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+       <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="/NPDV Logo purple.png" alt="" class="h-10 w-10 mr-2">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Banner -->
+    <section class="blog-banner">
+        <div>
+            <h1>Empathy: The Superpower Hiding in Plain Sight</h1>
+            <p>Discover how empathy transforms teams, leadership, and personal resilience.</p>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <div class="container">
+        <article class="article-container">
+            <h1 class="article-title">Empathy: The Superpower Hiding in Plain Sight</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar"></i> June 10, 2024</span>
+                <span><i class="far fa-clock"></i> 5 min read</span>
+                <span><i class="far fa-folder"></i> Leadership & Growth</span>
+            </div>
+            <div class="article-content">
+                <p>
+                    A while ago, I was leading a team that was under intense pressure to deliver on a project. One of my team members, usually full of energy, started missing deadlines. The old me might have jumped straight to reprimanding him, but something told me to pause.
+                </p>
+                <p>
+                    Instead of asking, “Why haven’t you finished this?” I asked, “Are you okay?”
+                </p>
+                <p>
+                    He broke down. His mother was ill, and he had been spending nights at the hospital. In that moment, the deadline wasn’t the issue—he was carrying a personal storm. Because I chose empathy over frustration, we adjusted timelines, and the rest of the team stepped in to support him. Not only did we complete the project, but the bond within the team grew stronger.
+                </p>
+                <div class="quote">
+                    That’s when I realized: empathy doesn’t just make you a better leader—it makes you human.
+                </div>
+                <h3>Empathy and Resilience: My Personal Wake-Up Call</h3>
+                <p>
+                    Not long after, I faced my own test. I went through a season where life felt overwhelming—career demands, family responsibilities, and personal setbacks all collided at once. I wore my “strong face” in public, but inside, I was drained.
+                </p>
+                <p>
+                    What kept me from crumbling wasn’t advice or solutions—it was a friend who noticed. She didn’t lecture me. She didn’t tell me to “cheer up.” She simply said, “I can see this is heavy. You don’t have to carry it alone.”
+                </p>
+                <p>
+                    That simple act of empathy gave me the strength to breathe, regroup, and keep moving. It taught me that empathy isn’t just something we give others—it’s a lifeline we sometimes need ourselves.
+                </p>
+                <h3>Why Empathy Feels Like a Superpower</h3>
+                <p>
+                    Empathy doesn’t solve problems instantly, but it creates the space where solutions become possible. It:
+                </p>
+                <ul>
+                    <li>Builds trust faster than authority ever can.</li>
+                    <li>Strengthens teams, because people perform better when they feel understood.</li>
+                    <li>Fuels resilience, by reminding us that we don’t have to face challenges alone.</li>
+                </ul>
+                <p>
+                    In leadership, empathy can turn a struggling team into a thriving one. In personal life, it can turn a breaking point into a turning point.
+                </p>
+                <h3>How to Grow Your Empathy Muscle</h3>
+                <ul>
+                    <li>Pause before reacting. Emotions often have roots deeper than what we see.</li>
+                    <li>Ask open questions. “What’s on your mind?” or “How are you really feeling?”</li>
+                    <li>Be present. Put down your phone, look into their eyes, and listen.</li>
+                    <li>Offer compassion, not solutions. Sometimes, people just need you to sit with them.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Final Thought</strong><br>
+                    Empathy is not weakness. It’s strength wrapped in gentleness. It’s leadership clothed in compassion. It’s resilience fueled by connection.<br><br>
+                    In a world where people are desperate to be seen and heard, empathy is the superpower that cuts through noise, builds bridges, and reminds us of our shared humanity.<br><br>
+                    And the best part? We all have access to it—if only we choose to use it.
+                </div>
+            </div>
+        </article>
+
+        <div class="subscribe-form">
+            <h2 class="subscribe-title">Ready to Discover the Superpower Hiding in Plain Sight?</h2>
+            <p class="subscribe-description">Our coaching programs help you develop the EI skills needed for stronger leadership and relationships.</p>
+            <!-- <form class="form-group"> -->
+                <!-- <input type="email" class="form-input" placeholder="Your email address"> -->
+                <button type="submit" class="form-submit rounded-full h-10"><a href="../contact.html">Book a Session</a></button>
+            <!-- </form> -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-purple text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center sm:text-left">
+                    <img src="../NPDV LOGO white.png" alt="NPDV Logo" class="h-12 mb-4 mx-auto sm:mx-0">
+                    <p class="text-sm sm:text-base text-gray-300">Empowering organizations through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">About Us</a></li>
+                        <li><a href="services.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Services</a></li>
+                        <li><a href="training-programs.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training Programs</a></li>
+                        <li><a href="case-studies.html" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#strategic" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Strategic Communications</a></li>
+                        <li><a href="services.html#training" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Training & Development</a></li>
+                        <li><a href="services.html#coaching" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Career Coaching</a></li>
+                        <li><a href="services.html#project" class="text-sm sm:text-base text-gray-300 hover:text-white transition-colors duration-300">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="text-center sm:text-left">
+                    <h4 class="text-base sm:text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm sm:text-base text-gray-300">
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Flat 240, CBN Quarters, Utako, Abuja, FCT
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-phone mr-2"></i>
+                            0906 999 1805
+                        </li>
+                        <li class="flex items-center justify-center sm:justify-start">
+                            <i class="fas fa-envelope mr-2"></i>
+                            admin@npdv.com.ng
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm sm:text-base text-gray-300">
+                <div class="social-icons-container flex justify-center space-x-8 mb-6">
+                    <a href="https://www.facebook.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-facebook-f text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.instagram.com/npdv.serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-instagram text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                     <a href="https://x.com/npdv_serviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-x text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/npdvserviceshq" target="_blank" rel="noopener noreferrer" 
+                       class="social-icon group relative w-12 h-12 flex items-center justify-center rounded-full bg-primary-purple/20 hover:bg-primary-purple transition-all duration-500 transform hover:scale-110 hover:rotate-360">
+                        <i class="fab fa-linkedin-in text-xl text-white group-hover:text-primary-orange transition-colors duration-300"></i>
+                    </a>
+                </div>
+                <p class="animate-fade-in text-gray-300">&copy; 2024 NPDV. Developed By <a href="https://www.asteria.com.ng/">Asteria Alliance Limited.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for highlight boxes when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const highlightBoxes = document.querySelectorAll('.highlight-box');
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            highlightBoxes.forEach(box => {
+                box.style.opacity = 0;
+                box.style.transform = 'translateX(-20px)';
+                box.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(box);
+            });
+            
+            // Animation for blog cards
+            blogCards.forEach((card, index) => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+            
+            // Form submission handling
+            const subscribeForm = document.querySelector('.subscribe-form form');
+            if (subscribeForm) {
+                subscribeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    if (emailInput.value) {
+                        alert('Thank you for subscribing to our newsletter!');
+                        emailInput.value = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
